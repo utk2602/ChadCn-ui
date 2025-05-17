@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -34,7 +35,6 @@
 
     --radius: 0.5rem;
 
-    /* Sidebar variables */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 9%;
     --sidebar-primary: 0 0% 9%;
@@ -74,7 +74,6 @@
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
 
-    /* Sidebar variables */
     --sidebar-background: 0 0% 3.9%;
     --sidebar-foreground: 0 0% 98%;
     --sidebar-primary: 0 0% 98%;
@@ -90,10 +89,13 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: sans-serif;
   }
+
   h1,
   h2,
   h3,
@@ -101,18 +103,21 @@
   h5,
   h6 {
     @apply font-bold tracking-tight;
+    font-family: 'Tangerine', cursive;
   }
+
   h1 {
     @apply text-4xl md:text-5xl;
   }
+
   h2 {
     @apply text-2xl md:text-3xl;
   }
+
   h3 {
     @apply text-xl md:text-2xl;
   }
 
-  /* Code block styling */
   pre {
     @apply rounded-lg p-4 overflow-x-auto;
   }
@@ -121,7 +126,6 @@
     @apply font-mono text-sm;
   }
 
-  /* Link styling */
   a {
     @apply transition-colors duration-200;
   }
