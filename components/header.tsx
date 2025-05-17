@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Github, Twitter, Search, Sun, Moon, Monitor } from "lucide-react"
+import { Github, Twitter, Search, Sun, Moon, Monitor, Component } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
@@ -45,6 +45,15 @@ export default function Header() {
               )}
             >
               Docs
+            </Link>
+            <Link
+              href="/Components"
+              className={cn(
+                "transition-colors hover:text-white/80",
+                pathname.startsWith("/Components") ? "text-white" : "text-white/60",
+              )}
+            >
+              Components 
             </Link>
             <Link
               href="/blocks"
