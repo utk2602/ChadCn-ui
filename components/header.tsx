@@ -15,68 +15,62 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-black text-white">
-      <div className="flex h-14 items-center px-4 md:px-6">
-        <Link href="/" className="mr-6 flex items-center space-x-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="h-6 w-6"
-          >
-            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-            <path d="M2 17l10 5 10-5" />
-            <path d="M2 12l10 5 10-5" />
-          </svg>
-          <span className="font-bold text-xl hidden md:inline-block">ChadCn UI</span>
-        </Link>
-        <nav className="flex items-center space-x-6 text-sm font-medium">
-          <Link
-            href="/docs"
-            className={cn(
-              "transition-colors hover:text-white/80",
-              pathname.startsWith("/docs") ? "text-white" : "text-white/60",
-            )}
-          >
-            Docs
-          </Link>
-          <Link
-            href="/blocks"
-            className={cn(
-              "transition-colors hover:text-white/80",
-              pathname.startsWith("/blocks") ? "text-white" : "text-white/60",
-            )}
-          >
-            Blocks
-          </Link>
-          <Link
-            href="/colors"
-            className={cn(
-              "transition-colors hover:text-white/80",
-              pathname.startsWith("/colors") ? "text-white" : "text-white/60",
-            )}
-          >
-            Colors
-          </Link>
-        </nav>
-        <div className="ml-auto flex items-center gap-2">
-          <Button variant="ghost" size="icon" asChild className="text-white/80 hover:text-white">
-            <Link
-              href="https://github.com/utk2602"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2"
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+        {/* Logo and Navigation */}
+        <div className="flex items-center gap-8">
+          <Link href="/" className="flex items-center space-x-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-6 w-6"
             >
-              <Github className="h-5 w-5" />
-              <span className="hidden md:inline-block">Star on GitHub</span>
-              <span className="hidden md:inline-block bg-white/10 px-2 py-1 rounded text-xs">359</span>
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+            <span className="font-bold text-xl hidden md:inline-block">ChadCn UI</span>
+          </Link>
+          
+          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+            <Link
+              href="/docs"
+              className={cn(
+                "transition-colors hover:text-white/80",
+                pathname.startsWith("/docs") ? "text-white" : "text-white/60",
+              )}
+            >
+              Docs
             </Link>
-          </Button>
+            <Link
+              href="/blocks"
+              className={cn(
+                "transition-colors hover:text-white/80",
+                pathname.startsWith("/blocks") ? "text-white" : "text-white/60",
+              )}
+            >
+              Blocks
+            </Link>
+            <Link
+              href="/colors"
+              className={cn(
+                "transition-colors hover:text-white/80",
+                pathname.startsWith("/colors") ? "text-white" : "text-white/60",
+              )}
+            >
+              Colors
+            </Link>
+          </nav>
+        </div>
 
-          <div className="relative hidden md:flex items-center">
+        {/* Right side actions */}
+        <div className="flex items-center gap-4">
+          {/* Search - Hidden on mobile */}
+          <div className="relative hidden lg:flex items-center">
             <Search className="absolute left-2.5 text-white/60 h-4 w-4" />
             <Input
               type="search"
@@ -86,13 +80,28 @@ export default function Header() {
             <kbd className="absolute right-2.5 text-white/40 pointer-events-none">⌘K</kbd>
           </div>
 
-          <Button variant="ghost" size="icon" asChild className="text-white/80 hover:text-white">
+          {/* GitHub Star - Text visible only on larger screens */}
+          <Button variant="ghost" size="sm" asChild className="text-white/80 hover:text-white">
+            <Link
+              href="https://github.com/utk2602"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-2"
+            >
+              <Github className="h-5 w-5" />
+              <span className="hidden lg:inline-block">Star on GitHub</span>
+            </Link>
+          </Button>
+
+          {/* Mobile Only GitHub Icon */}
+          <Button variant="ghost" size="icon" asChild className="text-white/80 hover:text-white md:hidden">
             <Link href="https://github.com/utk2602" target="_blank" rel="noopener noreferrer">
               <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </Link>
           </Button>
 
+          {/* Twitter */}
           <Button variant="ghost" size="icon" asChild className="text-white/80 hover:text-white">
             <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
               <Twitter className="h-5 w-5" />
@@ -100,6 +109,7 @@ export default function Header() {
             </Link>
           </Button>
 
+          {/* Theme Toggle */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="text-white/80 hover:text-white">
