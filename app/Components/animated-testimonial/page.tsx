@@ -174,7 +174,7 @@ export default function AnimatedTestimonialPage() {
           {showCode && (
             <div className="rounded-md bg-muted p-4 mt-4">
               <h3 className="text-lg font-medium mb-2">Component Code</h3>
-              <pre className="text-sm overflow-auto whitespace-pre-wrap">
+              <pre className="text-sm overflow-auto whitespace-pre-wrap no-scrollbar">
                 <code>{componentCode}</code>
               </pre>
             </div>
