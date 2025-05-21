@@ -5,6 +5,7 @@ import UsagePage from "./usage/page";
 import AnimatedTestimonialPage from "./animated-testimonial/page";
 import GradientButtonPage from "./gradient-button/page";
 import HeroCardPage from "./hero-card/page";
+import CustomDataTablePage from "./data-table/page";
 export default function BlackScreenWithNavbar() {
   const [activeComponent, setActiveComponent] = useState("installation");
 
@@ -42,6 +43,8 @@ export default function BlackScreenWithNavbar() {
         return <GradientButtonPage />;
       case "hero-card":
         return <HeroCardPage />;
+      case "data-table":
+        return <CustomDataTablePage />; 
       default:
         return (
           <div className="p-8 text-white">
