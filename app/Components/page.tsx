@@ -1,100 +1,119 @@
-"use client"
+"use client";
 import { useState } from "react";
+import InstallationPage from "./installation/page";
+import UsagePage from "./usage/page";
 import AnimatedTestimonialPage from "./animated-testimonial/page";
 import GradientButtonPage from "./gradient-button/page";
 import HeroCardPage from "./hero-card/page";
-import InstallationPage from "./installation/page";
-import UsagePage from "./usage/page";
-
-export default function Component() {
+export default function BlackScreenWithNavbar() {
   const [activeComponent, setActiveComponent] = useState("installation");
-  
+
   // Component metadata
   const components = [
-    { id: "animated-testimonial", name: "Animated Testimonial", component: AnimatedTestimonialPage },
-    { id: "gradient-button", name: "Gradient Button", component: GradientButtonPage },
-    { id: "hero-card", name: "Hero Card", component: HeroCardPage },
+    { id: "animated-testimonial", name: "Animated Testimonial" },
+    { id: "gradient-button", name: "Gradient Button" },
+    { id: "hero-card", name: "Hero Card" },
+    { id: "data-table", name: "Data Table" },
+    { id: "modal-dialog", name: "Modal Dialog" },
+    { id: "dropdown-menu", name: "Dropdown Menu" },
+    { id: "tab-navigation", name: "Tab Navigation" },
+    { id: "accordion", name: "Accordion" },
+    { id: "toast-notification", name: "Toast Notification" },
+    { id: "form-elements", name: "Form Elements" },
   ];
-  
+
   // Common pages
   const commonPages = [
-    { id: "installation", name: "Installation", component: InstallationPage },
-    { id: "usage", name: "Usage", component: UsagePage },
+    { id: "installation", name: "Installation" },
+    { id: "usage", name: "Usage" },
+    { id: "customization", name: "Customization" },
   ];
-  
-  // Function to render the active component
-  const renderActiveComponent = () => {
-    // First check if it's a common page
-    const commonPage = commonPages.find(page => page.id === activeComponent);
-    if (commonPage) {
-      return <commonPage.component />;
+
+  // Render content based on active component
+  const renderContent = () => {
+    switch (activeComponent) {
+      case "installation":
+        return <InstallationPage />;
+      case "usage":
+        return <UsagePage/>;
+      case "animated-testimonial":
+        return <AnimatedTestimonialPage />;
+      case "gradient-button": 
+        return <GradientButtonPage />;
+      case "hero-card":
+        return <HeroCardPage />;
+      default:
+        return (
+          <div className="p-8 text-white">
+            <h1 className="text-2xl font-bold mb-4">
+              {activeComponent
+                .charAt(0)
+                .toUpperCase() +
+                activeComponent.slice(1).replace(/-/g, " ")}
+            </h1>
+            <p>Selected component: {activeComponent}</p>
+          </div>
+        );
     }
-    
-    // Then check if it's a component
-    const component = components.find(comp => comp.id === activeComponent);
-    if (component) {
-      return <component.component />;
-    }
-    
-    // Default to installation if no match found
-    return <InstallationPage />;
   };
-  
+
   return (
-    <div className="flex h-screen bg-gray-900 text-gray-100 overflow-hidden">
-      {/* Left sidebar with fixed header and scrollable content */}
-      <div className="w-1/5 bg-gray-800 border-r border-gray-700 flex flex-col">
-        {/* Fixed header */}
-        <div className="p-4 border-b border-gray-700">
-          <h2 className="text-lg font-bold text-gray-100">Components</h2>
-        </div>
-        
-        {/* Scrollable sidebar content */}
-        <div className="flex-1 overflow-y-auto">
-          <div className="p-4">
-            {/* Common pages */}
-            <div className="mb-6">
-              {commonPages.map((page) => (
+    <div className="flex h-screen bg-black p-1">
+      <div className="flex w-full h-full bg-black">
+        {/* Left section - 1/5 width - scrollable navbar */}
+        <div className="w-1/5 h-full border-r border-black overflow-hidden flex flex-col">
+          {/* Header */}
+          <div className="p-4 border-b border-black-700">
+            <h2 className="text-lg font-bold text-white">Components</h2>
+          </div>
+
+          {/* Scrollable component list */}
+          <div className="overflow-y-auto flex-1 hide-scrollbar">
+            <div className="p-4">
+              {/* Common pages */}
+              <div className="mb-6">
+                {commonPages.map((page) => (
+                  <button
+                    key={page.id}
+                    onClick={() => setActiveComponent(page.id)}
+                    className={`w-full text-left py-2 px-3 rounded-md mb-1 ${
+                      activeComponent === page.id
+                        ? "bg-gray-800 text-white font-medium"
+                        : "text-gray-400 hover:bg-gray-900"
+                    }`}
+                  >
+                    {page.name}
+                  </button>
+                ))}
+              </div>
+
+              {/* Component list */}
+              <div className="mb-2">
+                <h3 className="text-sm font-medium text-gray-400 px-3 mb-2">
+                  UI COMPONENTS
+                </h3>
+              </div>
+
+              {components.map((component) => (
                 <button
-                  key={page.id}
-                  onClick={() => setActiveComponent(page.id)}
+                  key={component.id}
+                  onClick={() => setActiveComponent(component.id)}
                   className={`w-full text-left py-2 px-3 rounded-md mb-1 ${
-                    activeComponent === page.id
-                      ? "bg-blue-900 text-blue-200 font-medium"
-                      : "text-gray-300 hover:bg-gray-700"
+                    activeComponent === component.id
+                      ? "bg-gray-800 text-white font-medium"
+                      : "text-gray-400 hover:bg-gray-900"
                   }`}
                 >
-                  {page.name}
+                  {component.name}
                 </button>
               ))}
             </div>
-            
-            {/* Component list */}
-            <div className="mb-2">
-              <h3 className="text-sm font-medium text-gray-400 px-3 mb-2">UI COMPONENTS</h3>
-            </div>
-            
-            {components.map((component) => (
-              <button
-                key={component.id}
-                onClick={() => setActiveComponent(component.id)}
-                className={`w-full text-left py-2 px-3 rounded-md mb-1 ${
-                  activeComponent === component.id
-                    ? "bg-blue-900 text-blue-200 font-medium"
-                    : "text-gray-300 hover:bg-gray-700"
-                }`}
-              >
-                {component.name}
-              </button>
-            ))}
           </div>
         </div>
-      </div>
-      
-      {/* Main content area with independent scrolling - full width and height */}
-      <div className="w-4/5 flex-1 overflow-hidden">
-        <div className="h-full overflow-y-auto">
-          {renderActiveComponent()}
+
+        {/* Right section - component render area */}
+        <div className="w-4/5 h-full overflow-y-auto bg-black">
+          {renderContent()}
         </div>
       </div>
     </div>
