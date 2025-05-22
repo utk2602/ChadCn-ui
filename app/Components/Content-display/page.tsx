@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { ArrowLeft, Code, Zap, Users, TrendingUp, Shield, Sparkles, Database } from "lucide-react"
 import { FeatureTabs } from "@/CHADCN-UI/Content-display"
-
 const componentCode = `import { FeatureTabs } from "@/CHADCN-UI/Content-display"
 import { Zap, Users, TrendingUp, Shield } from "lucide-react"
 
@@ -44,7 +43,7 @@ export default function MyComponent() {
   return (
     <FeatureTabs
       tabs={tabs}
-      backgroundImage="/api/placeholder/800/450"
+      backgroundImage="https://img.freepik.com/premium-vector/dashboard-design-business-development-technology-web-template-dashboard-vector-design_29008-372.jpg"
       header="Elevate your workflow"
       subheader="Transform your productivity with our comprehensive suite of tools"
       defaultSelectedIndex={0}
@@ -154,7 +153,7 @@ export default function FeatureTabsPage() {
             <div className="rounded-lg border border-gray-700 bg-gray-950 p-6 overflow-hidden">
               <FeatureTabs
                 tabs={sampleTabs}
-                backgroundImage="/api/placeholder/800/450"
+                backgroundImage="https://img.freepik.com/premium-vector/dashboard-design-business-development-technology-web-template-dashboard-vector-design_29008-372.jpg"
                 header="Elevate your workflow"
                 subheader="Transform your productivity with our comprehensive suite of tools"
                 defaultSelectedIndex={0}
@@ -198,7 +197,7 @@ export default function FeatureTabsPage() {
                 <div className="rounded-lg border border-gray-700 bg-gray-950 p-4 overflow-hidden">
                   <FeatureTabs
                     tabs={advancedTabs}
-                    backgroundImage="/api/placeholder/600/300"
+                    
                     header="Advanced Features"
                     subheader="Discover powerful capabilities designed for modern teams"
                     defaultSelectedIndex={1}
@@ -374,7 +373,7 @@ const myTabs = [
 
 <FeatureTabs
   tabs={myTabs}
-  backgroundImage="/path/to/image.jpg"
+  backgroundImage="https://img.freepik.com/premium-vector/dashboard-design-business-development-technology-web-template-dashboard-vector-design_29008-372.jpg"
   header="Your Custom Header"
   subheader="Your custom description"
 />`}</code>
@@ -388,7 +387,7 @@ const myTabs = [
                   <pre className="text-sm text-green-400 whitespace-pre-wrap">
                     <code>{`<FeatureTabs
   tabs={tabs}
-  backgroundImage="/hero-image.jpg"
+  backgroundImage="https://img.freepik.com/premium-vector/dashboard-design-business-development-technology-web-template-dashboard-vector-design_29008-372.jpg"
   header="Advanced Features"
   subheader="Powerful tools for modern teams"
   defaultSelectedIndex={1}

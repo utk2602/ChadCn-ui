@@ -8,8 +8,8 @@
     useMotionValue,
     ValueAnimationTransition,
   } from "framer-motion";
-  import { LucideLayoutDashboard } from "lucide-react";
-  
+  import { LuLayoutDashboard } from "react-icons/lu";
+
   export interface FeatureTabItem {
     icon?: React.ReactNode;
     title: string;
@@ -33,7 +33,7 @@
   }
   
   const DefaultIconComponent = ({ icon }: { icon?: React.ReactNode }) => {
-    return <>{icon || <LucideLayoutDashboard className="h-5 w-5" />}</>;
+    return <>{icon || <LuLayoutDashboard className="h-5 w-5" />}</>;
   };
   
   const FeatureTab = (
@@ -208,7 +208,7 @@
               style={{
                 backgroundPosition,
                 backgroundSize,
-                backgroundImage: `url(${backgroundImage})`,
+                backgroundImage: `https://img.freepik.com/premium-vector/dashboard-design-business-development-technology-web-template-dashboard-vector-design_29008-372.jpg`,
               }}
             />
           </div>
