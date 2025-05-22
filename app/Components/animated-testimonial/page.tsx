@@ -5,7 +5,6 @@ import { ArrowLeft, Code } from "lucide-react"
 import Link from "next/link"
 import { AnimatedTestimonial } from "@/CHADCN-UI/AnimatedTestimonial"
 
-// Component source code string to display in documentation
 const componentCode = `"use client"
 
 import React, { useState, useEffect } from "react"
@@ -231,7 +230,7 @@ export default function AnimatedTestimonialPage() {
           <div className="space-y-2">
             <h3 className="text-xl font-medium">Basic Usage</h3>
             <div className="rounded-md bg-muted p-4">
-              <pre className="text-sm overflow-auto">
+              <pre className="rounded-md p-4 overflow-auto text-sm font-mono bg-zinc-900 text-green-300 border border-zinc-700 shadow-inner whitespace-pre-wrap no-scrollbar">
                 <code>{`import { AnimatedTestimonial } from "@/CHADCN-UI/AnimatedTestimonial"
 
 export default function MyComponent() {

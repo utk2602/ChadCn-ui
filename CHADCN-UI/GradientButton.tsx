@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import { Slot } from "@radix-ui/react-slot"
 import { cn } from "@/lib/utils"
 
 export interface GradientButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -13,7 +14,7 @@ export interface GradientButtonProps extends React.ButtonHTMLAttributes<HTMLButt
 
 export const GradientButton = React.forwardRef<HTMLButtonElement, GradientButtonProps>(
   ({ children, variant = "primary", size = "md", className, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? React.Fragment : "button"
+    const Comp = asChild ? Slot : "button"
 
     const variantStyles = {
       primary:
@@ -31,22 +32,20 @@ export const GradientButton = React.forwardRef<HTMLButtonElement, GradientButton
     }
 
     return (
-      <Comp>
-        <button
-          ref={ref}
-          className={cn(
-            "inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
-            variantStyles[variant],
-            sizeStyles[size],
-            className,
-          )}
-          {...props}
-        >
-          {children}
-        </button>
+      <Comp
+        ref={ref}
+        className={cn(
+          "inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+          variantStyles[variant],
+          sizeStyles[size],
+          className,
+        )}
+        {...props}
+      >
+        {children}
       </Comp>
     )
-  },
+  }
 )
 
 GradientButton.displayName = "GradientButton"

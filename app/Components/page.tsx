@@ -5,6 +5,7 @@ import UsagePage from "./usage/page";
 import AnimatedTestimonialPage from "./animated-testimonial/page";
 import GradientButtonPage from "./gradient-button/page";
 import HeroCardPage from "./hero-card/page";
+import Carousel3DPage from "./3d-Carousel/page";
 import CustomDataTablePage from "./data-table/page";
 export default function BlackScreenWithNavbar() {
   const [activeComponent, setActiveComponent] = useState("installation");
@@ -21,6 +22,7 @@ export default function BlackScreenWithNavbar() {
     { id: "accordion", name: "Accordion" },
     { id: "toast-notification", name: "Toast Notification" },
     { id: "form-elements", name: "Form Elements" },
+    { id: "3d-carousel", name: "3D Carousel" },
   ];
 
   // Common pages
@@ -45,6 +47,8 @@ export default function BlackScreenWithNavbar() {
         return <HeroCardPage />;
       case "data-table":
         return <CustomDataTablePage />; 
+      case "3d-carousel":
+        return <Carousel3DPage />;
       default:
         return (
           <div className="p-8 text-white">

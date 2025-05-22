@@ -33,6 +33,13 @@ const componentsNav = [
         title: "GradientButton",
         href: "/components/gradient-button",
       },
+      {
+        title: "DataTable",
+        href: "/components/data-table",
+      },{
+        title: "3d-carousel",
+        href: "/components/3d-Carousel",
+      }
     ],
   },
 ]
