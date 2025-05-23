@@ -1,8 +1,100 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowLeft, Code, Zap, Users, TrendingUp, Shield, Sparkles, Database } from "lucide-react"
-import { FeatureTabs } from "@/CHADCN-UI/Content-display"
+import { ArrowLeft, Code, Zap, Users, TrendingUp, Shield } from "lucide-react"
+
+// TypeScript interface for a single tab item
+interface FeatureTabItem {
+  icon?: React.ReactNode
+  title: string
+  isNew?: boolean
+  backgroundPositionX: number
+  backgroundPositionY: number
+  backgroundSizeX: number
+}
+
+// TypeScript interface for FeatureTabs props
+interface FeatureTabsProps {
+  tabs: FeatureTabItem[]
+  backgroundImage?: string
+  header?: string
+  subheader?: string
+  defaultSelectedIndex?: number
+  animationDuration?: number
+  highlightColor?: string
+  newBadgeColor?: string
+  iconColor?: string
+}
+
+// Mock FeatureTabs component since we don't have access to the actual one
+const FeatureTabs = ({
+  tabs,
+  backgroundImage,
+  header,
+  subheader,
+  defaultSelectedIndex = 0,
+  animationDuration = 2,
+  highlightColor = "#A369ff",
+  newBadgeColor = "#8c44ff",
+  iconColor = "#A369ff"
+}: FeatureTabsProps) => {
+  const [selectedIndex, setSelectedIndex] = useState(defaultSelectedIndex)
+
+  return (
+    <div className="w-full max-w-6xl mx-auto">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-white mb-2">{header}</h2>
+        <p className="text-gray-400 text-lg">{subheader}</p>
+      </div>
+      
+      <div className="flex flex-col lg:flex-row gap-8 items-center">
+        {/* Tabs */}
+        <div className="flex flex-col space-y-4 lg:w-1/2">
+          {tabs.map((tab, index) => (
+            <div
+              key={index}
+              onClick={() => setSelectedIndex(index)}
+              className={`flex items-center gap-3 p-4 rounded-lg cursor-pointer transition-all duration-300 ${
+                selectedIndex === index 
+                  ? 'bg-gray-800 border-2' 
+                  : 'bg-gray-900 border-2 border-transparent hover:bg-gray-800'
+              }`}
+              style={{
+                borderColor: selectedIndex === index ? highlightColor : 'transparent'
+              }}
+            >
+              <div style={{ color: iconColor }}>
+                {tab.icon}
+              </div>
+              <span className="text-white font-medium">{tab.title}</span>
+              {tab.isNew && (
+                <span 
+                  className="px-2 py-1 text-xs rounded-full text-white"
+                  style={{ backgroundColor: newBadgeColor }}
+                >
+                  NEW
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Preview Area */}
+        <div className="lg:w-1/2 w-full">
+          <div 
+            className="h-80 rounded-lg bg-cover bg-center transition-all duration-1000 ease-out border border-gray-700"
+            style={{
+              backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'linear-gradient(45deg, #1f2937, #374151)',
+              backgroundPosition: backgroundImage ? `${tabs[selectedIndex]?.backgroundPositionX || 0}% ${tabs[selectedIndex]?.backgroundPositionY || 0}%` : 'center',
+              backgroundSize: backgroundImage ? `${tabs[selectedIndex]?.backgroundSizeX || 100}%` : 'cover'
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const componentCode = `import { FeatureTabs } from "@/CHADCN-UI/Content-display"
 import { Zap, Users, TrendingUp, Shield } from "lucide-react"
 
@@ -88,31 +180,6 @@ const sampleTabs = [
   },
 ];
 
-const advancedTabs = [
-  {
-    icon: <Sparkles className="h-5 w-5" />,
-    title: "AI-Powered Features",
-    isNew: true,
-    backgroundPositionX: 25,
-    backgroundPositionY: 25,
-    backgroundSizeX: 180,
-  },
-  {
-    icon: <Database className="h-5 w-5" />,
-    title: "Real-time Data Sync",
-    backgroundPositionX: 75,
-    backgroundPositionY: 25,
-    backgroundSizeX: 160,
-  },
-  {
-    icon: <Shield className="h-5 w-5" />,
-    title: "Advanced Security",
-    backgroundPositionX: 25,
-    backgroundPositionY: 75,
-    backgroundSizeX: 140,
-  },
-];
-
 export default function FeatureTabsPage() {
   const [showCode, setShowCode] = useState(false)
 
@@ -137,8 +204,8 @@ export default function FeatureTabsPage() {
             </div>
           </div>
 
-          {/* Preview */}
-          <div className="space-y-6 bg-gray-900 rounded-xl p-6 md:p-8 border border-gray-800">
+          {/* Large Single Preview */}
+          <div className="space-y-6 bg-gray-900 rounded-xl p-8 md:p-12 border border-gray-800">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold tracking-tight text-white">Preview</h2>
               <button
@@ -150,7 +217,7 @@ export default function FeatureTabsPage() {
               </button>
             </div>
 
-            <div className="rounded-lg border border-gray-700 bg-gray-950 p-6 overflow-hidden">
+            <div className="rounded-lg border border-gray-700 bg-gray-950 p-8 md:p-12 overflow-hidden">
               <FeatureTabs
                 tabs={sampleTabs}
                 backgroundImage="https://img.freepik.com/premium-vector/dashboard-design-business-development-technology-web-template-dashboard-vector-design_29008-372.jpg"
@@ -176,7 +243,7 @@ export default function FeatureTabsPage() {
             </div>
 
             {showCode && (
-              <div className="rounded-md bg-gray-950 border border-gray-700 p-4 mt-4">
+              <div className="rounded-md bg-gray-950 border border-gray-700 p-4 mt-6">
                 <h3 className="text-lg font-medium mb-2 text-white">Component Code</h3>
                 <div className="max-h-96 overflow-auto">
                   <pre className="text-sm text-green-400 whitespace-pre-wrap">
@@ -185,46 +252,6 @@ export default function FeatureTabsPage() {
                 </div>
               </div>
             )}
-          </div>
-
-          {/* Additional Examples */}
-          <div className="space-y-6 bg-gray-900 rounded-xl p-6 md:p-8 border border-gray-800">
-            <h2 className="text-2xl font-bold tracking-tight text-white mb-4">Additional Examples</h2>
-            
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-lg font-medium text-gray-200 mb-3">Custom Colors & Compact Layout</h3>
-                <div className="rounded-lg border border-gray-700 bg-gray-950 p-4 overflow-hidden">
-                  <FeatureTabs
-                    tabs={advancedTabs}
-                    
-                    header="Advanced Features"
-                    subheader="Discover powerful capabilities designed for modern teams"
-                    defaultSelectedIndex={1}
-                    animationDuration={1}
-                    highlightColor="#f59e0b"
-                    newBadgeColor="#ef4444"
-                    iconColor="#f59e0b"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-medium text-gray-200 mb-3">Without Background Image</h3>
-                <div className="rounded-lg border border-gray-700 bg-gray-950 p-4 overflow-hidden">
-                  <FeatureTabs
-                    tabs={sampleTabs}
-                    header="Simple Feature Showcase"
-                    subheader="Clean and minimal design without background imagery"
-                    defaultSelectedIndex={2}
-                    animationDuration={2}
-                    highlightColor="#8b5cf6"
-                    newBadgeColor="#06b6d4"
-                    iconColor="#8b5cf6"
-                  />
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Configuration */}

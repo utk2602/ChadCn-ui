@@ -8,6 +8,7 @@ import HeroCardPage from "./hero-card/page";
 import Carousel3DPage from "./3d-Carousel/page";
 import CustomDataTablePage from "./data-table/page";
 import FeatureTabsPage from "./Content-display/page";
+import TextHoverEffectPage from "./Hero-text/page";
 export default function BlackScreenWithNavbar() {
   const [activeComponent, setActiveComponent] = useState("installation");
 
@@ -25,6 +26,7 @@ export default function BlackScreenWithNavbar() {
     { id: "form-elements", name: "Form Elements" },
     { id: "3d-carousel", name: "3D Carousel" },
     { id: "feature-tabs", name: "Feature Tabs" },
+    { id: "text-reveal", name: "Text Reveal" },
   ];
 
   // Common pages
@@ -53,6 +55,8 @@ export default function BlackScreenWithNavbar() {
         return <Carousel3DPage />;
       case "feature-tabs":
         return <FeatureTabsPage />;
+      case "text-reveal":
+        return <TextHoverEffectPage/>;
       default:
         return (
           <div className="p-8 text-white">
