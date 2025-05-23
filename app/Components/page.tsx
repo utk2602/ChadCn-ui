@@ -9,6 +9,7 @@ import Carousel3DPage from "./3d-Carousel/page";
 import CustomDataTablePage from "./data-table/page";
 import FeatureTabsPage from "./Content-display/page";
 import TextHoverEffectPage from "./Hero-text/page";
+import MacOsIdCardPage from "./Mac-ID/page";
 export default function BlackScreenWithNavbar() {
   const [activeComponent, setActiveComponent] = useState("installation");
 
@@ -27,6 +28,7 @@ export default function BlackScreenWithNavbar() {
     { id: "3d-carousel", name: "3D Carousel" },
     { id: "feature-tabs", name: "Feature Tabs" },
     { id: "text-reveal", name: "Text Reveal" },
+    { id : "mac-os-id-card", name: "Mac OS ID Card" },
   ];
 
   // Common pages
@@ -57,6 +59,8 @@ export default function BlackScreenWithNavbar() {
         return <FeatureTabsPage />;
       case "text-reveal":
         return <TextHoverEffectPage/>;
+      case "mac-os-id-card":
+        return <MacOsIdCardPage />;
       default:
         return (
           <div className="p-8 text-white">
