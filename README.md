@@ -96,7 +96,3 @@ Let’s build a component empire together.
 ## 💜 Shoutout
 
 
-
----
-
-Let me know if you’d like a variant of this README with badges, gifs, or for publishing to NPM!
