@@ -1,5 +1,5 @@
 import { HeroCard } from "@/CHADCN-UI/HeroCard"
-import { GradientButton } from "@/CHADCN-UI/GradientButton"
+import { Button as GradientButton } from "@/CHADCN-UI/GradientButton"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"

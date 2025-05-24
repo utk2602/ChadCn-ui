@@ -1,51 +1,57 @@
-"use client"
-
-import React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cn } from "@/lib/utils"
-
-export interface GradientButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode
-  variant?: "primary" | "secondary" | "outline"
-  size?: "sm" | "md" | "lg"
-  className?: string
-  asChild?: boolean
-}
-
-export const GradientButton = React.forwardRef<HTMLButtonElement, GradientButtonProps>(
-  ({ children, variant = "primary", size = "md", className, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-
-    const variantStyles = {
-      primary:
-        "bg-gradient-to-r from-gray-900 to-black text-white hover:shadow-lg dark:from-white dark:to-gray-200 dark:text-black",
-      secondary:
-        "bg-gradient-to-r from-gray-200 to-white text-black hover:shadow-lg dark:from-gray-800 dark:to-gray-900 dark:text-white",
-      outline:
-        "bg-transparent border-2 border-black text-black hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black",
-    }
-
-    const sizeStyles = {
-      sm: "text-xs px-3 py-1.5 rounded-md",
-      md: "text-sm px-4 py-2 rounded-md",
-      lg: "text-base px-6 py-3 rounded-lg",
-    }
-
-    return (
-      <Comp
-        ref={ref}
-        className={cn(
-          "inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
-          variantStyles[variant],
-          sizeStyles[size],
-          className,
-        )}
-        {...props}
-      >
-        {children}
-      </Comp>
-    )
-  }
-)
-
-GradientButton.displayName = "GradientButton"
+import { cn } from "@/lib/utils";
+import { cva, VariantProps } from "class-variance-authority";
+import React, { ButtonHTMLAttributes } from "react";
+ 
+const buttonVariants = cva(
+  "font-head transition-all outline-hidden cursor-pointer duration-200 font-medium flex items-center",
+  {
+    variants: {
+      variant: {
+        default:
+          "shadow-md hover:shadow-none bg-primary text-black border-2 border-black transition hover:translate-y-1 hover:bg-primary-hover",
+        secondary:
+          "shadow-md hover:shadow-none bg-secondary shadow-primary text-secondary-foreground border-2 border-black transition hover:translate-y-1",
+        outline:
+          "shadow-md hover:shadow-none bg-transparent border-2 transition hover:translate-y-1",
+        link: "bg-transparent hover:underline",
+      },
+      size: {
+        sm: "px-3 py-1 text-sm shadow hover:shadow-none",
+        md: "px-4 py-1.5 text-base",
+        lg: "px-8 py-3 text-lg",
+        icon: "p-2",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+      variant: "default",
+    },
+  },
+);
+ 
+export interface IButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {}
+ 
+export const Button = React.forwardRef<HTMLButtonElement, IButtonProps>(
+  (
+    {
+      children,
+      size = "md",
+      className = "",
+      variant = "default",
+      ...props
+    }: IButtonProps,
+    forwardedRef,
+  ) => (
+    <button
+      ref={forwardedRef}
+      className={cn(buttonVariants({ variant, size }), className)}
+      {...props}
+    >
+      {children}
+    </button>
+  ),
+);
+ 
+Button.displayName = "Button";
