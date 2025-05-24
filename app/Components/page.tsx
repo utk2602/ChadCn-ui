@@ -10,6 +10,7 @@ import CustomDataTablePage from "./data-table/page";
 import FeatureTabsPage from "./Content-display/page";
 import TextHoverEffectPage from "./Hero-text/page";
 import MacOsIdCardPage from "./Mac-ID/page";
+import DraggableModalPage from "./Modal/page";
 export default function BlackScreenWithNavbar() {
   const [activeComponent, setActiveComponent] = useState("installation");
 
@@ -61,6 +62,8 @@ export default function BlackScreenWithNavbar() {
         return <TextHoverEffectPage/>;
       case "mac-os-id-card":
         return <MacOsIdCardPage />;
+      case "modal-dialog":
+        return <DraggableModalPage />;
       default:
         return (
           <div className="p-8 text-white">
