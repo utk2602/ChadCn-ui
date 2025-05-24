@@ -12,6 +12,7 @@ import TextHoverEffectPage from "./Hero-text/page";
 import MacOsIdCardPage from "./Mac-ID/page";
 import DraggableModalPage from "./Modal/page";
 import MultiStepFormDocumentationPage from "./form/page";
+import CustomDropdownPage from "./Dropdown/page";
 export default function BlackScreenWithNavbar() {
   const [activeComponent, setActiveComponent] = useState("installation");
 
@@ -23,9 +24,7 @@ export default function BlackScreenWithNavbar() {
     { id: "data-table", name: "Data Table" },
     { id: "modal-dialog", name: "Modal Dialog" },
     { id: "dropdown-menu", name: "Dropdown Menu" },
-    { id: "tab-navigation", name: "Tab Navigation" },
-    { id: "accordion", name: "Accordion" },
-    { id: "toast-notification", name: "Toast Notification" },
+    
     { id: "form-elements", name: "Form Elements" },
     { id: "3d-carousel", name: "3D Carousel" },
     { id: "feature-tabs", name: "Feature Tabs" },
@@ -67,6 +66,8 @@ export default function BlackScreenWithNavbar() {
         return <DraggableModalPage />;
       case "form-elements":
         return <MultiStepFormDocumentationPage />;
+      case "dropdown-menu":
+        return <CustomDropdownPage />;  
       default:
         return (
           <div className="p-8 text-white">

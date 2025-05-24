@@ -1,8 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowLeft, Code } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import Carousel3D from "@/CHADCN-UI/3d-Carousel"
+import { DraggableModal } from "@/CHADCN-UI/Modal"
+import { Code, Copy, Check } from 'lucide-react';
 
 const componentCode = `import { useEffect, useRef, useState } from 'react';
 
@@ -117,8 +119,21 @@ const Carousel3D = () => {
 
 export default Carousel3D;`;
 
+
 export default function Carousel3DPage() {
   const [showCode, setShowCode] = useState(false)
+  const [isOpen,SetIsOpen] = useState(false)
+  const [copied, setCopied] = useState(false);
+
+const handleCopyCode = async () => {
+  try {
+    await navigator.clipboard.writeText(componentCode);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  } catch (err) {
+    console.error('Failed to copy code:', err);
+  }
+};
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -145,15 +160,46 @@ export default function Carousel3DPage() {
           <div className="space-y-6 bg-gray-900 rounded-xl p-6 md:p-8 border border-gray-800">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold tracking-tight text-white">Preview</h2>
-              <button
-                onClick={() => setShowCode(!showCode)}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-gray-600 bg-gray-800 hover:bg-gray-700 text-gray-200 transition-colors"
-              >
-                <Code className="h-4 w-4" />
-                {showCode ? "Hide Code" : "View Code"}
-              </button>
-            </div>
+               <button
+      onClick={() => SetIsOpen(true)}
+      className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border-2 border-black bg-white hover:bg-gray-100 text-black transition-colors"
+    >
+      <Code className="h-4 w-4" />
+      View Code
+    </button>
 
+    <DraggableModal 
+      isOpen={isOpen} 
+      onClose={() => SetIsOpen(false)} 
+      title="Carousel3D Component Code"
+    >
+      <div className="relative">
+        {/* Copy button positioned at top right of code area */}
+        <button
+          onClick={handleCopyCode}
+          className="absolute top-4 right-4 z-10 flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-md border-2 border-black bg-white hover:bg-gray-100 text-black transition-colors"
+        >
+          {copied ? (
+            <>
+              <Check className="h-4 w-4" />
+              Copied!
+            </>
+          ) : (
+            <>
+              <Copy className="h-4 w-4" />
+              Copy Code
+            </>
+          )}
+        </button>
+        
+        <div className="text-black">
+          <pre className="whitespace-pre-wrap break-words font-mono text-sm bg-black text-white p-4 pr-24 rounded-none overflow-x-auto border-t-2 border-black">
+            <code>{componentCode}</code>
+          </pre>
+        </div>
+      </div>
+    </DraggableModal>
+      </div>
             <div className="h-50 rounded-lg border border-gray-700 bg-black overflow-hidden">
               <Carousel3D />
             </div>
