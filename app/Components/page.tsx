@@ -11,6 +11,7 @@ import FeatureTabsPage from "./Content-display/page";
 import TextHoverEffectPage from "./Hero-text/page";
 import MacOsIdCardPage from "./Mac-ID/page";
 import DraggableModalPage from "./Modal/page";
+import MultiStepFormDocumentationPage from "./form/page";
 export default function BlackScreenWithNavbar() {
   const [activeComponent, setActiveComponent] = useState("installation");
 
@@ -64,6 +65,8 @@ export default function BlackScreenWithNavbar() {
         return <MacOsIdCardPage />;
       case "modal-dialog":
         return <DraggableModalPage />;
+      case "form-elements":
+        return <MultiStepFormDocumentationPage />;
       default:
         return (
           <div className="p-8 text-white">

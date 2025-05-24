@@ -429,7 +429,7 @@ export default function DraggableModalPage() {
                   </tr>
                   <tr>
                     <td className="p-3 font-mono text-xs text-black font-bold">onClose</td>
-                    <td className="p-3 font-mono text-xs text-black">() => void</td>
+                    <td className="p-3 font-mono text-xs text-black">() = void</td>
                     <td className="p-3 font-mono text-xs text-gray-500">—</td>
                     <td className="p-3 text-black">Callback function called when modal should close</td>
                   </tr>
