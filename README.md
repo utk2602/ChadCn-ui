@@ -95,7 +95,7 @@ Let’s build a component empire together.
 
 ## 💜 Shoutout
 
-Inspired by the amazing [ShadCN UI](https://github.com/shadcn/ui). ChadCn stands on the shoulders of legends and adds a little more attitude.
+
 
 ---
 
