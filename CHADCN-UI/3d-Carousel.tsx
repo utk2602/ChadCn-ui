@@ -253,7 +253,7 @@ const Carousel3D = () => {
             >
               <source src={videoSrc} type="video/mp4" />
             </video>
-            <p style={carouselStyles.text}>Love from Prasenjit ♥</p>
+            <p style={carouselStyles.text}>ChadCn ♥</p>
           </div>
           <div style={carouselStyles.ground} />
         </div>
