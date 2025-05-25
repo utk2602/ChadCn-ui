@@ -69,7 +69,7 @@ const AnimatedTestimonialsDemo = () => {
                   ease: "easeInOut",
                 }}
                 className="absolute inset-0 origin-bottom"
-                key={active.name}
+                key={index}
               >
                 <Image
                   src={testimonial.src}
