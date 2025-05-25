@@ -143,54 +143,7 @@ const FeatureTabs = ({
   )
 }
 
-const componentCode = `import { FeatureTabs } from "@/components/feature-tabs"
-import { Zap, Users, TrendingUp, Shield } from 'lucide-react'
-
-const tabs = [
-  {
-    icon: <Zap className="h-5 w-5" />,
-    title: "Lightning Fast Performance",
-    isNew: true,
-    backgroundPositionX: 0,
-    backgroundPositionY: 0,
-    backgroundSizeX: 150,
-  },
-  {
-    icon: <Users className="h-5 w-5" />,
-    title: "Team Collaboration",
-    backgroundPositionX: 100,
-    backgroundPositionY: 0,
-    backgroundSizeX: 120,
-  },
-  {
-    icon: <TrendingUp className="h-5 w-5" />,
-    title: "Analytics Dashboard",
-    backgroundPositionX: 0,
-    backgroundPositionY: 100,
-    backgroundSizeX: 130,
-  },
-  {
-    icon: <Shield className="h-5 w-5" />,
-    title: "Enterprise Security",
-    isNew: true,
-    backgroundPositionX: 100,
-    backgroundPositionY: 100,
-    backgroundSizeX: 140,
-  },
-];
-
-export default function MyComponent() {
-  return (
-    <FeatureTabs
-      tabs={tabs}
-      backgroundImage="https://img.freepik.com/premium-vector/dashboard-design-business-development-technology-web-template-dashboard-vector-design_29008-372.jpg"
-      header="Elevate your workflow"
-      subheader="Transform your productivity with our comprehensive suite of tools"
-      defaultSelectedIndex={0}
-      animationDuration={1.5}
-    />
-  )
-}`
+const componentCode = ``
 
 const sampleTabs = [
   {
