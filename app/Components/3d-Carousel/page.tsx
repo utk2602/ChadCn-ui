@@ -218,7 +218,7 @@ const handleCopyCode = async () => {
               <div className="rounded-md bg-gray-950 border border-gray-700 p-4 mt-4">
                 <h3 className="text-lg font-medium mb-2 text-white">Component Code</h3>
                 <div className="max-h-96 overflow-auto">
-                  <pre className="text-sm text-green-400 whitespace-pre-wrap">
+                  <pre className="text-sm text-white whitespace-pre-wrap">
                     <code>{componentCode}</code>
                   </pre>
                 </div>
@@ -243,25 +243,25 @@ const handleCopyCode = async () => {
                   <tr>
                     <td className="p-3 font-mono text-xs text-blue-400">autoRotate</td>
                     <td className="p-3 font-mono text-xs text-purple-400">boolean</td>
-                    <td className="p-3 font-mono text-xs text-green-400">true</td>
+                    <td className="p-3 font-mono text-xs text-white">true</td>
                     <td className="p-3 text-gray-300">Enable automatic rotation of the carousel</td>
                   </tr>
                   <tr>
                     <td className="p-3 font-mono text-xs text-blue-400">rotateSpeed</td>
                     <td className="p-3 font-mono text-xs text-purple-400">number</td>
-                    <td className="p-3 font-mono text-xs text-green-400">-60</td>
+                    <td className="p-3 font-mono text-xs text-white">-60</td>
                     <td className="p-3 text-gray-300">Rotation speed in seconds (negative for reverse)</td>
                   </tr>
                   <tr>
                     <td className="p-3 font-mono text-xs text-blue-400">imgWidth</td>
                     <td className="p-3 font-mono text-xs text-purple-400">number</td>
-                    <td className="p-3 font-mono text-xs text-green-400">120</td>
+                    <td className="p-3 font-mono text-xs text-white">120</td>
                     <td className="p-3 text-gray-300">Width of carousel images in pixels</td>
                   </tr>
                   <tr>
                     <td className="p-3 font-mono text-xs text-blue-400">imgHeight</td>
                     <td className="p-3 font-mono text-xs text-purple-400">number</td>
-                    <td className="p-3 font-mono text-xs text-green-400">170</td>
+                    <td className="p-3 font-mono text-xs text-white">170</td>
                     <td className="p-3 text-gray-300">Height of carousel images in pixels</td>
                   </tr>
                   <tr>
