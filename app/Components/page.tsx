@@ -1,7 +1,5 @@
 "use client";
 import { useState } from "react";
-import InstallationPage from "./installation/page";
-import UsagePage from "./usage/page";
 import AnimatedTestimonialPage from "./animated-testimonial/page";
 import GradientButtonPage from "./gradient-button/page";
 import HeroCardPage from "./hero-card/page";
@@ -13,134 +11,151 @@ import MacOsIdCardPage from "./Mac-ID/page";
 import DraggableModalPage from "./Modal/page";
 import MultiStepFormDocumentationPage from "./form/page";
 import CustomDropdownPage from "./Dropdown/page";
-export default function BlackScreenWithNavbar() {
-  const [activeComponent, setActiveComponent] = useState("installation");
+import ImportedInstallationPage from "./installation/page";
+import { ChevronDown } from "lucide-react";
+import UsagePage from "./usage/page";
 
-  // Component metadata
+// Mock components for demonstration
+function InstallationPage() {
+  return (
+    <div className="p-8 text-white">
+      <h1 className="text-3xl font-bold mb-6">Installation</h1>
+      <p className="text-gray-400 mb-4">Get started with our component library in minutes.</p>
+      <div className="bg-gray-900 rounded-lg p-4">
+        <code className="text-green-400">npm install chadcn-ui</code>
+      </div>
+    </div>
+  );
+}
+
+
+
+function ComponentPage({ name }: { name: string }) {
+  return (
+    <div className="p-8 text-white">
+      <h1 className="text-3xl font-bold mb-6">{name}</h1>
+      <p className="text-gray-400">Documentation for {name} component.</p>
+    </div>
+  );
+}
+
+export default function MinimalistDocsPage() {
+  const [activeComponent, setActiveComponent] = useState("installation");
+  const [isComponentsOpen, setIsComponentsOpen] = useState(true);
+
+  // Component metadata - organized and simplified
   const components = [
-    { id: "animated-testimonial", name: "Animated Testimonial" },
-    { id: "gradient-button", name: "Gradient Button" },
-    { id: "hero-card", name: "Hero Card" },
-    { id: "data-table", name: "Data Table" },
-    { id: "modal-dialog", name: "Modal Dialog" },
-    { id: "dropdown-menu", name: "Dropdown Menu" },
-    
-    { id: "form-elements", name: "Form Elements" },
-    { id: "3d-carousel", name: "3D Carousel" },
-    { id: "feature-tabs", name: "Feature Tabs" },
-    { id: "text-reveal", name: "Text Reveal" },
-    { id : "mac-os-id-card", name: "Mac OS ID Card" },
+    { id: "animated-testimonial", name: "Testimonial" },
+    { id: "gradient-button", name: "Button" },
+    { id: "hero-card", name: "Card" },
+    { id: "data-table", name: "Table" },
+    { id: "modal-dialog", name: "Modal" },
+    { id: "dropdown-menu", name: "Dropdown" },
+    { id: "form-elements", name: "Form" },
+    { id: "3d-carousel", name: "Carousel" },
+    { id: "feature-tabs", name: "Tabs" },
+    { id: "text-reveal", name: "Text Effects" },
+    { id: "mac-os-id-card", name: "ID Card" },
   ];
 
-  // Common pages
-  const commonPages = [
+ 
+  const essentialPages = [
     { id: "installation", name: "Installation" },
     { id: "usage", name: "Usage" },
-    { id: "customization", name: "Customization" },
   ];
 
-  // Render content based on active component
-  const renderContent = () => {
-    switch (activeComponent) {
-      case "installation":
-        return <InstallationPage />;
-      case "usage":
-        return <UsagePage/>;
-      case "animated-testimonial":
-        return <AnimatedTestimonialPage />;
-      case "gradient-button": 
-        return <GradientButtonPage />;
-      case "hero-card":
-        return <HeroCardPage />;
-      case "data-table":
-        return <CustomDataTablePage />; 
-      case "3d-carousel":
-        return <Carousel3DPage />;
-      case "feature-tabs":
-        return <FeatureTabsPage />;
-      case "text-reveal":
-        return <TextHoverEffectPage/>;
-      case "mac-os-id-card":
-        return <MacOsIdCardPage />;
-      case "modal-dialog":
-        return <DraggableModalPage />;
-      case "form-elements":
-        return <MultiStepFormDocumentationPage />;
-      case "dropdown-menu":
-        return <CustomDropdownPage />;  
-      default:
-        return (
-          <div className="p-8 text-white">
-            <h1 className="text-2xl font-bold mb-4">
-              {activeComponent
-                .charAt(0)
-                .toUpperCase() +
-                activeComponent.slice(1).replace(/-/g, " ")}
-            </h1>
-            <p>Selected component: {activeComponent}</p>
-          </div>
-        );
-    }
-  };
+  
+  const componentMap: Record<string, JSX.Element> = {
+ "installation": <ImportedInstallationPage/>,
+ "usage": <UsagePage />,
+  "animated-testimonial": <AnimatedTestimonialPage />,
+  "gradient-button": <GradientButtonPage />,
+  "hero-card": <HeroCardPage />,
+  "3d-carousel": <Carousel3DPage />,
+  "data-table": <CustomDataTablePage />,
+  "feature-tabs": <FeatureTabsPage />,
+  "text-reveal": <TextHoverEffectPage />,
+  "mac-os-id-card": <MacOsIdCardPage />,
+  "modal-dialog": <DraggableModalPage />,
+  "form-elements": <MultiStepFormDocumentationPage />,
+  "dropdown-menu": <CustomDropdownPage />,
+};
+
+const renderContent = () => {
+  return componentMap[activeComponent] || <ComponentPage name="Unknown Component" />;
+};
+
 
   return (
-    <div className="flex h-screen bg-black p-1">
-      <div className="flex w-full h-full bg-black">
-        {/* Left section - 1/5 width - scrollable navbar */}
-        <div className="w-1/5 h-full border-r border-black overflow-hidden flex flex-col">
-          {/* Header */}
-          <div className="p-4 border-b border-black-700">
-            <h2 className="text-lg font-bold text-white">Components</h2>
-          </div>
-
-          {/* Scrollable component list */}
-          <div className="overflow-y-auto flex-1 hide-scrollbar">
-            <div className="p-4">
-              {/* Common pages */}
-              <div className="mb-6">
-                {commonPages.map((page) => (
-                  <button
-                    key={page.id}
-                    onClick={() => setActiveComponent(page.id)}
-                    className={`w-full text-left py-2 px-3 rounded-md mb-1 ${
-                      activeComponent === page.id
-                        ? "bg-gray-800 text-white font-medium"
-                        : "text-gray-400 hover:bg-gray-900"
-                    }`}
-                  >
-                    {page.name}
-                  </button>
-                ))}
-              </div>
-
-              {/* Component list */}
-              <div className="mb-2">
-                <h3 className="text-sm font-medium text-gray-400 px-3 mb-2">
-                  UI COMPONENTS
-                </h3>
-              </div>
-
-              {components.map((component) => (
+    <div className="flex h-screen bg-[#0a0a0a]">
+      {/* Sidebar */}
+      <div className="w-64 bg-[#111111] border-r border-gray-800/50">
+        <div className="p-6">
+          <h1 className="text-xl font-semibold text-white mb-8">Documentation</h1>
+          
+          {/* Getting Started */}
+          <div className="mb-8">
+            <h2 className="text-xs uppercase tracking-wider text-gray-500 mb-3 font-medium">
+              Getting Started
+            </h2>
+            <div className="space-y-1">
+              {essentialPages.map((page) => (
                 <button
-                  key={component.id}
-                  onClick={() => setActiveComponent(component.id)}
-                  className={`w-full text-left py-2 px-3 rounded-md mb-1 ${
-                    activeComponent === component.id
-                      ? "bg-gray-800 text-white font-medium"
-                      : "text-gray-400 hover:bg-gray-900"
+                  key={page.id}
+                  onClick={() => setActiveComponent(page.id)}
+                  className={`w-full text-left py-2 px-3 rounded-lg text-sm transition-colors ${
+                    activeComponent === page.id
+                      ? "bg-white/10 text-white"
+                      : "text-gray-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
-                  {component.name}
+                  {page.name}
                 </button>
               ))}
             </div>
           </div>
-        </div>
 
-        {/* Right section - component render area */}
-        <div className="w-4/5 h-full overflow-y-auto bg-black">
-          {renderContent()}
+          {/* Components */}
+          <div>
+            <button
+              onClick={() => setIsComponentsOpen(!isComponentsOpen)}
+              className="flex items-center justify-between w-full mb-3"
+            >
+              <h2 className="text-xs uppercase tracking-wider text-gray-500 font-medium">
+                Components
+              </h2>
+              <ChevronDown 
+                size={14} 
+                className={`text-gray-500 transition-transform ${
+                  isComponentsOpen ? 'rotate-180' : ''
+                }`} 
+              />
+            </button>
+            
+            {isComponentsOpen && (
+              <div className="space-y-1">
+                {components.map((component) => (
+                  <button
+                    key={component.id}
+                    onClick={() => setActiveComponent(component.id)}
+                    className={`w-full text-left py-2 px-3 rounded-lg text-sm transition-colors ${
+                      activeComponent === component.id
+                        ? "bg-white/10 text-white"
+                        : "text-gray-400 hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    {component.name}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 overflow-auto">
+        {renderContent()}
       </div>
     </div>
   );

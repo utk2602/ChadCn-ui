@@ -78,7 +78,7 @@ function ElegantShape({
 }
 
 export default function HeroGeometric({
-  badge = "ChadCn UI",
+  
   title1 = "Elevate Your",
   title2 = "Digital Vision",
 }: {
@@ -159,8 +159,8 @@ export default function HeroGeometric({
             animate="visible"
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-8 md:mb-12"
           >
-            <Image src="https://kokonutui.com/logo.svg" alt="Kokonut UI" width={20} height={20} />
-            <span className="text-sm text-white/60 tracking-wide">{badge}</span>
+            
+            <span className="text-sm text-white/60 tracking-wide">{}</span>
           </motion.div>
 
           <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
@@ -183,6 +183,9 @@ export default function HeroGeometric({
               Crafting exceptional digital experiences through innovative design and cutting-edge technology.
             </p>
           </motion.div>
+          <button className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-rose-500 text-white rounded-full shadow-lg hover:from-indigo-600 hover:to-rose-600 transition-colors duration-300">
+            Get Started
+          </button>
         </div>
       </div>
 
