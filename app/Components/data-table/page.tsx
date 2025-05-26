@@ -279,88 +279,110 @@ export default function CustomDataTablePage() {
   ]
 
   return (
-    <div className="flex-1 container max-w-7xl py-10">
-      <div className="space-y-8">
-        
-        {/* Header */}
-        <div>
-          <Link
-            href="/docs"
-            className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-4"
-          >
-            <ArrowLeft className="mr-1 h-4 w-4" />
-            Back to Documentation
-          </Link>
-          <div className="space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight gradient-text">CustomDataTable</h1>
-            <p className="text-xl text-muted-foreground">
-              A comprehensive data table component with sorting, filtering, and pagination.
-            </p>
-          </div>
-        </div>
+    <div className="min-h-screen w-full bg-[#030303]">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.02] via-transparent to-cyan-500/[0.02]" />
 
-        {/* Preview */}
-        <div className="space-y-6 bg-muted/50 rounded-xl p-6 md:p-8">
-          <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-bold tracking-tight">Preview</h2>
-            <button
-              onClick={() => setShowCode(!showCode)}
-              className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border hover:bg-muted"
+      <div className="relative z-10 flex-1 container max-w-4xl py-16 mx-auto px-4 md:px-6">
+        <div className="space-y-12">
+          
+          {/* Header */}
+          <div className="space-y-6">
+            <Link
+              href="/docs"
+              className="inline-flex items-center text-sm text-white/60 hover:text-white/90 mb-4 transition-colors"
             >
-              <Code className="h-4 w-4" />
-              {showCode ? "Hide Code" : "View Code"}
-            </button>
-          </div>
-
-          <CustomDataTable />
-
-          {showCode && (
-            <div className="rounded-md bg-muted p-4 mt-4">
-              <h3 className="text-lg font-medium mb-2">Component Code</h3>
-              <pre className="text-sm overflow-auto whitespace-pre-wrap">
-                <code>{componentCode}</code>
-              </pre>
+              <ArrowLeft className="mr-1 h-4 w-4" />
+              Back to Documentation
+            </Link>
+            <div className="space-y-4 text-center">
+              <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-cyan-300">
+                CustomDataTable
+              </h1>
+              <p className="text-xl text-white/60 leading-relaxed max-w-2xl mx-auto">
+                A comprehensive data table component with sorting, filtering, and pagination.
+              </p>
             </div>
-          )}
-        </div>
-
-        {/* Props Table */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold tracking-tight">Props</h2>
-          <div className="rounded-md border overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/50">
-                <tr>
-                  <th className="text-left p-3 font-medium">Name</th>
-                  <th className="text-left p-3 font-medium">Type</th>
-                  <th className="text-left p-3 font-medium">Default</th>
-                  <th className="text-left p-3 font-medium">Description</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y">
-                <tr>
-                  <td className="p-3 font-mono text-xs">data</td>
-                  <td className="p-3 font-mono text-xs">User[]</td>
-                  <td className="p-3 font-mono text-xs">—</td>
-                  <td className="p-3">Array of user objects to display in the table</td>
-                </tr>
-                <tr>
-                  <td className="p-3 font-mono text-xs">className</td>
-                  <td className="p-3 font-mono text-xs">string</td>
-                  <td className="p-3 font-mono text-xs">""</td>
-                  <td className="p-3">Additional CSS classes</td>
-                </tr>
-              </tbody>
-            </table>
           </div>
-        </div>
 
-        {/* Data Structure */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold tracking-tight">Data Structure</h2>
-          <div className="rounded-md bg-muted p-4">
-            <pre className="text-sm overflow-auto">
-              <code>{`type User = {
+          {/* Preview */}
+          <div className="space-y-8 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+            <div className="flex justify-between items-center">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
+                Preview
+              </h2>
+              <button
+                onClick={() => setShowCode(!showCode)}
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-white/[0.08] text-white/80 hover:bg-white/[0.05] hover:text-white transition-all"
+              >
+                <Code className="h-4 w-4" />
+                {showCode ? "Hide Code" : "View Code"}
+              </button>
+            </div>
+
+            <CustomDataTable data={USERS_DATA} />
+
+            {showCode && (
+              <div className="rounded-md bg-muted p-4 mt-4">
+                <h3 className="text-lg font-medium mb-2">Component Code</h3>
+                <pre className="text-sm overflow-auto whitespace-pre-wrap">
+                  <code>{componentCode}</code>
+                </pre>
+              </div>
+            )}
+          </div>
+
+          {/* Props Table */}
+          <div className="space-y-8 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
+                Props
+              </h2>
+              <p className="text-white/50 leading-relaxed text-lg">
+                Available properties for the CustomDataTable component.
+              </p>
+            </div>
+            <div className="rounded-md border border-white/[0.08] overflow-hidden bg-white/[0.02]">
+              <table className="w-full text-sm">
+                <thead className="bg-white/[0.05]">
+                  <tr>
+                    <th className="text-left p-3 font-medium text-white/80">Name</th>
+                    <th className="text-left p-3 font-medium text-white/80">Type</th>
+                    <th className="text-left p-3 font-medium text-white/80">Default</th>
+                    <th className="text-left p-3 font-medium text-white/80">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/[0.08]">
+                  <tr>
+                    <td className="p-3 font-mono text-xs text-indigo-300">data</td>
+                    <td className="p-3 font-mono text-xs text-cyan-300">User[]</td>
+                    <td className="p-3 font-mono text-xs text-white/60">—</td>
+                    <td className="p-3 text-white/70">Array of user objects to display in the table</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 font-mono text-xs text-indigo-300">className</td>
+                    <td className="p-3 font-mono text-xs text-cyan-300">string</td>
+                    <td className="p-3 font-mono text-xs text-white/60">""</td>
+                    <td className="p-3 text-white/70">Additional CSS classes</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Data Structure */}
+          <div className="space-y-8 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
+                Data Structure
+              </h2>
+              <p className="text-white/50 leading-relaxed text-lg">
+                TypeScript interface for the user data structure.
+              </p>
+            </div>
+            <div className="rounded-md bg-muted p-4">
+              <pre className="text-sm overflow-auto">
+                <code>{`type User = {
   id: number
   name: string
   email: string
@@ -368,32 +390,77 @@ export default function CustomDataTablePage() {
   status: string
   lastLogin: string
 }`}</code>
-            </pre>
+              </pre>
+            </div>
           </div>
-        </div>
 
-        {/* Features */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold tracking-tight">Features</h2>
-          <ul className="space-y-2 list-disc pl-5">
-            <li>Real-time search filtering across all fields</li>
-            <li>Column sorting with visual indicators</li>
-            <li>Pagination with customizable items per page</li>
-            <li>Loading state indicators during operations</li>
-            <li>Responsive design with mobile support</li>
-            <li>Visual status indicators with color-coding</li>
-          </ul>
-        </div>
+          {/* Features */}
+          <div className="space-y-8 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
+                Features
+              </h2>
+              <p className="text-white/50 leading-relaxed text-lg">
+                Comprehensive set of features for data management and user interaction.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="flex items-start gap-3">
+                <div className="flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-sm font-bold mt-0.5">
+                  ✓
+                </div>
+                <span className="text-white/80">Real-time search filtering across all fields</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-sm font-bold mt-0.5">
+                  ✓
+                </div>
+                <span className="text-white/80">Column sorting with visual indicators</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-sm font-bold mt-0.5">
+                  ✓
+                </div>
+                <span className="text-white/80">Pagination with customizable items per page</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-sm font-bold mt-0.5">
+                  ✓
+                </div>
+                <span className="text-white/80">Loading state indicators during operations</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-sm font-bold mt-0.5">
+                  ✓
+                </div>
+                <span className="text-white/80">Responsive design with mobile support</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-sm font-bold mt-0.5">
+                  ✓
+                </div>
+                <span className="text-white/80">Visual status indicators with color-coding</span>
+              </div>
+            </div>
+          </div>
 
-        {/* Usage Examples */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold tracking-tight">Usage Examples</h2>
+          {/* Usage Examples */}
+          <div className="space-y-8 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
+                Usage Examples
+              </h2>
+              <p className="text-white/50 leading-relaxed text-lg">
+                Learn how to implement the CustomDataTable component in your applications.
+              </p>
+            </div>
 
-          <div className="space-y-2">
-            <h3 className="text-xl font-medium">Basic Usage</h3>
-            <div className="rounded-md bg-muted p-4">
-              <pre className="text-sm overflow-auto">
-                <code>{`import { CustomDataTable } from "@/CHADCN-UI/CustomDataTable"
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-bold text-white/90">Basic Usage</h3>
+                <div className="rounded-md bg-muted p-4">
+                  <pre className="text-sm overflow-auto">
+                    <code>{`import { CustomDataTable } from "@/CHADCN-UI/CustomDataTable"
 
 export default function MyComponent() {
   const users = [
@@ -404,23 +471,25 @@ export default function MyComponent() {
 
   return <CustomDataTable data={users} />
 }`}</code>
-              </pre>
-            </div>
-          </div>
+                  </pre>
+                </div>
+              </div>
 
-          <div className="space-y-2">
-            <h3 className="text-xl font-medium">With Custom Styling</h3>
-            <div className="rounded-md bg-muted p-4">
-              <pre className="text-sm overflow-auto">
-                <code>{`<CustomDataTable 
+              <div className="space-y-4">
+                <h3 className="text-2xl font-bold text-white/90">With Custom Styling</h3>
+                <div className="rounded-md bg-muted p-4">
+                  <pre className="text-sm overflow-auto">
+                    <code>{`<CustomDataTable 
   data={users}
   className="max-h-96 shadow-xl"
 />`}</code>
-              </pre>
+                  </pre>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   )
