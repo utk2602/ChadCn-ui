@@ -184,7 +184,7 @@ export default function HeroGeometric({
               Crafting exceptional digital experiences through innovative design and cutting-edge technology.
             </p>
           </motion.div>
-          <Link href="/components">
+          <Link href="/Components">
   <motion.div
     custom={3}
     variants={fadeUpVariants}
