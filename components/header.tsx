@@ -77,7 +77,7 @@ export default function Header() {
         </div>
 
         {/* Right side actions */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           {/* Search - Hidden on mobile */}
           <div className="relative hidden lg:flex items-center">
             <Search className="absolute left-2.5 text-white/60 h-4 w-4" />
@@ -89,28 +89,20 @@ export default function Header() {
             <kbd className="absolute right-2.5 text-white/40 pointer-events-none">⌘K</kbd>
           </div>
 
-          {/* GitHub Star - Text visible only on larger screens */}
+          {/* GitHub Button - Always visible, responsive text */}
           <Button variant="ghost" size="sm" asChild className="text-white/80 hover:text-white">
             <Link
               href="https://github.com/utk2602/ChadCn-ui"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:flex items-center gap-2"
+              className="flex items-center gap-2"
             >
               <Github className="h-5 w-5" />
               <span className="hidden lg:inline-block">Star on GitHub</span>
             </Link>
           </Button>
 
-          {/* Mobile Only GitHub Icon */}
-          <Button variant="ghost" size="icon" asChild className="text-white/80 hover:text-white md:hidden">
-            <Link href="https://github.com/utk2602" target="_blank" rel="noopener noreferrer">
-              <Github className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
-            </Link>
-          </Button>
-
-          {/* Twitter */}
+          {/* Twitter - Always visible */}
           <Button variant="ghost" size="icon" asChild className="text-white/80 hover:text-white">
             <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
               <Twitter className="h-5 w-5" />
@@ -118,7 +110,7 @@ export default function Header() {
             </Link>
           </Button>
 
-          {/* Theme Toggle */}
+          {/* Theme Toggle - Always visible */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="text-white/80 hover:text-white">
