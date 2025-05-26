@@ -92,7 +92,7 @@ export default function Header() {
           {/* GitHub Star - Text visible only on larger screens */}
           <Button variant="ghost" size="sm" asChild className="text-white/80 hover:text-white">
             <Link
-              href="https://github.com/utk2602"
+              href="https://github.com/utk2602/ChadCn-ui"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:flex items-center gap-2"
