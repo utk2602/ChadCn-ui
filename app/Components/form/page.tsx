@@ -1,7 +1,9 @@
-import { useState } from "react"
-import { ArrowLeft, Code, Play, Square, Link, Sparkles } from "lucide-react"
+"use client"
 
-// Multi-step form component based on your provided code
+import { useState } from "react"
+import { ArrowLeft, Code, Copy, Check } from "lucide-react"
+
+// Multi-step form component
 function MinimalMultiStepForm() {
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState({
@@ -22,7 +24,7 @@ function MinimalMultiStepForm() {
   const nextStep = () => currentStep < totalSteps && setCurrentStep(currentStep + 1)
   const prevStep = () => currentStep > 1 && setCurrentStep(currentStep - 1)
 
-  const handleSubmit = ( e: { preventDefault: () => void } ) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     console.log("Form submitted:", formData)
     alert("Form submitted successfully!")
@@ -33,107 +35,144 @@ function MinimalMultiStepForm() {
       {[1, 2, 3].map((step) => (
         <div key={step} className="flex items-center">
           <div
-            className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-              step <= currentStep ? "bg-white text-black" : "bg-gray-700 text-gray-300"
+            className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 ${
+              step <= currentStep
+                ? "bg-gradient-to-r from-indigo-500 to-cyan-500 text-white shadow-lg shadow-indigo-500/25"
+                : "bg-white/10 text-white/40 border border-white/20"
             }`}
           >
             {step}
           </div>
-          {step < totalSteps && <div className={`w-16 h-1 mx-2 ${step < currentStep ? "bg-white" : "bg-gray-700"}`} />}
+          {step < totalSteps && (
+            <div
+              className={`w-16 h-1 mx-3 rounded-full transition-all duration-300 ${
+                step < currentStep ? "bg-gradient-to-r from-indigo-500 to-cyan-500" : "bg-white/20"
+              }`}
+            />
+          )}
         </div>
       ))}
     </div>
   )
 
   const Step1 = () => (
-    <div className="space-y-4">
-      <h3 className="text-xl font-semibold text-white mb-4">Basic Information</h3>
-      <div>
-        <label className="block text-sm font-medium text-white mb-1">Full Name</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-white bg-black text-white"
-          placeholder="Enter your full name"
-          required
-        />
+    <div className="space-y-6">
+      <div className="text-center mb-6">
+        <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-cyan-300 mb-2">
+          Basic Information
+        </h3>
+        <p className="text-white/60 text-sm">Let's start with your essential details</p>
       </div>
-      <div>
-        <label className="block text-sm font-medium text-white mb-1">Email Address</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-white bg-black text-white"
-          placeholder="Enter your email"
-          required
-        />
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-white/80 mb-2">Full Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 text-white placeholder-white/40 transition-all duration-200 backdrop-blur-sm"
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-white/80 mb-2">Email Address</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 text-white placeholder-white/40 transition-all duration-200 backdrop-blur-sm"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
       </div>
     </div>
   )
 
   const Step2 = () => (
-    <div className="space-y-4">
-      <h3 className="text-xl font-semibold text-white mb-4">Contact Details</h3>
-      <div>
-        <label className="block text-sm font-medium text-white mb-1">Phone Number</label>
-        <input
-          type="tel"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-white bg-black text-white"
-          placeholder="Enter your phone number"
-          required
-        />
+    <div className="space-y-6">
+      <div className="text-center mb-6">
+        <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-purple-300 mb-2">
+          Contact Details
+        </h3>
+        <p className="text-white/60 text-sm">How can we reach you?</p>
       </div>
-      <div>
-        <label className="block text-sm font-medium text-white mb-1">Address</label>
-        <input
-          type="text"
-          name="address"
-          value={formData.address}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-white bg-black text-white"
-          placeholder="Enter your address"
-          required
-        />
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-white/80 mb-2">Phone Number</label>
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 text-white placeholder-white/40 transition-all duration-200 backdrop-blur-sm"
+            placeholder="Enter your phone number"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-white/80 mb-2">Address</label>
+          <input
+            type="text"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 text-white placeholder-white/40 transition-all duration-200 backdrop-blur-sm"
+            placeholder="Enter your address"
+            required
+          />
+        </div>
       </div>
     </div>
   )
 
   const Step3 = () => (
-    <div className="space-y-4">
-      <h3 className="text-xl font-semibold text-white mb-4">Additional Information</h3>
-      <div>
-        <label className="block text-sm font-medium text-white mb-1">Experience Level</label>
-        <select
-          name="experience"
-          value={formData.experience}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-white bg-black text-white"
-          required
-        >
-          <option value="">Select Experience</option>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="advanced">Advanced</option>
-        </select>
+    <div className="space-y-6">
+      <div className="text-center mb-6">
+        <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-pink-300 mb-2">
+          Additional Information
+        </h3>
+        <p className="text-white/60 text-sm">Tell us more about yourself</p>
       </div>
-      <div>
-        <label className="block text-sm font-medium text-white mb-1">Message</label>
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          rows={4}
-          className="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-white bg-black text-white resize-none"
-          placeholder="Tell us about yourself..."
-          required
-        />
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-white/80 mb-2">Experience Level</label>
+          <select
+            name="experience"
+            value={formData.experience}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500/50 focus:border-pink-500/50 text-white transition-all duration-200 backdrop-blur-sm"
+            required
+          >
+            <option value="" className="bg-gray-800 text-white">
+              Select Experience
+            </option>
+            <option value="beginner" className="bg-gray-800 text-white">
+              Beginner
+            </option>
+            <option value="intermediate" className="bg-gray-800 text-white">
+              Intermediate
+            </option>
+            <option value="advanced" className="bg-gray-800 text-white">
+              Advanced
+            </option>
+          </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-white/80 mb-2">Message</label>
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            rows={4}
+            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 text-white placeholder-white/40 resize-none transition-all duration-200 backdrop-blur-sm"
+            placeholder="Tell us about yourself..."
+            required
+          />
+        </div>
       </div>
     </div>
   )
@@ -152,279 +191,149 @@ function MinimalMultiStepForm() {
   }
 
   return (
-  <div className="bg-white rounded-lg p-8 w-full max-w-md mx-auto">
-    <h2 className="text-2xl font-bold text-black mb-6 text-center">Registration</h2>
+    <div className="bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-xl rounded-2xl p-8 w-full max-w-lg mx-auto shadow-2xl border border-white/10">
+      {/* Header with gradient */}
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-cyan-200 mb-2">
+          Registration
+        </h2>
+        <p className="text-white/50 text-sm">
+          Step {currentStep} of {totalSteps}
+        </p>
+      </div>
 
-    <StepIndicator />
+      <StepIndicator />
 
-    <form onSubmit={handleSubmit}>
-      {renderStep()}
+      <form onSubmit={handleSubmit} className="space-y-8">
+        <div className="min-h-[300px]">{renderStep()}</div>
 
-      <div className="flex justify-between mt-6">
-        <button
-          type="button"
-          onClick={prevStep}
-          disabled={currentStep === 1}
-          className={`px-4 py-2 rounded-md font-medium ${
-            currentStep === 1
-              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-              : "bg-gray-200 text-black hover:bg-gray-300"
-          }`}
-        >
-          Previous
-        </button>
-
-        {currentStep === totalSteps ? (
-          <button
-            type="submit"
-            className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 font-medium"
-          >
-            Submit
-          </button>
-        ) : (
+        <div className="flex justify-between pt-6 border-t border-white/10">
           <button
             type="button"
-            onClick={nextStep}
-            className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 font-medium"
+            onClick={prevStep}
+            disabled={currentStep === 1}
+            className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+              currentStep === 1
+                ? "bg-white/5 text-white/30 cursor-not-allowed border border-white/10"
+                : "bg-white/10 text-white hover:bg-white/20 border border-white/20 hover:border-white/30 backdrop-blur-sm"
+            }`}
           >
-            Next
+            Previous
           </button>
-        )}
-      </div>
-    </form>
-  </div>
-);
 
-}
-const componentCode = `"use client"
-
-import type React from "react"
-import { useState } from "react"
-
-export default function MinimalMultiStepForm() {
-  const [currentStep, setCurrentStep] = useState(1)
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    message: "",
-    experience: "",
-  })
-
-  const totalSteps = 3
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
-  const nextStep = () => currentStep < totalSteps && setCurrentStep(currentStep + 1)
-  const prevStep = () => currentStep > 1 && setCurrentStep(currentStep - 1)
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    alert("Form submitted successfully!")
-  }
-
-  const StepIndicator = () => (
-    <div className="flex items-center justify-center mb-8">
-      {[1, 2, 3].map((step) => (
-        <div key={step} className="flex items-center">
-          <div
-            className={\`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium \${
-              step <= currentStep ? "bg-black text-white" : "bg-gray-200 text-gray-600"
-            }\`}
-          >
-            {step}
-          </div>
-          {step < totalSteps && <div className={\`w-16 h-1 mx-2 \${step < currentStep ? "bg-black" : "bg-gray-200"}\`} />}
+          {currentStep === totalSteps ? (
+            <button
+              type="submit"
+              className="px-8 py-3 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white rounded-xl hover:from-indigo-600 hover:to-cyan-600 font-medium transition-all duration-200 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40"
+            >
+              Submit Form
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={nextStep}
+              className="px-8 py-3 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white rounded-xl hover:from-indigo-600 hover:to-cyan-600 font-medium transition-all duration-200 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40"
+            >
+              Next Step
+            </button>
+          )}
         </div>
-      ))}
-    </div>
-  )
+      </form>
 
-  const Step1 = () => (
-    <div className="space-y-4">
-      <h3 className="text-xl font-semibold text-black mb-4">Basic Information</h3>
-      <div>
-        <label className="block text-sm font-medium text-black mb-1">Full Name</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black text-black"
-          placeholder="Enter your full name"
-          required
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-black mb-1">Email Address</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black text-black"
-          placeholder="Enter your email"
-          required
-        />
+      {/* Progress bar at bottom */}
+      <div className="mt-6 pt-4 border-t border-white/10">
+        <div className="flex justify-between text-xs text-white/40 mb-2">
+          <span>Progress</span>
+          <span>{Math.round((currentStep / totalSteps) * 100)}%</span>
+        </div>
+        <div className="w-full bg-white/10 rounded-full h-2">
+          <div
+            className="bg-gradient-to-r from-indigo-500 to-cyan-500 h-2 rounded-full transition-all duration-500 ease-out"
+            style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+          />
+        </div>
       </div>
     </div>
   )
+}
 
-  const Step2 = () => (
-    <div className="space-y-4">
-      <h3 className="text-xl font-semibold text-black mb-4">Contact Details</h3>
-      <div>
-        <label className="block text-sm font-medium text-black mb-1">Phone Number</label>
-        <input
-          type="tel"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black text-black"
-          placeholder="Enter your phone number"
-          required
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-black mb-1">Address</label>
-        <input
-          type="text"
-          name="address"
-          value={formData.address}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black text-black"
-          placeholder="Enter your address"
-          required
-        />
-      </div>
-    </div>
-  )
+function CodeBlock({ children, language = "tsx" }: { children: string; language?: string }) {
+  const [copied, setCopied] = useState(false)
 
-  const Step3 = () => (
-    <div className="space-y-4">
-      <h3 className="text-xl font-semibold text-black mb-4">Additional Information</h3>
-      <div>
-        <label className="block text-sm font-medium text-black mb-1">Experience Level</label>
-        <select
-          name="experience"
-          value={formData.experience}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black text-black"
-          required
-        >
-          <option value="">Select Experience</option>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="advanced">Advanced</option>
-        </select>
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-black mb-1">Message</label>
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          rows={4}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black text-black resize-none"
-          placeholder="Tell us about yourself..."
-          required
-        />
-      </div>
-    </div>
-  )
-
-  const renderStep = () => {
-    switch (currentStep) {
-      case 1:
-        return <Step1 />
-      case 2:
-        return <Step2 />
-      case 3:
-        return <Step3 />
-      default:
-        return <Step1 />
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(children)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error("Failed to copy text: ", err)
     }
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-black mb-6 text-center">Registration</h2>
-
-        <StepIndicator />
-
-        <form onSubmit={handleSubmit}>
-          {renderStep()}
-
-          <div className="flex justify-between mt-6">
-            <button
-              type="button"
-              onClick={prevStep}
-              disabled={currentStep === 1}
-              className={\`px-4 py-2 rounded-md font-medium \${
-                currentStep === 1
-                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                  : "bg-gray-200 text-black hover:bg-gray-300"
-              }\`}
-            >
-              Previous
-            </button>
-
-            {currentStep === totalSteps ? (
-              <button type="submit" className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 font-medium">
-                Submit
-              </button>
+    <div className="relative group">
+      <div className="rounded-lg bg-[#1e1e1e] border border-[#323233] shadow-lg overflow-hidden">
+        <div className="flex items-center justify-between px-4 py-2 bg-[#2d2d30] border-b border-[#323233]">
+          <span className="text-xs text-[#cccccc] font-medium">{language}</span>
+          <button
+            onClick={copyToClipboard}
+            className="flex items-center gap-1 px-2 py-1 text-xs text-[#cccccc] hover:text-white hover:bg-[#404040] rounded transition-colors"
+          >
+            {copied ? (
+              <>
+                <Check size={12} />
+                Copied!
+              </>
             ) : (
-              <button
-                type="button"
-                onClick={nextStep}
-                className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 font-medium"
-              >
-                Next
-              </button>
+              <>
+                <Copy size={12} />
+                Copy
+              </>
             )}
-          </div>
-        </form>
+          </button>
+        </div>
+        <pre className="p-4 text-sm font-mono overflow-x-auto">
+          <code dangerouslySetInnerHTML={{ __html: children }} />
+        </pre>
       </div>
     </div>
   )
-}`;
+}
 
 export default function MultiStepFormDocumentationPage() {
   const [showCode, setShowCode] = useState(false)
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="flex-1 container max-w-7xl py-10">
-        <div className="space-y-8">
-          
+    <div className="min-h-screen w-full bg-[#030303]">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.02] via-transparent to-cyan-500/[0.02]" />
+
+      <div className="relative z-10 flex-1 container max-w-4xl py-16 mx-auto px-4 md:px-6">
+        <div className="space-y-12">
           {/* Header */}
-          <div>
-            <div className="inline-flex items-center text-sm text-white hover:text-white mb-4 cursor-pointer transition-colors">
+          <div className="space-y-6 text-center">
+            <div className="inline-flex items-center text-sm text-white/60 hover:text-white mb-4 cursor-pointer transition-colors">
               <ArrowLeft className="mr-1 h-4 w-4" />
               Back to Documentation
             </div>
-            <div className="space-y-4">
-              <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r text-white bg-clip-text text-transparent">
-                Multi-Step Form
-              </h1>
-              <p className="text-xl text-gray-300">
-                A clean, progressive form component with step indicators, smooth transitions, and comprehensive form validation across multiple steps.
-              </p>
-            </div>
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-cyan-300">
+              Multi-Step Form
+            </h1>
+            <p className="text-xl text-white/60 leading-relaxed max-w-2xl mx-auto">
+              A clean, progressive form component with step indicators, smooth transitions, and comprehensive form
+              validation across multiple steps.
+            </p>
           </div>
 
           {/* Preview */}
-          <div className="space-y-6 bg-black rounded-xl p-6 md:p-8 border border-white">
+          <div className="space-y-8 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold tracking-tight text-white">Preview</h2>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
+                Preview
+              </h2>
               <button
                 onClick={() => setShowCode(!showCode)}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-white bg-black hover:bg-white hover:text-black text-white transition-colors"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md border border-white/[0.2] bg-white/[0.05] hover:bg-white/[0.1] text-white transition-colors backdrop-blur-sm"
               >
                 <Code className="h-4 w-4" />
                 {showCode ? "Hide Code" : "View Code"}
@@ -432,82 +341,110 @@ export default function MultiStepFormDocumentationPage() {
             </div>
 
             {/* Form Demo */}
-            <div className="flex items-center justify-center p-8 rounded-lg border border-white bg-black">
+            <div className="flex items-center justify-center p-8 rounded-xl border border-white/[0.1] bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-sm">
               <MinimalMultiStepForm />
             </div>
 
-            <div className="text-sm text-white space-y-2">
-              <p><strong className="text-white">Interactive Features:</strong></p>
-              <ul className="list-disc list-inside space-y-1 text-white">
-                <li>Navigate through 3 distinct steps with progress indication</li>
-                <li>Form validation and state management across steps</li>
-                <li>Clean black and white design with consistent styling</li>
-                <li>Responsive layout that works on all screen sizes</li>
-                <li>Accessible form inputs with proper labeling</li>
-              </ul>
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-white/90">Interactive Features</h3>
+              <div className="grid gap-3 md:grid-cols-2">
+                <div className="flex items-start gap-3 p-4 bg-white/[0.02] rounded-lg border border-white/[0.05]">
+                  <div className="flex-shrink-0 w-2 h-2 bg-gradient-to-r from-indigo-400 to-cyan-400 rounded-full mt-2"></div>
+                  <span className="text-white/70 text-sm">
+                    Navigate through 3 distinct steps with progress indication
+                  </span>
+                </div>
+                <div className="flex items-start gap-3 p-4 bg-white/[0.02] rounded-lg border border-white/[0.05]">
+                  <div className="flex-shrink-0 w-2 h-2 bg-gradient-to-r from-indigo-400 to-cyan-400 rounded-full mt-2"></div>
+                  <span className="text-white/70 text-sm">Form validation and state management across steps</span>
+                </div>
+                <div className="flex items-start gap-3 p-4 bg-white/[0.02] rounded-lg border border-white/[0.05]">
+                  <div className="flex-shrink-0 w-2 h-2 bg-gradient-to-r from-indigo-400 to-cyan-400 rounded-full mt-2"></div>
+                  <span className="text-white/70 text-sm">Clean black and white design with consistent styling</span>
+                </div>
+                <div className="flex items-start gap-3 p-4 bg-white/[0.02] rounded-lg border border-white/[0.05]">
+                  <div className="flex-shrink-0 w-2 h-2 bg-gradient-to-r from-indigo-400 to-cyan-400 rounded-full mt-2"></div>
+                  <span className="text-white/70 text-sm">Responsive layout that works on all screen sizes</span>
+                </div>
+                <div className="flex items-start gap-3 p-4 bg-white/[0.02] rounded-lg border border-white/[0.05]">
+                  <div className="flex-shrink-0 w-2 h-2 bg-gradient-to-r from-indigo-400 to-cyan-400 rounded-full mt-2"></div>
+                  <span className="text-white/70 text-sm">Accessible form inputs with proper labeling</span>
+                </div>
+              </div>
             </div>
 
             {showCode && (
-              <div className="rounded-md bg-black border border-white p-4 mt-4">
-                <h3 className="text-lg font-medium mb-2 text-white">Component Code</h3>
-                <div className="max-h-96 overflow-auto">
-                  <pre className="text-sm text-white whitespace-pre-wrap">
-                    <code>{componentCode}</code>
-                  </pre>
-                </div>
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-white/90">Component Code</h3>
+                <CodeBlock language="tsx">
+                  {`<span class="text-[#c586c0]">import</span> <span class="text-[#d4d4d4]">{</span> <span class="text-[#9cdcfe]">useState</span> <span class="text-[#d4d4d4]">}</span> <span class="text-[#c586c0]">from</span> <span class="text-[#ce9178]">"react"</span>
+
+<span class="text-[#c586c0]">export</span> <span class="text-[#c586c0]">default</span> <span class="text-[#c586c0]">function</span> <span class="text-[#dcdcaa]">MinimalMultiStepForm</span><span class="text-[#d4d4d4]">()</span> <span class="text-[#d4d4d4]">{</span>
+  <span class="text-[#c586c0]">const</span> <span class="text-[#d4d4d4]">[</span><span class="text-[#9cdcfe]">currentStep</span><span class="text-[#d4d4d4]">,</span> <span class="text-[#9cdcfe]">setCurrentStep</span><span class="text-[#d4d4d4]">]</span> <span class="text-[#d4d4d4]">=</span> <span class="text-[#dcdcaa]">useState</span><span class="text-[#d4d4d4]">(</span><span class="text-[#b5cea8]">1</span><span class="text-[#d4d4d4]">)</span>
+  <span class="text-[#c586c0]">const</span> <span class="text-[#d4d4d4]">[</span><span class="text-[#9cdcfe]">formData</span><span class="text-[#d4d4d4]">,</span> <span class="text-[#9cdcfe]">setFormData</span><span class="text-[#d4d4d4]">]</span> <span class="text-[#d4d4d4]">=</span> <span class="text-[#dcdcaa]">useState</span><span class="text-[#d4d4d4]">({</span>
+    <span class="text-[#9cdcfe]">name</span><span class="text-[#d4d4d4]">:</span> <span class="text-[#ce9178]">""</span><span class="text-[#d4d4d4]">,</span>
+    <span class="text-[#9cdcfe]">email</span><span class="text-[#d4d4d4]">:</span> <span class="text-[#ce9178]">""</span><span class="text-[#d4d4d4]">,</span>
+    <span class="text-[#608b4e]">// ... other fields</span>
+  <span class="text-[#d4d4d4]">})</span>
+
+  <span class="text-[#608b4e]">// Form logic and render methods...</span>
+<span class="text-[#d4d4d4]">}</span>`}
+                </CodeBlock>
               </div>
             )}
           </div>
 
           {/* API Reference */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold tracking-tight text-white">API Reference</h2>
-            <div className="rounded-md border border-white overflow-hidden bg-black">
+          <div className="space-y-8 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
+              API Reference
+            </h2>
+            <div className="rounded-xl border border-white/[0.1] overflow-hidden bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-sm">
               <table className="w-full text-sm">
-                <thead className="bg-white text-black">
+                <thead className="bg-gradient-to-r from-indigo-500/[0.1] to-cyan-500/[0.1] border-b border-white/[0.1]">
                   <tr>
-                    <th className="text-left p-3 font-medium">State/Function</th>
-                    <th className="text-left p-3 font-medium">Type</th>
-                    <th className="text-left p-3 font-medium">Default</th>
-                    <th className="text-left p-3 font-medium">Description</th>
+                    <th className="text-left p-4 font-semibold text-white/90">State/Function</th>
+                    <th className="text-left p-4 font-semibold text-white/90">Type</th>
+                    <th className="text-left p-4 font-semibold text-white/90">Default</th>
+                    <th className="text-left p-4 font-semibold text-white/90">Description</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white">
-                  <tr>
-                    <td className="p-3 font-mono text-xs text-white">currentStep</td>
-                    <td className="p-3 font-mono text-xs text-white">number</td>
-                    <td className="p-3 font-mono text-xs text-white">1</td>
-                    <td className="p-3 text-white">Current active step (1-3)</td>
+                <tbody className="divide-y divide-white/[0.05]">
+                  <tr className="hover:bg-white/[0.02] transition-colors">
+                    <td className="p-4 font-mono text-xs text-indigo-300">currentStep</td>
+                    <td className="p-4 font-mono text-xs text-cyan-300">number</td>
+                    <td className="p-4 font-mono text-xs text-white/60">1</td>
+                    <td className="p-4 text-white/70">Current active step (1-3)</td>
                   </tr>
-                  <tr>
-                    <td className="p-3 font-mono text-xs text-white">formData</td>
-                    <td className="p-3 font-mono text-xs text-white">object</td>
-                    <td className="p-3 font-mono text-xs text-white">{"{}"}</td>
-                    <td className="p-3 text-white">Form data object containing all field values</td>
+                  <tr className="hover:bg-white/[0.02] transition-colors">
+                    <td className="p-4 font-mono text-xs text-indigo-300">formData</td>
+                    <td className="p-4 font-mono text-xs text-cyan-300">object</td>
+                    <td className="p-4 font-mono text-xs text-white/60">{"{}"}</td>
+                    <td className="p-4 text-white/70">Form data object containing all field values</td>
                   </tr>
-                  <tr>
-                    <td className="p-3 font-mono text-xs text-white">totalSteps</td>
-                    <td className="p-3 font-mono text-xs text-white">number</td>
-                    <td className="p-3 font-mono text-xs text-white">3</td>
-                    <td className="p-3 text-white">Total number of steps in the form</td>
+                  <tr className="hover:bg-white/[0.02] transition-colors">
+                    <td className="p-4 font-mono text-xs text-indigo-300">totalSteps</td>
+                    <td className="p-4 font-mono text-xs text-cyan-300">number</td>
+                    <td className="p-4 font-mono text-xs text-white/60">3</td>
+                    <td className="p-4 text-white/70">Total number of steps in the form</td>
                   </tr>
-                  <tr>
-                    <td className="p-3 font-mono text-xs text-white">handleChange</td>
-                    <td className="p-3 font-mono text-xs text-white">function</td>
-                    <td className="p-3 font-mono text-xs text-white">—</td>
-                    <td className="p-3 text-white">Updates form data when input values change</td>
+                  <tr className="hover:bg-white/[0.02] transition-colors">
+                    <td className="p-4 font-mono text-xs text-indigo-300">handleChange</td>
+                    <td className="p-4 font-mono text-xs text-cyan-300">function</td>
+                    <td className="p-4 font-mono text-xs text-white/60">—</td>
+                    <td className="p-4 text-white/70">Updates form data when input values change</td>
                   </tr>
-                  <tr>
-                    <td className="p-3 font-mono text-xs text-white">nextStep / prevStep</td>
-                    <td className="p-3 font-mono text-xs text-white">function</td>
-                    <td className="p-3 font-mono text-xs text-white">—</td>
-                    <td className="p-3 text-white">Navigate between form steps</td>
+                  <tr className="hover:bg-white/[0.02] transition-colors">
+                    <td className="p-4 font-mono text-xs text-indigo-300">nextStep / prevStep</td>
+                    <td className="p-4 font-mono text-xs text-cyan-300">function</td>
+                    <td className="p-4 font-mono text-xs text-white/60">—</td>
+                    <td className="p-4 text-white/70">Navigate between form steps</td>
                   </tr>
-                  <tr>
-                    <td className="p-3 font-mono text-xs text-white">handleSubmit</td>
-                    <td className="p-3 font-mono text-xs text-white">function</td>
-                    <td className="p-3 font-mono text-xs text-white">—</td>
-                    <td className="p-3 text-white">Handles final form submission</td>
+                  <tr className="hover:bg-white/[0.02] transition-colors">
+                    <td className="p-4 font-mono text-xs text-indigo-300">handleSubmit</td>
+                    <td className="p-4 font-mono text-xs text-cyan-300">function</td>
+                    <td className="p-4 font-mono text-xs text-white/60">—</td>
+                    <td className="p-4 text-white/70">Handles final form submission</td>
                   </tr>
                 </tbody>
               </table>
@@ -515,178 +452,123 @@ export default function MultiStepFormDocumentationPage() {
           </div>
 
           {/* Form Steps */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold tracking-tight text-white">Form Steps</h2>
-            <div className="grid gap-4 md:grid-cols-3">
-              <div className="p-4 border border-white rounded-lg bg-black">
-                <h3 className="font-semibold mb-2 text-white">Step 1: Basic Information</h3>
-                <p className="text-sm text-white mb-2">
+          <div className="space-y-8 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
+              Form Steps
+            </h2>
+            <div className="grid gap-6 md:grid-cols-3">
+              <div className="p-6 border border-white/[0.1] rounded-xl bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-sm font-bold">
+                    1
+                  </div>
+                  <h3 className="text-lg font-bold text-white/90">Basic Information</h3>
+                </div>
+                <p className="text-sm text-white/60 mb-4">
                   Collects essential user information including full name and email address.
                 </p>
-                <ul className="text-xs text-white space-y-1">
-                  <li>• Full Name (required)</li>
-                  <li>• Email Address (required)</li>
-                </ul>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full"></div>
+                    <span className="text-xs text-white/70">Full Name (required)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full"></div>
+                    <span className="text-xs text-white/70">Email Address (required)</span>
+                  </div>
+                </div>
               </div>
-              <div className="p-4 border border-white rounded-lg bg-black">
-                <h3 className="font-semibold mb-2 text-white">Step 2: Contact Details</h3>
-                <p className="text-sm text-white mb-2">
+              <div className="p-6 border border-white/[0.1] rounded-xl bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-sm font-bold">
+                    2
+                  </div>
+                  <h3 className="text-lg font-bold text-white/90">Contact Details</h3>
+                </div>
+                <p className="text-sm text-white/60 mb-4">
                   Gathers additional contact information for communication purposes.
                 </p>
-                <ul className="text-xs text-white space-y-1">
-                  <li>• Phone Number (required)</li>
-                  <li>• Address (required)</li>
-                </ul>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
+                    <span className="text-xs text-white/70">Phone Number (required)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
+                    <span className="text-xs text-white/70">Address (required)</span>
+                  </div>
+                </div>
               </div>
-              <div className="p-4 border border-white rounded-lg bg-black">
-                <h3 className="font-semibold mb-2 text-white">Step 3: Additional Info</h3>
-                <p className="text-sm text-white mb-2">
-                  Captures supplementary information and user preferences.
-                </p>
-                <ul className="text-xs text-white space-y-1">
-                  <li>• Experience Level (dropdown)</li>
-                  <li>• Message (textarea)</li>
-                </ul>
+              <div className="p-6 border border-white/[0.1] rounded-xl bg-gradient-to-br from-white/[0.02] to-transparent backdrop-blur-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 text-white text-sm font-bold">
+                    3
+                  </div>
+                  <h3 className="text-lg font-bold text-white/90">Additional Info</h3>
+                </div>
+                <p className="text-sm text-white/60 mb-4">Captures supplementary information and user preferences.</p>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
+                    <span className="text-xs text-white/70">Experience Level (dropdown)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
+                    <span className="text-xs text-white/70">Message (textarea)</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Usage Examples */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold tracking-tight text-white">Usage Examples</h2>
+          <div className="space-y-8 bg-gradient-to-br from-white/[0.03] to-white/[0.01] backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
+              Usage Examples
+            </h2>
 
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <h3 className="text-xl font-medium text-gray-200">Basic Implementation</h3>
-                <div className="rounded-md bg-black border border-white p-4">
-                  <pre className="text-sm text-white whitespace-pre-wrap">
-                    <code>{`import MinimalMultiStepForm from "@/components/forms/MinimalMultiStepForm"
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-white/90">Basic Implementation</h3>
+                <CodeBlock language="tsx">
+                  {`<span class="text-[#c586c0]">import</span> <span class="text-[#9cdcfe]">MinimalMultiStepForm</span> <span class="text-[#c586c0]">from</span> <span class="text-[#ce9178]">"@/components/forms/MinimalMultiStepForm"</span>
 
-export default function RegistrationPage() {
-  return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <MinimalMultiStepForm />
-    </div>
-  )
-}`}</code>
-                  </pre>
-                </div>
+<span class="text-[#c586c0]">export</span> <span class="text-[#c586c0]">default</span> <span class="text-[#c586c0]">function</span> <span class="text-[#dcdcaa]">RegistrationPage</span><span class="text-[#d4d4d4]">()</span> <span class="text-[#d4d4d4]">{</span>
+  <span class="text-[#c586c0]">return</span> <span class="text-[#d4d4d4]">(</span>
+    <span class="text-[#d4d4d4]">&lt;</span><span class="text-[#569cd6]">div</span> <span class="text-[#92c5f7]">className</span><span class="text-[#d4d4d4]">=</span><span class="text-[#ce9178]">"min-h-screen bg-gray-50 flex items-center justify-center p-4"</span><span class="text-[#d4d4d4]">&gt;</span>
+      <span class="text-[#d4d4d4]">&lt;</span><span class="text-[#4ec9b0]">MinimalMultiStepForm</span> <span class="text-[#d4d4d4]">/&gt;</span>
+    <span class="text-[#d4d4d4]">&lt;/</span><span class="text-[#569cd6]">div</span><span class="text-[#d4d4d4]">&gt;</span>
+  <span class="text-[#d4d4d4]">)</span>
+<span class="text-[#d4d4d4]">}</span>`}
+                </CodeBlock>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="text-xl font-medium text-gray-200">Custom Form Submission</h3>
-                <div className="rounded-md bg-black border border-white p-4">
-                  <pre className="text-sm text-white whitespace-pre-wrap">
-                    <code>{`const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault()
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-white/90">Custom Form Submission</h3>
+                <CodeBlock language="typescript">
+                  {`<span class="text-[#c586c0]">const</span> <span class="text-[#dcdcaa]">handleSubmit</span> <span class="text-[#d4d4d4]">=</span> <span class="text-[#c586c0]">async</span> <span class="text-[#d4d4d4]">(</span><span class="text-[#9cdcfe]">e</span><span class="text-[#d4d4d4]">:</span> <span class="text-[#4ec9b0]">React</span><span class="text-[#d4d4d4]">.</span><span class="text-[#4ec9b0]">FormEvent</span><span class="text-[#d4d4d4]">)</span> <span class="text-[#c586c0]">=&gt;</span> <span class="text-[#d4d4d4]">{</span>
+  <span class="text-[#9cdcfe]">e</span><span class="text-[#d4d4d4]">.</span><span class="text-[#dcdcaa]">preventDefault</span><span class="text-[#d4d4d4]">()</span>
   
-  try {
-    const response = await fetch('/api/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
+  <span class="text-[#c586c0]">try</span> <span class="text-[#d4d4d4]">{</span>
+    <span class="text-[#c586c0]">const</span> <span class="text-[#9cdcfe]">response</span> <span class="text-[#d4d4d4]">=</span> <span class="text-[#c586c0]">await</span> <span class="text-[#dcdcaa]">fetch</span><span class="text-[#d4d4d4]">(</span><span class="text-[#ce9178]">'/api/register'</span><span class="text-[#d4d4d4]">,</span> <span class="text-[#d4d4d4]">{</span>
+      <span class="text-[#9cdcfe]">method</span><span class="text-[#d4d4d4]">:</span> <span class="text-[#ce9178]">'POST'</span><span class="text-[#d4d4d4]">,</span>
+      <span class="text-[#9cdcfe]">headers</span><span class="text-[#d4d4d4]">:</span> <span class="text-[#d4d4d4]">{</span>
+        <span class="text-[#ce9178]">'Content-Type'</span><span class="text-[#d4d4d4]">:</span> <span class="text-[#ce9178]">'application/json'</span>
+      <span class="text-[#d4d4d4]">},</span>
+      <span class="text-[#9cdcfe]">body</span><span class="text-[#d4d4d4]">:</span> <span class="text-[#dcdcaa]">JSON</span><span class="text-[#d4d4d4]">.</span><span class="text-[#dcdcaa]">stringify</span><span class="text-[#d4d4d4]">(</span><span class="text-[#9cdcfe]">formData</span><span class="text-[#d4d4d4]">)</span>
+    <span class="text-[#d4d4d4]">})</span>
     
-    if (response.ok) {
-      alert('Registration successful!')
-      // Redirect or reset form
-    } else {
-      alert('Registration failed. Please try again.')
-    }
-  } catch (error) {
-    console.error('Error submitting form:', error)
-  }
-}`}</code>
-                  </pre>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <h3 className="text-xl font-medium text-gray-200">Adding Validation</h3>
-                <div className="rounded-md bg-black border border-white p-4">
-                  <pre className="text-sm text-white whitespace-pre-wrap">
-                    <code>{`const [errors, setErrors] = useState({})
-
-const validateStep = (step: number) => {
-  const newErrors: any = {}
-  
-  if (step === 1) {
-    if (!formData.name.trim()) newErrors.name = 'Name is required'
-    if (!formData.email.trim()) newErrors.email = 'Email is required'
-    if (!/\\S+@\\S+\\.\\S+/.test(formData.email)) newErrors.email = 'Email is invalid'
-  }
-  
-  if (step === 2) {
-    if (!formData.phone.trim()) newErrors.phone = 'Phone is required'
-    if (!formData.address.trim()) newErrors.address = 'Address is required'
-  }
-  
-  setErrors(newErrors)
-  return Object.keys(newErrors).length === 0
-}
-
-const nextStep = () => {
-  if (validateStep(currentStep) && currentStep < totalSteps) {
-    setCurrentStep(currentStep + 1)
-  }
-}`}</code>
-                  </pre>
-                </div>
+    <span class="text-[#c586c0]">if</span> <span class="text-[#d4d4d4]">(</span><span class="text-[#9cdcfe]">response</span><span class="text-[#d4d4d4]">.</span><span class="text-[#9cdcfe]">ok</span><span class="text-[#d4d4d4]">)</span> <span class="text-[#d4d4d4]">{</span>
+      <span class="text-[#608b4e]">// Handle success</span>
+    <span class="text-[#d4d4d4]">}</span>
+  <span class="text-[#d4d4d4]">}</span> <span class="text-[#c586c0]">catch</span> <span class="text-[#d4d4d4]">(</span><span class="text-[#9cdcfe]">error</span><span class="text-[#d4d4d4]">)</span> <span class="text-[#d4d4d4]">{</span>
+    <span class="text-[#608b4e]">// Handle error</span>
+  <span class="text-[#d4d4d4]">}</span>
+<span class="text-[#d4d4d4]">}</span>`}
+                </CodeBlock>
               </div>
             </div>
           </div>
-
-          {/* Design Features */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold tracking-tight text-white">Design Features</h2>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="p-4 border border-gray-700 rounded-lg bg-gray-900">
-                <h3 className="font-semibold mb-2 text-white">Progress Indicator</h3>
-                <p className="text-sm text-gray-400">
-                  Visual step indicator with connected progress bars showing current position and completion status.
-                </p>
-              </div>
-              <div className="p-4 border border-gray-700 rounded-lg bg-gray-900">
-                <h3 className="font-semibold mb-2 text-white">Smooth Navigation</h3>
-                <p className="text-sm text-gray-400">
-                  Intuitive Previous/Next buttons with conditional rendering and proper state management.
-                </p>
-              </div>
-              <div className="p-4 border border-gray-700 rounded-lg bg-gray-900">
-                <h3 className="font-semibold mb-2 text-white">Form Persistence</h3>
-                <p className="text-sm text-gray-400">
-                  Form data persists across steps, allowing users to navigate back and forth without losing data.
-                </p>
-              </div>
-              <div className="p-4 border border-gray-700 rounded-lg bg-gray-900">
-                <h3 className="font-semibold mb-2 text-white">Responsive Design</h3>
-                <p className="text-sm text-gray-400">
-                  Mobile-first design that adapts to different screen sizes with consistent spacing and layout.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Implementation Notes */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold tracking-tight text-white">Implementation Notes</h2>
-            <div className="p-4 border border-white rounded-lg bg-black">
-              <h3 className="font-semibold mb-2 text-white">Key Features & Considerations</h3>
-              <ul className="text-sm text-white space-y-1">
-                <li>• Uses React hooks (useState) for state management</li>
-                <li>• TypeScript support for type safety and better development experience</li>
-                <li>• Modular step components for easy customization and maintenance</li>
-                <li>• Accessible form inputs with proper labeling and ARIA attributes</li>
-                <li>• Responsive design using Tailwind CSS utility classes</li>
-                <li>• Form validation can be easily extended per step</li>
-                <li>• Supports all standard HTML form input types and attributes</li>
-                <li>• Clean separation of concerns between UI and business logic</li>
-              </ul>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
