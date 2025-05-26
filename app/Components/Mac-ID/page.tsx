@@ -1,4 +1,4 @@
-"use client";
+"use client" 
 import { useState, useEffect } from "react"
 import { Mail, Building2, Fingerprint, Shield, Calendar } from "lucide-react"
 
