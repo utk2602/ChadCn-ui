@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Pacifico } from "next/font/google"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 const pacifico = Pacifico({
   subsets: ["latin"],
@@ -183,9 +184,20 @@ export default function HeroGeometric({
               Crafting exceptional digital experiences through innovative design and cutting-edge technology.
             </p>
           </motion.div>
-          <button className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-rose-500 text-white rounded-full shadow-lg hover:from-indigo-600 hover:to-rose-600 transition-colors duration-300">
-            Get Started
-          </button>
+          <Link href="/components">
+  <motion.div
+    custom={3}
+    variants={fadeUpVariants}
+    initial="hidden"
+    animate="visible"
+    className="inline-block"
+  >
+    <button className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-rose-500 text-white rounded-full shadow-lg hover:from-indigo-600 hover:to-rose-600 transition-colors duration-300">
+      Get Started
+    </button>
+  </motion.div>
+</Link>
+
         </div>
       </div>
 
