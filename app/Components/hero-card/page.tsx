@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react"
 import { ArrowLeft, Code, Copy, Check } from "lucide-react"
 import React from "react"
