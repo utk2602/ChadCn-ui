@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from "react";
+import { useState, useEffect, JSX } from "react";
 import AnimatedTestimonialPage from "./animated-testimonial/page";
 import GradientButtonPage from "./gradient-button/page";
 import HeroCardPage from "./hero-card/page";
