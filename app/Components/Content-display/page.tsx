@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import { ArrowLeft, Code, Zap, Users, TrendingUp, Shield, Copy, Check } from "lucide-react"
+import Link from "next/link"
 
 // TypeScript interface for a single tab item
 interface FeatureTabItem {
@@ -231,10 +232,10 @@ export default function FeatureTabsPage() {
         <div className="space-y-12">
           {/* Header */}
           <div className="space-y-6">
-            <div className="inline-flex items-center text-sm text-white/50 hover:text-white/80 mb-4 cursor-pointer transition-colors">
+            <Link href="/docs" className="inline-flex items-center text-sm text-white/50 hover:text-white/80 mb-4 cursor-pointer transition-colors">
               <ArrowLeft className="mr-1 h-4 w-4" />
               Back to Documentation
-            </div>
+            </Link>
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-cyan-300">
                 FeatureTabs

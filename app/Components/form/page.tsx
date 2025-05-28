@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ArrowLeft, Code, Copy, Check } from "lucide-react"
+import Link from "next/link"
 
 // Multi-step form component
 function MinimalMultiStepForm() {
@@ -312,10 +313,10 @@ export default function MultiStepFormDocumentationPage() {
         <div className="space-y-12">
           {/* Header */}
           <div className="space-y-6 text-center">
-            <div className="inline-flex items-center text-sm text-white/60 hover:text-white mb-4 cursor-pointer transition-colors">
+            <Link href="/docs" className="inline-flex items-center text-sm text-white/60 hover:text-white mb-4 cursor-pointer transition-colors">
               <ArrowLeft className="mr-1 h-4 w-4" />
               Back to Documentation
-            </div>
+            </Link>
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-cyan-300">
               Multi-Step Form
             </h1>

@@ -1,10 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowLeft, Code, Link, Sparkles, Copy, Check } from "lucide-react"
+import { ArrowLeft, Code, Sparkles, Copy, Check } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 import React, { type ButtonHTMLAttributes } from "react"
+import Link from "next/link"
 
 const buttonVariants = cva(
   "font-medium transition-all outline-hidden cursor-pointer duration-200 flex items-center justify-center",
@@ -199,10 +200,10 @@ export default function ButtonDocumentationPage() {
       <div className="relative z-10 flex-1 container max-w-6xl py-16 mx-auto px-4 md:px-6">
         <div className="space-y-12">
           {/* Back Link */}
-          <button className="inline-flex items-center text-sm text-white/50 hover:text-white/80 transition-colors">
+          <Link href="/docs" className="inline-flex items-center text-sm text-white/50 hover:text-white/80 transition-colors">
             <ArrowLeft className="mr-1 h-4 w-4" />
             Back to Documentation
-          </button>
+          </Link>
 
           {/* Header */}
           <div className="space-y-6 text-center">
@@ -243,7 +244,7 @@ export default function ButtonDocumentationPage() {
               </Button>
 
               <Button variant="outline" size="lg">
-                <Link className="mr-2 h-5 w-5" />
+                <Button className="mr-2 h-5 w-5" />
                 Outline Button
               </Button>
 

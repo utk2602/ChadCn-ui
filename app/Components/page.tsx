@@ -1,19 +1,19 @@
 "use client"
-import { useState, useEffect, JSX } from "react";
-import AnimatedTestimonialPage from "./animated-testimonial/page";
-import GradientButtonPage from "./gradient-button/page";
-import HeroCardPage from "./hero-card/page";
-import Carousel3DPage from "./3d-Carousel/page";
-import CustomDataTablePage from "./data-table/page";
-import FeatureTabsPage from "./Content-display/page";
-import TextHoverEffectPage from "./Hero-text/page";
-import MacOsIdCardPage from "./Mac-ID/page";
-import DraggableModalPage from "./Modal/page";
-import MultiStepFormDocumentationPage from "./form/page";
-import CustomDropdownPage from "./Dropdown/page";
-import ImportedInstallationPage from "./installation/page";
-import UsagePage from "./usage/page";
-import { ChevronDown } from "lucide-react";
+import { useState, useEffect, type JSX } from "react"
+import AnimatedTestimonialPage from "./animated-testimonial/page"
+import GradientButtonPage from "./gradient-button/page"
+import HeroCardPage from "./hero-card/page"
+import Carousel3DPage from "./3d-Carousel/page"
+import CustomDataTablePage from "./data-table/page"
+import FeatureTabsPage from "./Content-display/page"
+import TextHoverEffectPage from "./Hero-text/page"
+import MacOsIdCardPage from "./Mac-ID/page"
+import DraggableModalPage from "./Modal/page"
+import MultiStepFormDocumentationPage from "./form/page"
+import CustomDropdownPage from "./Dropdown/page"
+import ImportedInstallationPage from "./installation/page"
+import UsagePage from "./usage/page"
+import { ChevronDown } from "lucide-react"
 
 function ComponentPage({ name }: { name: string }) {
   return (
@@ -21,12 +21,20 @@ function ComponentPage({ name }: { name: string }) {
       <h1 className="text-3xl font-bold mb-6">{name}</h1>
       <p className="text-gray-400">Documentation for {name} component.</p>
     </div>
-  );
+  )
+}
+
+function NeonTag() {
+  return (
+    <span className="ml-2 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-400 border border-cyan-400/50 shadow-[0_0_10px_rgba(34,211,238,0.3)] animate-pulse">
+      New
+    </span>
+  )
 }
 
 export default function MinimalistDocsPage() {
-  const [activeComponent, setActiveComponent] = useState("installation");
-  const [isComponentsOpen, setIsComponentsOpen] = useState(true);
+  const [activeComponent, setActiveComponent] = useState("installation")
+  const [isComponentsOpen, setIsComponentsOpen] = useState(true)
 
   const components = [
     { id: "animated-testimonial", name: "Testimonial" },
@@ -36,16 +44,16 @@ export default function MinimalistDocsPage() {
     { id: "modal-dialog", name: "Modal" },
     { id: "dropdown-menu", name: "Dropdown" },
     { id: "form-elements", name: "Form" },
-    { id: "3d-carousel", name: "Carousel" },
-    { id: "feature-tabs", name: "Tabs" },
+    { id: "3d-carousel", name: "Carousel", hasNeonTag: true },
+    { id: "feature-tabs", name: "Tabs", hasNeonTag: true },
     { id: "text-reveal", name: "Text Effects" },
-    { id: "mac-os-id-card", name: "ID Card" },
-  ];
+    { id: "mac-os-id-card", name: "ID Card", hasNeonTag: true },
+  ]
 
   const essentialPages = [
     { id: "installation", name: "Installation" },
     { id: "usage", name: "Usage" },
-  ];
+  ]
 
   const componentMap: Record<string, JSX.Element> = {
     installation: <ImportedInstallationPage />,
@@ -61,19 +69,19 @@ export default function MinimalistDocsPage() {
     "modal-dialog": <DraggableModalPage />,
     "form-elements": <MultiStepFormDocumentationPage />,
     "dropdown-menu": <CustomDropdownPage />,
-  };
+  }
 
   const renderContent = () => {
-    return componentMap[activeComponent] || <ComponentPage name="Unknown Component" />;
-  };
+    return componentMap[activeComponent] || <ComponentPage name="Unknown Component" />
+  }
 
   // Scroll to top on component change
   useEffect(() => {
-    const main = document.querySelector(".main-content-scroll");
+    const main = document.querySelector(".main-content-scroll")
     if (main) {
-      main.scrollTo({ top: 0, behavior: "smooth" });
+      main.scrollTo({ top: 0, behavior: "smooth" })
     }
-  }, [activeComponent]);
+  }, [activeComponent])
 
   return (
     <div className="flex h-screen bg-[#0a0a0a]">
@@ -84,9 +92,7 @@ export default function MinimalistDocsPage() {
 
           {/* Getting Started */}
           <div className="mb-8">
-            <h2 className="text-xs uppercase tracking-wider text-gray-500 mb-3 font-medium">
-              Getting Started
-            </h2>
+            <h2 className="text-xs uppercase tracking-wider text-gray-500 mb-3 font-medium">Getting Started</h2>
             <div className="space-y-1">
               {essentialPages.map((page) => (
                 <button
@@ -110,14 +116,10 @@ export default function MinimalistDocsPage() {
               onClick={() => setIsComponentsOpen(!isComponentsOpen)}
               className="flex items-center justify-between w-full mb-3"
             >
-              <h2 className="text-xs uppercase tracking-wider text-gray-500 font-medium">
-                Components
-              </h2>
+              <h2 className="text-xs uppercase tracking-wider text-gray-500 font-medium">Components</h2>
               <ChevronDown
                 size={14}
-                className={`text-gray-500 transition-transform ${
-                  isComponentsOpen ? "rotate-180" : ""
-                }`}
+                className={`text-gray-500 transition-transform ${isComponentsOpen ? "rotate-180" : ""}`}
               />
             </button>
 
@@ -127,13 +129,14 @@ export default function MinimalistDocsPage() {
                   <button
                     key={component.id}
                     onClick={() => setActiveComponent(component.id)}
-                    className={`w-full text-left py-2 px-3 rounded-lg text-sm transition-colors ${
+                    className={`w-full text-left py-2 px-3 rounded-lg text-sm transition-colors flex items-center justify-between ${
                       activeComponent === component.id
                         ? "bg-white/10 text-white"
                         : "text-gray-400 hover:text-white hover:bg-white/5"
                     }`}
                   >
-                    {component.name}
+                    <span>{component.name}</span>
+                    {component.hasNeonTag && <NeonTag />}
                   </button>
                 ))}
               </div>
@@ -143,9 +146,7 @@ export default function MinimalistDocsPage() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-0 flex-1 overflow-auto main-content-scroll">
-        {renderContent()}
-      </div>
+      <div className="relative z-0 flex-1 overflow-auto main-content-scroll">{renderContent()}</div>
     </div>
-  );
+  )
 }

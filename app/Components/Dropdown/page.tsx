@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
+import Link from "next/link"
 import { ArrowLeft, Code, Copy, Check } from "lucide-react"
 
 interface DropdownOption {
@@ -287,10 +288,10 @@ export default function CustomDropdownPage() {
           
           {/* Header */}
           <div className="space-y-6">
-            <button className="inline-flex items-center text-sm text-white/60 hover:text-white/90 transition-colors">
+            <Link href="/docs" className="inline-flex items-center text-sm text-white/60 hover:text-white/90 transition-colors">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Documentation
-            </button>
+            </Link>
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-cyan-300">
                 CustomDropdown
