@@ -13,7 +13,7 @@ import MultiStepFormDocumentationPage from "./form/page"
 import CustomDropdownPage from "./Dropdown/page"
 import ImportedInstallationPage from "./installation/page"
 import UsagePage from "./usage/page"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, Menu, X } from "lucide-react"
 
 function ComponentPage({ name }: { name: string }) {
   return (
@@ -35,6 +35,7 @@ function NeonTag() {
 export default function MinimalistDocsPage() {
   const [activeComponent, setActiveComponent] = useState("installation")
   const [isComponentsOpen, setIsComponentsOpen] = useState(true)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const components = [
     { id: "animated-testimonial", name: "Testimonial" },
@@ -71,6 +72,11 @@ export default function MinimalistDocsPage() {
     "dropdown-menu": <CustomDropdownPage />,
   }
 
+  const handleComponentSelect = (componentId: string) => {
+    setActiveComponent(componentId)
+    setIsMobileMenuOpen(false) // Close mobile menu when selecting a component
+  }
+
   const renderContent = () => {
     return componentMap[activeComponent] || <ComponentPage name="Unknown Component" />
   }
@@ -83,12 +89,81 @@ export default function MinimalistDocsPage() {
     }
   }, [activeComponent])
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const sidebar = document.querySelector(".mobile-sidebar")
+      const menuButton = document.querySelector(".mobile-menu-button")
+
+      if (
+        isMobileMenuOpen &&
+        sidebar &&
+        menuButton &&
+        !sidebar.contains(event.target as Node) &&
+        !menuButton.contains(event.target as Node)
+      ) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [isMobileMenuOpen])
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+
+    return () => {
+      document.body.style.overflow = "unset"
+    }
+  }, [isMobileMenuOpen])
+
   return (
     <div className="flex h-screen bg-[#0a0a0a]">
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        className="mobile-menu-button fixed top-4 left-4 z-50 p-2 rounded-lg bg-[#111111] border border-gray-800/50 text-white lg:hidden hover:bg-white/10 transition-colors"
+        aria-label="Toggle mobile menu"
+      >
+        {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+      </button>
+
+      {/* Mobile Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 bg-black/50 z-30 lg:hidden" onClick={() => setIsMobileMenuOpen(false)} />
+      )}
+
       {/* Sidebar */}
-      <div className="relative z-10 w-64 bg-[#111111] border-r border-gray-800/50">
+      <div
+        className={`
+        mobile-sidebar
+        fixed lg:relative
+        z-40 lg:z-10
+        w-64 h-full
+        bg-[#111111] border-r border-gray-800/50
+        transform transition-transform duration-300 ease-in-out
+        ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
+        lg:translate-x-0
+      `}
+      >
         <div className="p-6">
-          <h1 className="text-xl font-semibold text-white mb-8">Documentation</h1>
+          <div className="flex items-center justify-between mb-8">
+            <h1 className="text-xl font-semibold text-white">Documentation</h1>
+            {/* Close button for mobile */}
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="lg:hidden p-1 rounded text-gray-400 hover:text-white"
+              aria-label="Close menu"
+            >
+              <X size={16} />
+            </button>
+          </div>
 
           {/* Getting Started */}
           <div className="mb-8">
@@ -97,7 +172,7 @@ export default function MinimalistDocsPage() {
               {essentialPages.map((page) => (
                 <button
                   key={page.id}
-                  onClick={() => setActiveComponent(page.id)}
+                  onClick={() => handleComponentSelect(page.id)}
                   className={`w-full text-left py-2 px-3 rounded-lg text-sm transition-colors ${
                     activeComponent === page.id
                       ? "bg-white/10 text-white"
@@ -128,7 +203,7 @@ export default function MinimalistDocsPage() {
                 {components.map((component) => (
                   <button
                     key={component.id}
-                    onClick={() => setActiveComponent(component.id)}
+                    onClick={() => handleComponentSelect(component.id)}
                     className={`w-full text-left py-2 px-3 rounded-lg text-sm transition-colors flex items-center justify-between ${
                       activeComponent === component.id
                         ? "bg-white/10 text-white"
@@ -146,7 +221,7 @@ export default function MinimalistDocsPage() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-0 flex-1 overflow-auto main-content-scroll">{renderContent()}</div>
+      <div className="relative z-0 flex-1 overflow-auto main-content-scroll pt-16 lg:pt-0">{renderContent()}</div>
     </div>
   )
 }
