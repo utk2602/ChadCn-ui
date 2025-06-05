@@ -1,98 +1,78 @@
+ChadCn UI
+ChadCn UI is a powerful, flexible, and high-performance component library built using Next.js, Tailwind CSS, and ShadCN UI. Designed with a strong developer experience in mind, it provides production-ready UI components that are fast, customizable, and elegant by default.
 
-# 💪 ChadCn
+Opinionated by design.
+Aesthetic by nature.
+Performance by priority.
 
-**ChadCn** is the ultimate UI component library for developers who want powerful, flexible, and blazing-fast components built on **Next.js**, **Tailwind CSS**, and **ShadCN UI**.
+Features
+Built on ShadCN – leveraging a robust headless component system
 
-> Opinionated? Yes.
-> Beautiful? Damn right.
-> Built for speed? Always.
-> Welcome to the chad side of frontend.
+Optimized for Next.js 14+ – fully compatible with the App Router and server components
 
----
+Tailwind CSS + Radix UI – precise, accessible styling with built-in dark mode
 
-## 🚀 Features
+Modular and Tree-shakable – only include what you use
 
-* 🧠 **ShadCN-powered** – built on top of the best headless components
-* ⚡ **Next.js 14+** – app router compatible, optimized for performance
-* 🎨 **Tailwind CSS + Radix UI** – styled to perfection, dark/light mode ready
-* 📦 **Tree-shakable & Modular** – import only what you need
-* 🧩 **Customizable & Themed** – easily override styles or use themes
+Fully Customizable – easily theme or override styles to match your design system
 
----
-
-## 📦 Installation
-
-```bash
-npm install chadcn
+Installation
+bash
+Copy
+Edit
+npm install chadcn-ui
 # or
-yarn add chadcn
-```
-
----
-
-## 🔌 Usage
-
-```tsx
-// app/page.tsx or any component file
-import { Button } from "chadcn";
+yarn add chadcn-ui
+Usage Example
+tsx
+Copy
+Edit
+// app/page.tsx or any component
+import { Button } from "chadcn-ui";
 
 export default function Page() {
-  return <Button variant="chad">Click me, bro 💥</Button>;
+  return <Button variant="chad">Click me</Button>;
 }
-```
+Available Components
+Button
 
----
+Card
 
-## 🛠️ Components
+Input
 
-* ✅ Button
-* ✅ Card
-* ✅ Input
-* ✅ Modal
-* ✅ Tabs
-* ✅ Toast
-* ...and more coming in hot 🔥
+Modal
 
-> Want a new component? [Open an issue](https://github.com/your-org/chadcn/issues) or submit a PR like a true Chad.
+Tabs
 
----
+Toast
 
-## 🎨 Theming
+Additional components coming soon
 
-ChadCn supports full theme customization with Tailwind’s `@apply` and CSS variables. Want a neon-cyberpunk UI? A soft minimal look? You do you.
+Need a new component? Open an issue or contribute directly via pull request.
 
----
+Theming
+ChadCn UI supports full theming and customization using Tailwind’s utility classes, @apply, and CSS variables. Whether you're building a cyberpunk-inspired interface or a minimalistic dashboard, you can tailor the look and feel to your needs.
 
-## 🧑‍💻 Built With
+Built With
+Next.js
 
-* [Next.js](https://nextjs.org/)
-* [Tailwind CSS](https://tailwindcss.com/)
-* [Radix UI](https://www.radix-ui.com/)
-* [ShadCN](https://ui.shadcn.dev/)
+Tailwind CSS
 
----
+Radix UI
 
-## 🧠 Philosophy
+ShadCN UI
 
-> Stop shipping basic. Start shipping Chad.
+Design Philosophy
+Don’t ship generic. Ship bold.
 
-We believe in crafting UI libraries that are bold, consistent, and developer-first. No fluff. Just clean DX and a unique vibe.
+ChadCn UI is designed to be more than just functional. It promotes clarity, consistency, and a modern frontend development experience that helps your product stand out.
 
----
+Contributing
+We welcome contributions of all kinds.
+For major changes, please open an issue first to discuss what you would like to improve. Pull requests are reviewed regularly.
 
-## 🌟 Contribute
+License
+Licensed under the MIT License.
 
-Pull requests are welcome. For major changes, please open an issue first.
-Let’s build a component empire together.
-
----
-
-## 📄 License
-
-[MIT](./LICENSE)
-
----
-
-## 💜 Shoutout
-
-
+Acknowledgements
+Special thanks to ShadCN and the open-source community for inspiring the foundation and best practices this project is built upon.
