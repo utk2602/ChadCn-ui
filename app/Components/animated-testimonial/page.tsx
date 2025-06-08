@@ -26,7 +26,7 @@ function CodeBlock({ children, language = "javascript" }: { children: string; la
           <button
             onClick={copyToClipboard}
             className="flex items-center gap-1 px-2 py-1 text-xs text-[#cccccc] hover:text-white hover:bg-[#404040] rounded transition-colors"
-          >
+          >ā
             {copied ? (
               <>
                 <Check size={12} />

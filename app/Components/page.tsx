@@ -14,6 +14,7 @@ import CustomDropdownPage from "./Dropdown/page"
 import ImportedInstallationPage from "./installation/page"
 import UsagePage from "./usage/page"
 import { ChevronDown, Menu, X } from "lucide-react"
+import DesignerCardPage from "./Design Card/page"
 
 function ComponentPage({ name }: { name: string }) {
   return (
@@ -41,6 +42,7 @@ export default function MinimalistDocsPage() {
     { id: "animated-testimonial", name: "Testimonial" },
     { id: "gradient-button", name: "Button" },
     { id: "hero-card", name: "Card" },
+    { id: "designer-card", name: "Design Card", hasNeonTag: true },
     { id: "data-table", name: "Table" },
     { id: "modal-dialog", name: "Modal" },
     { id: "dropdown-menu", name: "Dropdown" },
@@ -49,6 +51,7 @@ export default function MinimalistDocsPage() {
     { id: "feature-tabs", name: "Tabs", hasNeonTag: true },
     { id: "text-reveal", name: "Text Effects" },
     { id: "mac-os-id-card", name: "ID Card", hasNeonTag: true },
+
   ]
 
   const essentialPages = [
@@ -62,6 +65,7 @@ export default function MinimalistDocsPage() {
     "animated-testimonial": <AnimatedTestimonialPage />,
     "gradient-button": <GradientButtonPage />,
     "hero-card": <HeroCardPage />,
+    "designer-card": <DesignerCardPage />,
     "3d-carousel": <Carousel3DPage />,
     "data-table": <CustomDataTablePage />,
     "feature-tabs": <FeatureTabsPage />,
