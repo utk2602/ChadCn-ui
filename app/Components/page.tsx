@@ -13,14 +13,16 @@ import MultiStepFormDocumentationPage from "./form/page"
 import CustomDropdownPage from "./Dropdown/page"
 import ImportedInstallationPage from "./installation/page"
 import UsagePage from "./usage/page"
-import { ChevronDown, Menu, X } from "lucide-react"
+import { ChevronDown, Menu, X, Search } from "lucide-react"
 import DesignerCardPage from "./Design Card/page"
+import { useIsMobile, useTouchGestures, useMobileAnimations } from "@/components/ui/use-mobile"
+import { cn } from "@/lib/utils"
 
 function ComponentPage({ name }: { name: string }) {
   return (
-    <div className="p-8 text-white">
-      <h1 className="text-3xl font-bold mb-6">{name}</h1>
-      <p className="text-gray-400">Documentation for {name} component.</p>
+    <div className="p-4 md:p-8 text-white mobile-fade-in-up">
+      <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">{name}</h1>
+      <p className="text-gray-400 mobile-text-base">Documentation for {name} component.</p>
     </div>
   )
 }
@@ -37,26 +39,29 @@ export default function MinimalistDocsPage() {
   const [activeComponent, setActiveComponent] = useState("installation")
   const [isComponentsOpen, setIsComponentsOpen] = useState(true)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const { isMobile, screenSize } = useIsMobile()
+  const { onTouchStart, onTouchMove, onTouchEnd } = useTouchGestures()
+  const { isVisible, fadeInUp, slideInLeft, slideInRight } = useMobileAnimations()
 
   const components = [
-    { id: "animated-testimonial", name: "Testimonial" },
-    { id: "gradient-button", name: "Button" },
-    { id: "hero-card", name: "Card" },
-    { id: "designer-card", name: "Design Card", hasNeonTag: true },
-    { id: "data-table", name: "Table" },
-    { id: "modal-dialog", name: "Modal" },
-    { id: "dropdown-menu", name: "Dropdown" },
-    { id: "form-elements", name: "Form" },
-    { id: "3d-carousel", name: "Carousel", hasNeonTag: true },
-    { id: "feature-tabs", name: "Tabs", hasNeonTag: true },
-    { id: "text-reveal", name: "Text Effects" },
-    { id: "mac-os-id-card", name: "ID Card", hasNeonTag: true },
-
+    { id: "animated-testimonial", name: "Testimonial", category: "feedback" },
+    { id: "gradient-button", name: "Button", category: "input" },
+    { id: "hero-card", name: "Card", category: "layout" },
+    { id: "designer-card", name: "Design Card", hasNeonTag: true, category: "layout" },
+    { id: "data-table", name: "Table", category: "data" },
+    { id: "modal-dialog", name: "Modal", category: "overlay" },
+    { id: "dropdown-menu", name: "Dropdown", category: "input" },
+    { id: "form-elements", name: "Form", category: "input" },
+    { id: "3d-carousel", name: "Carousel", hasNeonTag: true, category: "media" },
+    { id: "feature-tabs", name: "Tabs", hasNeonTag: true, category: "navigation" },
+    { id: "text-reveal", name: "Text Effects", category: "typography" },
+    { id: "mac-os-id-card", name: "ID Card", hasNeonTag: true, category: "layout" },
   ]
 
   const essentialPages = [
-    { id: "installation", name: "Installation" },
-    { id: "usage", name: "Usage" },
+    { id: "installation", name: "Installation", category: "getting-started" },
+    { id: "usage", name: "Usage", category: "getting-started" },
   ]
 
   const componentMap: Record<string, JSX.Element> = {
@@ -78,12 +83,27 @@ export default function MinimalistDocsPage() {
 
   const handleComponentSelect = (componentId: string) => {
     setActiveComponent(componentId)
-    setIsMobileMenuOpen(false) // Close mobile menu when selecting a component
+    setIsMobileMenuOpen(false)
+    // Add mobile animation
+    if (isMobile) {
+      slideInRight()
+    }
   }
 
   const renderContent = () => {
     return componentMap[activeComponent] || <ComponentPage name="Unknown Component" />
   }
+
+  // Filter components based on search
+  const filteredComponents = components.filter(component =>
+    component.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    component.category.toLowerCase().includes(searchQuery.toLowerCase())
+  )
+
+  const filteredEssentialPages = essentialPages.filter(page =>
+    page.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    page.category.toLowerCase().includes(searchQuery.toLowerCase())
+  )
 
   // Scroll to top on component change
   useEffect(() => {
@@ -127,12 +147,29 @@ export default function MinimalistDocsPage() {
     }
   }, [isMobileMenuOpen])
 
+  // Initialize mobile animations
+  useEffect(() => {
+    if (isMobile) {
+      fadeInUp()
+    }
+  }, [isMobile, fadeInUp])
+
+  // Handle touch gestures for mobile menu
+  const handleTouchEnd = () => {
+    const result = onTouchEnd()
+    if (result?.direction === 'left' && isMobileMenuOpen) {
+      setIsMobileMenuOpen(false)
+    } else if (result?.direction === 'right' && !isMobileMenuOpen) {
+      setIsMobileMenuOpen(true)
+    }
+  }
+
   return (
     <div className="flex h-screen bg-[#0a0a0a]">
       {/* Mobile Menu Button */}
       <button
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="mobile-menu-button fixed top-4 left-4 z-50 p-2 rounded-lg bg-[#111111] border border-gray-800/50 text-white lg:hidden hover:bg-white/10 transition-colors"
+        className="mobile-menu-button fixed top-20 left-4 z-50 p-3 rounded-xl bg-[#111111] border border-gray-800/50 text-white lg:hidden touch-feedback mobile-bounce-in"
         aria-label="Toggle mobile menu"
       >
         {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -140,7 +177,10 @@ export default function MinimalistDocsPage() {
 
       {/* Mobile Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-black/50 z-30 lg:hidden" onClick={() => setIsMobileMenuOpen(false)} />
+        <div 
+          className="fixed inset-0 bg-black/50 z-30 lg:hidden mobile-backdrop" 
+          onClick={() => setIsMobileMenuOpen(false)} 
+        />
       )}
 
       {/* Sidebar */}
@@ -154,34 +194,51 @@ export default function MinimalistDocsPage() {
         transform transition-transform duration-300 ease-in-out
         ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
         lg:translate-x-0
+        mobile-backdrop
       `}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
-        <div className="p-6">
-          <div className="flex items-center justify-between mb-8">
-            <h1 className="text-xl font-semibold text-white">Documentation</h1>
+        <div className="p-4 md:p-6">
+          <div className="flex items-center justify-between mb-6 md:mb-8">
+            <h1 className="text-lg md:text-xl font-semibold text-white">Documentation</h1>
             {/* Close button for mobile */}
             <button
               onClick={() => setIsMobileMenuOpen(false)}
-              className="lg:hidden p-1 rounded text-gray-400 hover:text-white"
+              className="lg:hidden p-2 rounded-lg text-gray-400 hover:text-white touch-feedback"
               aria-label="Close menu"
             >
-              <X size={16} />
+              <X size={18} />
             </button>
           </div>
 
+          {/* Search Bar */}
+          <div className="mb-6 relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <input
+              type="text"
+              placeholder="Search components..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 bg-white/5 border border-gray-700/50 rounded-lg text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 mobile-transition"
+            />
+          </div>
+
           {/* Getting Started */}
-          <div className="mb-8">
+          <div className="mb-6 md:mb-8">
             <h2 className="text-xs uppercase tracking-wider text-gray-500 mb-3 font-medium">Getting Started</h2>
-            <div className="space-y-1">
-              {essentialPages.map((page) => (
+            <div className="space-y-2">
+              {filteredEssentialPages.map((page, index) => (
                 <button
                   key={page.id}
                   onClick={() => handleComponentSelect(page.id)}
-                  className={`w-full text-left py-2 px-3 rounded-lg text-sm transition-colors ${
+                  className={`w-full text-left py-3 px-4 rounded-xl text-sm transition-all duration-200 touch-feedback mobile-nav-item ${
                     activeComponent === page.id
-                      ? "bg-white/10 text-white"
+                      ? "bg-white/10 text-white shadow-lg"
                       : "text-gray-400 hover:text-white hover:bg-white/5"
                   }`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {page.name}
                 </button>
@@ -193,39 +250,74 @@ export default function MinimalistDocsPage() {
           <div>
             <button
               onClick={() => setIsComponentsOpen(!isComponentsOpen)}
-              className="flex items-center justify-between w-full mb-3"
+              className="flex items-center justify-between w-full mb-3 mobile-nav-item"
             >
               <h2 className="text-xs uppercase tracking-wider text-gray-500 font-medium">Components</h2>
               <ChevronDown
                 size={14}
-                className={`text-gray-500 transition-transform ${isComponentsOpen ? "rotate-180" : ""}`}
+                className={`text-gray-500 transition-transform duration-200 ${isComponentsOpen ? "rotate-180" : ""}`}
               />
             </button>
 
             {isComponentsOpen && (
-              <div className="space-y-1">
-                {components.map((component) => (
+              <div className="space-y-2">
+                {filteredComponents.map((component, index) => (
                   <button
                     key={component.id}
                     onClick={() => handleComponentSelect(component.id)}
-                    className={`w-full text-left py-2 px-3 rounded-lg text-sm transition-colors flex items-center justify-between ${
+                    className={`w-full text-left py-3 px-4 rounded-xl text-sm transition-all duration-200 flex items-center justify-between touch-feedback mobile-nav-item ${
                       activeComponent === component.id
-                        ? "bg-white/10 text-white"
+                        ? "bg-white/10 text-white shadow-lg"
                         : "text-gray-400 hover:text-white hover:bg-white/5"
                     }`}
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <span>{component.name}</span>
+                    <div className="flex items-center gap-2">
+                      <span>{component.name}</span>
+                      <span className="text-xs text-gray-500 bg-gray-800/50 px-2 py-1 rounded-full">
+                        {component.category}
+                      </span>
+                    </div>
                     {component.hasNeonTag && <NeonTag />}
                   </button>
                 ))}
               </div>
             )}
           </div>
+
+          {/* Mobile Swipe Indicator */}
+          {isMobile && (
+            <div className="lg:hidden mt-auto pt-6 text-center">
+              <div className="swipe-indicator">
+                <span className="text-xs text-gray-500">Swipe left to close</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="relative z-0 flex-1 overflow-auto main-content-scroll pt-16 lg:pt-0">{renderContent()}</div>
+      <div className="relative z-0 flex-1 overflow-auto main-content-scroll pt-16 lg:pt-0">
+        <div className={cn(
+          "mobile-transition",
+          isMobile && "mobile-fade-in-up"
+        )}>
+          {renderContent()}
+        </div>
+      </div>
+
+      {/* Mobile Quick Actions */}
+      {isMobile && (
+        <div className="fixed bottom-4 right-4 z-50 lg:hidden">
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-lg touch-feedback mobile-bounce-in"
+            aria-label="Quick menu"
+          >
+            <Menu size={20} className="text-white" />
+          </button>
+        </div>
+      )}
     </div>
   )
 }
