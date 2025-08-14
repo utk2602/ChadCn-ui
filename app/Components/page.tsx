@@ -195,13 +195,15 @@ export default function MinimalistDocsPage() {
         ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
         lg:translate-x-0
         mobile-backdrop
+        flex flex-col
       `}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="p-4 md:p-6">
-          <div className="flex items-center justify-between mb-6 md:mb-8">
+        {/* Sidebar Header - Fixed */}
+        <div className="flex-shrink-0 p-4 md:p-6 border-b border-gray-800/50">
+          <div className="flex items-center justify-between">
             <h1 className="text-lg md:text-xl font-semibold text-white">Documentation</h1>
             {/* Close button for mobile */}
             <button
@@ -214,7 +216,7 @@ export default function MinimalistDocsPage() {
           </div>
 
           {/* Search Bar */}
-          <div className="mb-6 relative">
+          <div className="mt-4 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
             <input
               type="text"
@@ -224,75 +226,80 @@ export default function MinimalistDocsPage() {
               className="w-full pl-10 pr-4 py-2 bg-white/5 border border-gray-700/50 rounded-lg text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 mobile-transition"
             />
           </div>
+        </div>
 
-          {/* Getting Started */}
-          <div className="mb-6 md:mb-8">
-            <h2 className="text-xs uppercase tracking-wider text-gray-500 mb-3 font-medium">Getting Started</h2>
-            <div className="space-y-2">
-              {filteredEssentialPages.map((page, index) => (
-                <button
-                  key={page.id}
-                  onClick={() => handleComponentSelect(page.id)}
-                  className={`w-full text-left py-3 px-4 rounded-xl text-sm transition-all duration-200 touch-feedback mobile-nav-item ${
-                    activeComponent === page.id
-                      ? "bg-white/10 text-white shadow-lg"
-                      : "text-gray-400 hover:text-white hover:bg-white/5"
-                  }`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {page.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Components */}
-          <div>
-            <button
-              onClick={() => setIsComponentsOpen(!isComponentsOpen)}
-              className="flex items-center justify-between w-full mb-3 mobile-nav-item"
-            >
-              <h2 className="text-xs uppercase tracking-wider text-gray-500 font-medium">Components</h2>
-              <ChevronDown
-                size={14}
-                className={`text-gray-500 transition-transform duration-200 ${isComponentsOpen ? "rotate-180" : ""}`}
-              />
-            </button>
-
-            {isComponentsOpen && (
+        {/* Sidebar Content - Scrollable */}
+        <div className="flex-1 overflow-y-auto overflow-x-hidden sidebar-scroll">
+          <div className="p-4 md:p-6 sidebar-content-fade">
+            {/* Getting Started */}
+            <div className="mb-6 md:mb-8">
+              <h2 className="text-xs uppercase tracking-wider text-gray-500 mb-3 font-medium">Getting Started</h2>
               <div className="space-y-2">
-                {filteredComponents.map((component, index) => (
+                {filteredEssentialPages.map((page, index) => (
                   <button
-                    key={component.id}
-                    onClick={() => handleComponentSelect(component.id)}
-                    className={`w-full text-left py-3 px-4 rounded-xl text-sm transition-all duration-200 flex items-center justify-between touch-feedback mobile-nav-item ${
-                      activeComponent === component.id
+                    key={page.id}
+                    onClick={() => handleComponentSelect(page.id)}
+                    className={`w-full text-left py-3 px-4 rounded-xl text-sm transition-all duration-200 touch-feedback mobile-nav-item ${
+                      activeComponent === page.id
                         ? "bg-white/10 text-white shadow-lg"
                         : "text-gray-400 hover:text-white hover:bg-white/5"
                     }`}
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <div className="flex items-center gap-2">
-                      <span>{component.name}</span>
-                      <span className="text-xs text-gray-500 bg-gray-800/50 px-2 py-1 rounded-full">
-                        {component.category}
-                      </span>
-                    </div>
-                    {component.hasNeonTag && <NeonTag />}
+                    {page.name}
                   </button>
                 ))}
               </div>
+            </div>
+
+            {/* Components */}
+            <div>
+              <button
+                onClick={() => setIsComponentsOpen(!isComponentsOpen)}
+                className="flex items-center justify-between w-full mb-3 mobile-nav-item"
+              >
+                <h2 className="text-xs uppercase tracking-wider text-gray-500 font-medium">Components</h2>
+                <ChevronDown
+                  size={14}
+                  className={`text-gray-500 transition-transform duration-200 ${isComponentsOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              {isComponentsOpen && (
+                <div className="space-y-2">
+                  {filteredComponents.map((component, index) => (
+                    <button
+                      key={component.id}
+                      onClick={() => handleComponentSelect(component.id)}
+                      className={`w-full text-left py-3 px-4 rounded-xl text-sm transition-all duration-200 flex items-center justify-between touch-feedback mobile-nav-item ${
+                        activeComponent === component.id
+                          ? "bg-white/10 text-white shadow-lg"
+                          : "text-gray-400 hover:text-white hover:bg-white/5"
+                      }`}
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{component.name}</span>
+                        <span className="text-xs text-gray-500 bg-gray-800/50 px-2 py-1 rounded-full">
+                          {component.category}
+                        </span>
+                      </div>
+                      {component.hasNeonTag && <NeonTag />}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Swipe Indicator */}
+            {isMobile && (
+              <div className="lg:hidden mt-6 pt-6 text-center border-t border-gray-800/50">
+                <div className="swipe-indicator">
+                  <span className="text-xs text-gray-500">Swipe left to close</span>
+                </div>
+              </div>
             )}
           </div>
-
-          {/* Mobile Swipe Indicator */}
-          {isMobile && (
-            <div className="lg:hidden mt-auto pt-6 text-center">
-              <div className="swipe-indicator">
-                <span className="text-xs text-gray-500">Swipe left to close</span>
-              </div>
-            </div>
-          )}
         </div>
       </div>
 
