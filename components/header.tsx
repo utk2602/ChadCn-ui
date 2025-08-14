@@ -104,15 +104,6 @@ export default function Header() {
               Components 
             </Link>
             <Link
-              href="/blocks"
-              className={cn(
-                "transition-colors hover:text-white/80 mobile-nav-item",
-                pathname.startsWith("/blocks") ? "text-white" : "text-white/60",
-              )}
-            >
-              Blocks
-            </Link>
-            <Link
               href="/colors"
               className={cn(
                 "transition-colors hover:text-white/80 mobile-nav-item",
@@ -305,16 +296,6 @@ export default function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Components
-              </Link>
-              <Link
-                href="/blocks"
-                className={cn(
-                  "mobile-nav-item text-lg py-4 px-6 rounded-xl transition-all duration-200",
-                  pathname.startsWith("/blocks") ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
-                )}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Blocks
               </Link>
               <Link
                 href="/colors"
