@@ -4,8 +4,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Copy, Check, Palette, Eye, Info, Zap } from "lucide-react"
-import { useState } from "react"
+import { Copy, Check, Palette, Eye, Info, Zap, Smartphone, Monitor, Sparkles } from "lucide-react"
+import { useState, useEffect } from "react"
+import { useIsMobile, useMobileAnimations, useTouchGestures } from "@/components/ui/use-mobile"
+import { cn } from "@/lib/utils"
 
 interface ColorSwatch {
   name: string
@@ -57,6 +59,16 @@ interface GradientSet {
 
 export default function ColorsPage() {
   const [copiedColor, setCopiedColor] = useState<string | null>(null)
+  const { isMobile, screenSize } = useIsMobile()
+  const { fadeInUp } = useMobileAnimations()
+  const { onTouchStart, onTouchMove, onTouchEnd } = useTouchGestures()
+
+  // Initialize mobile animations
+  useEffect(() => {
+    if (isMobile) {
+      fadeInUp()
+    }
+  }, [isMobile, fadeInUp])
 
   const copyToClipboard = (text: string, colorName: string) => {
     navigator.clipboard.writeText(text)
@@ -697,22 +709,39 @@ export default function ColorsPage() {
   ]
 
   const ColorSwatchComponent = ({ color, showDetails = false }: { color: ColorSwatch; showDetails?: boolean }) => (
-    <Card className="group hover:shadow-lg transition-all duration-300 bg-zinc-900/50 border-zinc-800">
-      <CardContent className="p-4">
+    <Card className={cn(
+      "group hover:shadow-lg transition-all duration-300 bg-zinc-900/50 border-zinc-800",
+      "mobile-card mobile-fade-in-up touch-feedback"
+    )}>
+      <CardContent className={cn(
+        "p-4",
+        isMobile ? "p-3" : "p-4"
+      )}>
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="font-medium text-zinc-100">{color.name}</h3>
+            <h3 className={cn(
+              "font-medium text-zinc-100",
+              isMobile ? "mobile-text-base" : "text-base"
+            )}>{color.name}</h3>
             <Button
               variant="ghost"
               size="sm"
-              className="h-6 px-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity text-zinc-400 hover:text-zinc-100"
+              className={cn(
+                "h-6 px-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity text-zinc-400 hover:text-zinc-100",
+                isMobile ? "h-8 px-3 opacity-100" : "opacity-0 group-hover:opacity-100"
+              )}
               onClick={() => copyToClipboard(color.hex, color.name)}
             >
               {copiedColor === color.name ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
             </Button>
           </div>
 
-          <div className={`h-20 w-full rounded-md ${color.className} relative overflow-hidden border border-zinc-700`}>
+          <div className={cn(
+            "relative overflow-hidden border border-zinc-700 rounded-md",
+            isMobile ? "h-16" : "h-20",
+            "w-full",
+            color.className
+          )}>
             <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity bg-black/20 flex items-center justify-center">
               <div className="text-center text-xs text-white font-medium space-y-1">
                 <div>{color.hex}</div>
@@ -722,7 +751,10 @@ export default function ColorsPage() {
           </div>
 
           <div className="space-y-2 text-xs">
-            <div className="grid grid-cols-2 gap-2 text-zinc-400">
+            <div className={cn(
+              "grid gap-2 text-zinc-400",
+              isMobile ? "grid-cols-1" : "grid-cols-2"
+            )}>
               <div>
                 <span className="text-zinc-500">HEX:</span>
                 <span className="font-mono ml-1 text-zinc-300">{color.hex}</span>
@@ -761,17 +793,32 @@ export default function ColorsPage() {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100">
-      <div className="flex-1 container max-w-7xl py-10 px-4">
+      <div className={cn(
+        "flex-1 container py-10 px-4",
+        isMobile ? "py-6 px-3" : "py-10 px-4"
+      )}>
         <div className="space-y-10">
-          <div className="space-y-6 text-center">
-            <h1 className="text-5xl font-bold tracking-tight bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-100 bg-clip-text text-transparent">
+          <div className={cn(
+            "space-y-6 text-center",
+            isMobile ? "space-y-4" : "space-y-6"
+          )}>
+            <h1 className={cn(
+              "font-bold tracking-tight bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-100 bg-clip-text text-transparent",
+              isMobile ? "text-3xl" : "text-5xl"
+            )}>
               Advanced Color System
             </h1>
-            <p className="text-xl text-zinc-400 max-w-3xl mx-auto">
+            <p className={cn(
+              "text-zinc-400 max-w-3xl mx-auto",
+              isMobile ? "mobile-text-base px-2" : "text-xl"
+            )}>
               Professional-grade color palette system with detailed specifications, accessibility guidelines, and
               harmonious templates for modern design systems.
             </p>
-            <div className="flex items-center justify-center gap-4 text-sm text-zinc-500">
+            <div className={cn(
+              "flex items-center justify-center gap-4 text-sm text-zinc-500",
+              isMobile ? "flex-col gap-2" : "flex-row gap-4"
+            )}>
               <div className="flex items-center gap-2">
                 <Palette className="h-4 w-4" />
                 <span>200+ Colors</span>
@@ -785,26 +832,38 @@ export default function ColorsPage() {
                 <span>Ready to Use</span>
               </div>
             </div>
+
+            {/* Mobile-specific features indicator */}
+            {isMobile && (
+              <div className="flex items-center justify-center gap-2 text-xs text-zinc-500 bg-zinc-900/50 rounded-full px-4 py-2 border border-zinc-800">
+                <Smartphone className="h-3 w-3" />
+                <span>Mobile Optimized</span>
+                <Sparkles className="h-3 w-3" />
+              </div>
+            )}
           </div>
 
           <Tabs defaultValue="system" className="w-full">
-            <TabsList className="w-full justify-start mb-8 bg-zinc-900 border border-zinc-800">
-              <TabsTrigger value="system" className="data-[state=active]:bg-zinc-800">
+            <TabsList className={cn(
+              "w-full justify-start mb-8 bg-zinc-900 border border-zinc-800",
+              isMobile ? "mb-6 overflow-x-auto" : "mb-8"
+            )}>
+              <TabsTrigger value="system" className="data-[state=active]:bg-zinc-800 mobile-nav-item">
                 System Colors
               </TabsTrigger>
-              <TabsTrigger value="extended" className="data-[state=active]:bg-zinc-800">
+              <TabsTrigger value="extended" className="data-[state=active]:bg-zinc-800 mobile-nav-item">
                 Extended Palettes
               </TabsTrigger>
-              <TabsTrigger value="gradients" className="data-[state=active]:bg-zinc-800">
+              <TabsTrigger value="gradients" className="data-[state=active]:bg-zinc-800 mobile-nav-item">
                 Advanced Gradients
               </TabsTrigger>
-              <TabsTrigger value="templates" className="data-[state=active]:bg-zinc-800">
+              <TabsTrigger value="templates" className="data-[state=active]:bg-zinc-800 mobile-nav-item">
                 Premium Templates
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="system" className="space-y-8">
-              <Card className="bg-zinc-900/50 border-zinc-800">
+              <Card className="bg-zinc-900/50 border-zinc-800 mobile-card">
                 <CardHeader>
                   <CardTitle className="text-zinc-100 flex items-center gap-2">
                     <Info className="h-5 w-5" />
@@ -816,9 +875,21 @@ export default function ColorsPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {systemColors.map((color) => (
-                      <ColorSwatchComponent key={color.name} color={color} showDetails={true} />
+                  <div className={cn(
+                    "grid gap-6",
+                    isMobile ? "grid-cols-1 gap-4" : "md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                  )}>
+                    {systemColors.map((color, index) => (
+                      <div
+                        key={color.name}
+                        className={cn(
+                          "mobile-fade-in-up",
+                          isMobile && `animation-delay-${Math.min(index * 100, 500)}`
+                        )}
+                        style={isMobile ? { animationDelay: `${Math.min(index * 100, 500)}ms` } : {}}
+                      >
+                        <ColorSwatchComponent color={color} showDetails={true} />
+                      </div>
                     ))}
                   </div>
                 </CardContent>
@@ -826,8 +897,8 @@ export default function ColorsPage() {
             </TabsContent>
 
             <TabsContent value="extended" className="space-y-8">
-              {extendedPalettes.map((palette) => (
-                <Card key={palette.name} className="bg-zinc-900/50 border-zinc-800">
+              {extendedPalettes.map((palette, paletteIndex) => (
+                <Card key={palette.name} className="bg-zinc-900/50 border-zinc-800 mobile-card mobile-fade-in-up">
                   <CardHeader>
                     <CardTitle className="text-zinc-100">{palette.name} Palette</CardTitle>
                     <CardDescription className="text-zinc-400">{palette.description}</CardDescription>
@@ -845,17 +916,28 @@ export default function ColorsPage() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid gap-3 grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-11">
-                      {palette.shades.map((shade) => (
+                    <div className={cn(
+                      "grid gap-3",
+                      isMobile ? "grid-cols-3 gap-2" : "grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-11 gap-3"
+                    )}>
+                      {palette.shades.map((shade, shadeIndex) => (
                         <div key={shade.shade} className="space-y-2 group">
                           <div
-                            className={`h-16 w-full rounded-md ${shade.className} relative overflow-hidden border border-zinc-700`}
+                            className={cn(
+                              "relative overflow-hidden border border-zinc-700 rounded-md",
+                              isMobile ? "h-12" : "h-16",
+                              "w-full",
+                              shade.className
+                            )}
                           >
                             <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity bg-black/20 flex items-center justify-center">
                               <Button
                                 variant="ghost"
                                 size="sm"
-                                className="h-6 px-2 text-xs text-white"
+                                className={cn(
+                                  "text-xs text-white",
+                                  isMobile ? "h-6 px-1" : "h-6 px-2"
+                                )}
                                 onClick={() => copyToClipboard(shade.hex, `${palette.name}-${shade.shade}`)}
                               >
                                 {copiedColor === `${palette.name}-${shade.shade}` ? (
@@ -879,7 +961,7 @@ export default function ColorsPage() {
             </TabsContent>
 
             <TabsContent value="gradients" className="space-y-8">
-              <Card className="bg-zinc-900/50 border-zinc-800">
+              <Card className="bg-zinc-900/50 border-zinc-800 mobile-card">
                 <CardHeader>
                   <CardTitle className="text-zinc-100">Advanced Gradient Collection</CardTitle>
                   <CardDescription className="text-zinc-400">
@@ -889,10 +971,13 @@ export default function ColorsPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-8">
-                    {advancedGradients.map((gradientSet) => (
-                      <div key={gradientSet.name} className="space-y-4">
+                    {advancedGradients.map((gradientSet, index) => (
+                      <div key={gradientSet.name} className="space-y-4 mobile-fade-in-up">
                         <div className="space-y-2">
-                          <h3 className="text-xl font-semibold text-zinc-100">{gradientSet.name}</h3>
+                          <h3 className={cn(
+                            "font-semibold text-zinc-100",
+                            isMobile ? "mobile-text-lg" : "text-xl"
+                          )}>{gradientSet.name}</h3>
                           <p className="text-zinc-400">{gradientSet.description}</p>
                           <div className="flex flex-wrap gap-2">
                             {gradientSet.usage.map((use) => (
@@ -903,7 +988,10 @@ export default function ColorsPage() {
                           </div>
                         </div>
 
-                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                        <div className={cn(
+                          "grid gap-4",
+                          isMobile ? "grid-cols-1 gap-3" : "md:grid-cols-2 lg:grid-cols-3 gap-4"
+                        )}>
                           {/* Main gradient */}
                           <div className="space-y-3 group">
                             <div className="flex items-center justify-between">
@@ -911,7 +999,10 @@ export default function ColorsPage() {
                               <Button
                                 variant="ghost"
                                 size="sm"
-                                className="h-6 px-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity text-zinc-400"
+                                className={cn(
+                                  "h-6 px-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity text-zinc-400",
+                                  isMobile ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                                )}
                                 onClick={() => copyToClipboard(gradientSet.css, gradientSet.name)}
                               >
                                 {copiedColor === gradientSet.name ? (
@@ -922,7 +1013,11 @@ export default function ColorsPage() {
                               </Button>
                             </div>
                             <div
-                              className={`h-24 w-full rounded-md ${gradientSet.gradient} relative overflow-hidden border border-zinc-700`}
+                              className={cn(
+                                "w-full rounded-md relative overflow-hidden border border-zinc-700",
+                                isMobile ? "h-20" : "h-24",
+                                gradientSet.gradient
+                              )}
                             >
                               <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity bg-black/10 flex items-center justify-center">
                                 <div className="text-center text-xs text-white font-medium">Click to copy CSS</div>
@@ -939,7 +1034,10 @@ export default function ColorsPage() {
                                 <Button
                                   variant="ghost"
                                   size="sm"
-                                  className="h-6 px-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity text-zinc-400"
+                                  className={cn(
+                                    "h-6 px-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity text-zinc-400",
+                                    isMobile ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                                  )}
                                   onClick={() => copyToClipboard(variant.css, `${gradientSet.name}-${variant.name}`)}
                                 >
                                   {copiedColor === `${gradientSet.name}-${variant.name}` ? (
@@ -950,7 +1048,11 @@ export default function ColorsPage() {
                                 </Button>
                               </div>
                               <div
-                                className={`h-24 w-full rounded-md ${variant.gradient} relative overflow-hidden border border-zinc-700`}
+                                className={cn(
+                                  "w-full rounded-md relative overflow-hidden border border-zinc-700",
+                                  isMobile ? "h-20" : "h-24",
+                                  variant.gradient
+                                )}
                               >
                                 <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity bg-black/10 flex items-center justify-center">
                                   <div className="text-center text-xs text-white font-medium">Click to copy CSS</div>
@@ -968,7 +1070,7 @@ export default function ColorsPage() {
             </TabsContent>
 
             <TabsContent value="templates" className="space-y-8">
-              <Card className="bg-zinc-900/50 border-zinc-800">
+              <Card className="bg-zinc-900/50 border-zinc-800 mobile-card">
                 <CardHeader>
                   <CardTitle className="text-zinc-100">Premium Color Templates</CardTitle>
                   <CardDescription className="text-zinc-400">
@@ -977,11 +1079,14 @@ export default function ColorsPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-8">
-                    {premiumTemplates.map((template) => (
-                      <div key={template.name} className="space-y-4">
+                    {premiumTemplates.map((template, templateIndex) => (
+                      <div key={template.name} className="space-y-4 mobile-fade-in-up">
                         <div className="space-y-3">
                           <div className="flex items-center justify-between">
-                            <h3 className="text-xl font-semibold text-zinc-100">{template.name}</h3>
+                            <h3 className={cn(
+                              "font-semibold text-zinc-100",
+                              isMobile ? "mobile-text-lg" : "text-xl"
+                            )}>{template.name}</h3>
                             <Badge className="bg-zinc-800 text-zinc-300 border-zinc-700">{template.theme}</Badge>
                           </div>
                           <p className="text-zinc-400">{template.description}</p>
@@ -994,9 +1099,21 @@ export default function ColorsPage() {
                           </div>
                         </div>
 
-                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-                          {template.colors.map((color) => (
-                            <ColorSwatchComponent key={color.name} color={color} showDetails={true} />
+                        <div className={cn(
+                          "grid gap-4",
+                          isMobile ? "grid-cols-1 gap-3" : "md:grid-cols-2 lg:grid-cols-5 gap-4"
+                        )}>
+                          {template.colors.map((color, colorIndex) => (
+                            <div
+                              key={color.name}
+                              className={cn(
+                                "mobile-fade-in-up",
+                                isMobile && `animation-delay-${Math.min(colorIndex * 100, 500)}`
+                              )}
+                              style={isMobile ? { animationDelay: `${Math.min(colorIndex * 100, 500)}ms` } : {}}
+                            >
+                              <ColorSwatchComponent color={color} showDetails={true} />
+                            </div>
                           ))}
                         </div>
                       </div>
@@ -1006,6 +1123,19 @@ export default function ColorsPage() {
               </Card>
             </TabsContent>
           </Tabs>
+
+          {/* Mobile quick actions */}
+          {isMobile && (
+            <div className="fixed bottom-4 right-4 z-50 mobile-fade-in-up">
+              <Button
+                size="icon"
+                className="h-12 w-12 rounded-full bg-zinc-800 border border-zinc-700 shadow-lg hover:bg-zinc-700 touch-feedback"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                <Monitor className="h-5 w-5" />
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
