@@ -94,7 +94,7 @@ export default function MinimalistDocsPage() {
     return componentMap[activeComponent] || <ComponentPage name="Unknown Component" />
   }
 
-  // Filter components based on search
+
   const filteredComponents = components.filter(component =>
     component.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     component.category.toLowerCase().includes(searchQuery.toLowerCase())
@@ -105,7 +105,6 @@ export default function MinimalistDocsPage() {
     page.category.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
-  // Scroll to top on component change
   useEffect(() => {
     const main = document.querySelector(".main-content-scroll")
     if (main) {
@@ -113,7 +112,7 @@ export default function MinimalistDocsPage() {
     }
   }, [activeComponent])
 
-  // Close mobile menu when clicking outside
+// Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const sidebar = document.querySelector(".mobile-sidebar")
@@ -134,7 +133,7 @@ export default function MinimalistDocsPage() {
     return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [isMobileMenuOpen])
 
-  // Prevent body scroll when mobile menu is open
+  
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden"
@@ -147,14 +146,14 @@ export default function MinimalistDocsPage() {
     }
   }, [isMobileMenuOpen])
 
-  // Initialize mobile animations
+// Initialize mobile animations
   useEffect(() => {
     if (isMobile) {
       fadeInUp()
     }
   }, [isMobile, fadeInUp])
 
-  // Handle touch gestures for mobile menu
+// Handle touch gestures for mobile menu
   const handleTouchEnd = () => {
     const result = onTouchEnd()
     if (result?.direction === 'left' && isMobileMenuOpen) {
