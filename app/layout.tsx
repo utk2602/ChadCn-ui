@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "ChadCn UI",
   description: "Bold, clean, and custom UI components",
-    generator: 'v0.dev'
+    
 }
 
 export default function RootLayout({

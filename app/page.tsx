@@ -1,8 +1,8 @@
-import Hyperspeed from './Components/hyperspeed/hyperspeed';
+import Hyperspeed from "./Components/hyperspeed/hyperspeed"
 
 export const hyperspeedPresets = {
   one: {
-    distortion: 'turbulentDistortion',
+    distortion: "turbulentDistortion",
     length: 400,
     roadWidth: 10,
     islandWidth: 2,
@@ -34,10 +34,10 @@ export const hyperspeedPresets = {
       leftCars: [0xD856BF, 0x6750A2, 0xC247AC],
       rightCars: [0x03B3C3, 0x0E5EA5, 0x324555],
       sticks: 0x03B3C3,
-    }
+    },
   },
   two: {
-    distortion: 'mountainDistortion',
+    distortion: "mountainDistortion",
     length: 400,
     roadWidth: 9,
     islandWidth: 2,
@@ -69,10 +69,10 @@ export const hyperspeedPresets = {
       leftCars: [0xff102a, 0xEB383E, 0xff102a],
       rightCars: [0xdadafa, 0xBEBAE3, 0x8F97E4],
       sticks: 0xdadafa,
-    }
+    },
   },
   three: {
-    distortion: 'xyDistortion',
+    distortion: "xyDistortion",
     length: 400,
     roadWidth: 9,
     islandWidth: 2,
@@ -104,10 +104,10 @@ export const hyperspeedPresets = {
       leftCars: [0x7D0D1B, 0xA90519, 0xff102a],
       rightCars: [0xF1EECE, 0xE6E2B1, 0xDFD98A],
       sticks: 0xF1EECE,
-    }
+    },
   },
   four: {
-    distortion: 'LongRaceDistortion',
+    distortion: "LongRaceDistortion",
     length: 400,
     roadWidth: 10,
     islandWidth: 5,
@@ -139,10 +139,10 @@ export const hyperspeedPresets = {
       leftCars: [0xFF5F73, 0xE74D60, 0xff102a],
       rightCars: [0xA4E3E6, 0x80D1D4, 0x53C2C6],
       sticks: 0xA4E3E6,
-    }
+    },
   },
   five: {
-    distortion: 'turbulentDistortion',
+    distortion: "turbulentDistortion",
     length: 400,
     roadWidth: 9,
     islandWidth: 2,
@@ -174,10 +174,10 @@ export const hyperspeedPresets = {
       leftCars: [0xDC5B20, 0xDCA320, 0xDC2020],
       rightCars: [0x334BF7, 0xE5E6ED, 0xBFC6F3],
       sticks: 0xC5E8EB,
-    }
+    },
   },
   six: {
-    distortion: 'deepDistortion',
+    distortion: "deepDistortion",
     length: 400,
     roadWidth: 18,
     islandWidth: 2,
@@ -209,14 +209,26 @@ export const hyperspeedPresets = {
       leftCars: [0xFF322F, 0xA33010, 0xA81508],
       rightCars: [0xFDFDF0, 0xF3DEA0, 0xE2BB88],
       sticks: 0xFDFDF0,
-    }
-  }
-};
+    },
+  },
+}
 
 export default function Home() {
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-screen relative">
       <Hyperspeed effectOptions={hyperspeedPresets.one} />
+      
+      {/* Text overlay */}
+      <div className="absolute inset-0 flex items-start justify-center pt-20 pointer-events-none">
+        <div className="text-center">
+          <h1 className="text-7xl md:text-9xl font-black text-white mb-6 tracking-wider font-mono animate-pulse">
+            ChadCn-ui
+          </h1>
+          <p className="text-3xl md:text-4xl text-white/90 font-bold tracking-widest animate-bounce">
+            upgrading soon
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

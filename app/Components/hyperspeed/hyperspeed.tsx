@@ -94,7 +94,7 @@ const defaultOptions: HyperspeedOptions = {
   colors: {
     roadColor: 0x080808,
     islandColor: 0x0a0a0a,
-    background: 0x000000,
+    background: 0xffffff,
     shoulderLines: 0xffffff,
     brokenLines: 0xffffff,
     leftCars: [0xd856bf, 0x6750a2, 0xc247ac],
@@ -1030,7 +1030,7 @@ class App {
     this.camera.position.x = 0;
 
     this.scene = new THREE.Scene();
-    this.scene.background = null;
+    this.scene.background = new THREE.Color(0x000000);
 
     const fog = new THREE.Fog(
       options.colors.background,
