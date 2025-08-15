@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 import { Input } from "@/components/ui/input"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useIsMobile, useTouchGestures, useMobileAnimations } from "@/components/ui/use-mobile"
+import { useCompleteTheme, useIsDarkTheme } from "@/components/ui/use-theme"
 import { useState, useEffect } from "react"
 
 export default function Header() {
@@ -19,6 +20,8 @@ export default function Header() {
   const { isVisible, fadeInUp, fadeOutDown } = useMobileAnimations()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const themeData = useCompleteTheme()
+  const isDark = useIsDarkTheme()
 
   // Auto-close mobile menu on route change
   useEffect(() => {
@@ -68,12 +71,20 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-black text-white mobile-transition">
+    <header className={cn(
+      "sticky top-0 z-50 w-full border-b mobile-transition",
+      isDark 
+        ? "bg-black text-white border-zinc-800" 
+        : "bg-white text-zinc-900 border-zinc-200"
+    )}>
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo and Navigation */}
         <div className="flex items-center gap-4 md:gap-8">
           <Link href="/" className="flex items-center space-x-2 touch-feedback">
-            <Component className="h-8 w-8 text-white" />
+            <Component className={cn(
+              "h-8 w-8",
+              isDark ? "text-white" : "text-zinc-900"
+            )} />
             <span className={cn(
               "font-bold text-xl transition-all duration-300",
               isMobile ? "text-lg" : "text-xl",
@@ -88,8 +99,10 @@ export default function Header() {
             <Link
               href="/docs"
               className={cn(
-                "transition-colors hover:text-white/80 mobile-nav-item",
-                pathname.startsWith("/docs") ? "text-white" : "text-white/60",
+                "transition-colors hover:opacity-80 mobile-nav-item",
+                pathname.startsWith("/docs") 
+                  ? (isDark ? "text-white" : "text-zinc-900")
+                  : (isDark ? "text-white/60" : "text-zinc-600"),
               )}
             >
               Docs
@@ -97,8 +110,10 @@ export default function Header() {
             <Link
               href="/Components"
               className={cn(
-                "transition-colors hover:text-white/80 mobile-nav-item",
-                pathname.startsWith("/Components") ? "text-white" : "text-white/60",
+                "transition-colors hover:opacity-80 mobile-nav-item",
+                pathname.startsWith("/Components") 
+                  ? (isDark ? "text-white" : "text-zinc-900")
+                  : (isDark ? "text-white/60" : "text-zinc-600"),
               )}
             >
               Components 
@@ -106,8 +121,10 @@ export default function Header() {
             <Link
               href="/colors"
               className={cn(
-                "transition-colors hover:text-white/80 mobile-nav-item",
-                pathname.startsWith("/colors") ? "text-white" : "text-white/60",
+                "transition-colors hover:opacity-80 mobile-nav-item",
+                pathname.startsWith("/colors") 
+                  ? (isDark ? "text-white" : "text-zinc-900")
+                  : (isDark ? "text-white/60" : "text-zinc-600"),
               )}
             >
               Colors
@@ -122,7 +139,12 @@ export default function Header() {
             variant="ghost"
             size="icon"
             onClick={toggleMobileMenu}
-            className="md:hidden text-white/80 hover:text-white touch-feedback"
+            className={cn(
+              "md:hidden touch-feedback",
+              isDark 
+                ? "text-white/80 hover:text-white" 
+                : "text-zinc-600 hover:text-zinc-900"
+            )}
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -138,7 +160,12 @@ export default function Header() {
                 variant="ghost"
                 size="icon"
                 onClick={toggleSearch}
-                className="text-white/80 hover:text-white touch-feedback"
+                className={cn(
+                  "touch-feedback",
+                  isDark 
+                    ? "text-white/80 hover:text-white" 
+                    : "text-zinc-600 hover:text-zinc-900"
+                )}
                 aria-label="Open search"
               >
                 <Search className="h-5 w-5" />
@@ -148,25 +175,39 @@ export default function Header() {
                 "relative w-full transition-all duration-300",
                 isMobile && isSearchOpen ? "opacity-100 scale-100" : "opacity-100 scale-100"
               )}>
-                <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 text-white/60 h-4 w-4" />
+                <Search className={cn(
+                  "absolute left-2.5 top-1/2 transform -translate-y-1/2 h-4 w-4",
+                  isDark ? "text-white/60" : "text-zinc-400"
+                )} />
                 <Input
                   type="search"
                   placeholder={isMobile ? "Search..." : "Search documentation..."}
                   className={cn(
-                    "w-full pl-8 bg-white/10 border-white/10 text-white placeholder:text-white/60 focus-visible:ring-white/30",
+                    "w-full pl-8 border placeholder:text-zinc-500 focus-visible:ring-zinc-300",
+                    isDark 
+                      ? "bg-white/10 border-white/10 text-white placeholder:text-white/60 focus-visible:ring-white/30" 
+                      : "bg-white border-zinc-200 text-zinc-900 placeholder:text-zinc-500 focus-visible:ring-zinc-300",
                     isMobile ? "text-sm h-10" : "w-64"
                   )}
                   autoFocus={isMobile && isSearchOpen}
                 />
                 {!isMobile && (
-                  <kbd className="absolute right-2.5 top-1/2 transform -translate-y-1/2 text-white/40 pointer-events-none">⌘K</kbd>
+                  <kbd className={cn(
+                    "absolute right-2.5 top-1/2 transform -translate-y-1/2 pointer-events-none",
+                    isDark ? "text-white/40" : "text-zinc-400"
+                  )}>⌘K</kbd>
                 )}
                 {isMobile && isSearchOpen && (
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={toggleSearch}
-                    className="absolute right-1 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white touch-feedback"
+                    className={cn(
+                      "absolute right-1 top-1/2 transform -translate-y-1/2 touch-feedback",
+                      isDark 
+                        ? "text-white/60 hover:text-white" 
+                        : "text-zinc-400 hover:text-zinc-900"
+                    )}
                     aria-label="Close search"
                   >
                     <X size={16} />
@@ -181,7 +222,12 @@ export default function Header() {
             variant="ghost" 
             size="sm" 
             asChild 
-            className="text-white/80 hover:text-white touch-feedback"
+            className={cn(
+              "touch-feedback",
+              isDark 
+                ? "text-white/80 hover:text-white" 
+                : "text-zinc-600 hover:text-zinc-900"
+            )}
           >
             <Link
               href="https://github.com/utk2602/ChadCn-ui"
@@ -204,7 +250,12 @@ export default function Header() {
             variant="ghost" 
             size="icon" 
             asChild 
-            className="text-white/80 hover:text-white touch-feedback"
+            className={cn(
+              "touch-feedback",
+              isDark 
+                ? "text-white/80 hover:text-white" 
+                : "text-zinc-600 hover:text-zinc-900"
+            )}
           >
             <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
               <Twitter className="h-5 w-5" />
@@ -218,7 +269,12 @@ export default function Header() {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="text-white/80 hover:text-white touch-feedback"
+                className={cn(
+                  "touch-feedback",
+                  isDark 
+                    ? "text-white/80 hover:text-white" 
+                    : "text-zinc-600 hover:text-zinc-900"
+                )}
               >
                 {theme === "light" ? (
                   <Sun className="h-5 w-5" />
@@ -230,24 +286,44 @@ export default function Header() {
                 <span className="sr-only">Toggle theme</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="bg-black border-white/10">
+            <DropdownMenuContent align="end" className={cn(
+              "border",
+              isDark 
+                ? "bg-black border-white/10" 
+                : "bg-white border-zinc-200"
+            )}>
               <DropdownMenuItem
                 onClick={() => setTheme("light")}
-                className="text-white/80 hover:text-white focus:text-white hover:bg-white/10 focus:bg-white/10 mobile-nav-item"
+                className={cn(
+                  "mobile-nav-item",
+                  isDark 
+                    ? "text-white/80 hover:text-white focus:text-white hover:bg-white/10 focus:bg-white/10" 
+                    : "text-zinc-700 hover:text-zinc-900 focus:text-zinc-900 hover:bg-zinc-100 focus:bg-zinc-100"
+                )}
               >
                 <Sun className="h-4 w-4 mr-2" />
                 Light
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => setTheme("dark")}
-                className="text-white/80 hover:text-white focus:text-white hover:bg-white/10 focus:bg-white/10 mobile-nav-item"
+                className={cn(
+                  "mobile-nav-item",
+                  isDark 
+                    ? "text-white/80 hover:text-white focus:text-white hover:bg-white/10 focus:bg-white/10" 
+                    : "text-zinc-700 hover:text-zinc-900 focus:text-zinc-900 hover:bg-zinc-100 focus:bg-zinc-100"
+                )}
               >
                 <Moon className="h-4 w-4 mr-2" />
                 Dark
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => setTheme("system")}
-                className="text-white/80 hover:text-white focus:text-white hover:bg-white/10 focus:bg-white/10 mobile-nav-item"
+                className={cn(
+                  "mobile-nav-item",
+                  isDark 
+                    ? "text-white/80 hover:text-white focus:text-white hover:bg-white/10 focus:bg-white/10" 
+                    : "text-zinc-700 hover:text-zinc-900 focus:text-zinc-900 hover:bg-zinc-100 focus:bg-zinc-100"
+                )}
               >
                 <Monitor className="h-4 w-4 mr-2" />
                 System
@@ -260,7 +336,10 @@ export default function Header() {
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
         <div 
-          className="md:hidden fixed inset-0 z-40 bg-black/95 mobile-backdrop"
+          className={cn(
+            "md:hidden fixed inset-0 z-40 mobile-backdrop",
+            isDark ? "bg-black/95" : "bg-white/95"
+          )}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -269,7 +348,12 @@ export default function Header() {
             {/* Close button */}
             <button
               onClick={toggleMobileMenu}
-              className="absolute top-4 right-4 p-2 rounded-lg bg-white/10 text-white touch-feedback"
+              className={cn(
+                "absolute top-4 right-4 p-2 rounded-lg touch-feedback",
+                isDark 
+                  ? "bg-white/10 text-white" 
+                  : "bg-zinc-100 text-zinc-900"
+              )}
               aria-label="Close menu"
             >
               <X size={24} />
@@ -281,7 +365,9 @@ export default function Header() {
                 href="/docs"
                 className={cn(
                   "mobile-nav-item text-lg py-4 px-6 rounded-xl transition-all duration-200",
-                  pathname.startsWith("/docs") ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
+                  pathname.startsWith("/docs") 
+                    ? (isDark ? "bg-white/20 text-white" : "bg-zinc-100 text-zinc-900")
+                    : (isDark ? "text-white/60 hover:text-white hover:bg-white/10" : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50")
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -291,7 +377,9 @@ export default function Header() {
                 href="/Components"
                 className={cn(
                   "mobile-nav-item text-lg py-4 px-6 rounded-xl transition-all duration-200",
-                  pathname.startsWith("/Components") ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
+                  pathname.startsWith("/Components") 
+                    ? (isDark ? "bg-white/20 text-white" : "bg-zinc-100 text-zinc-900")
+                    : (isDark ? "text-white/60 hover:text-white hover:bg-white/10" : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50")
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -301,7 +389,9 @@ export default function Header() {
                 href="/colors"
                 className={cn(
                   "mobile-nav-item text-lg py-4 px-6 rounded-xl transition-all duration-200",
-                  pathname.startsWith("/colors") ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
+                  pathname.startsWith("/colors") 
+                    ? (isDark ? "bg-white/20 text-white" : "bg-zinc-100 text-zinc-900")
+                    : (isDark ? "text-white/60 hover:text-white hover:bg-white/10" : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50")
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -316,7 +406,12 @@ export default function Header() {
                   variant="ghost"
                   size="sm"
                   asChild
-                  className="text-white/80 hover:text-white touch-feedback"
+                  className={cn(
+                    "touch-feedback",
+                    isDark 
+                      ? "text-white/80 hover:text-white" 
+                      : "text-zinc-600 hover:text-zinc-900"
+                  )}
                 >
                   <Link
                     href="https://github.com/utk2602/ChadCn-ui"
@@ -332,7 +427,12 @@ export default function Header() {
                   variant="ghost"
                   size="sm"
                   asChild
-                  className="text-white/80 hover:text-white touch-feedback"
+                  className={cn(
+                    "touch-feedback",
+                    isDark 
+                      ? "text-white/80 hover:text-white" 
+                      : "text-zinc-600 hover:text-zinc-900"
+                  )}
                 >
                   <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
                     <Twitter className="h-5 w-5" />
@@ -343,7 +443,10 @@ export default function Header() {
             </div>
 
             {/* Swipe indicator */}
-            <div className="swipe-indicator">
+            <div className={cn(
+              "swipe-indicator text-center text-sm",
+              isDark ? "text-white/60" : "text-zinc-500"
+            )}>
               <span>Swipe left to close</span>
             </div>
           </div>

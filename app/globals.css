@@ -5,82 +5,47 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-
+    --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-
+    --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 9%;
-    --sidebar-primary: 0 0% 9%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 96.1%;
-    --sidebar-accent-foreground: 0 0% 9%;
-    --sidebar-border: 0 0% 89.8%;
-    --sidebar-ring: 0 0% 3.9%;
   }
 
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-
-    --sidebar-background: 0 0% 3.9%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 0 0% 98%;
-    --sidebar-primary-foreground: 0 0% 9%;
-    --sidebar-accent: 0 0% 14.9%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 14.9%;
-    --sidebar-ring: 0 0% 83.1%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
   }
 }
 
@@ -88,108 +53,96 @@
   * {
     @apply border-border;
   }
-
+  
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    font-family: sans-serif;
-    /* Mobile-specific body styles */
     -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
     user-select: none;
     touch-action: manipulation;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Enable text selection for content areas */
+  /* Theme-aware body styles */
+  body.light {
+    @apply bg-zinc-50 text-zinc-900;
+  }
+
+  body.dark {
+    @apply bg-zinc-950 text-zinc-100;
+  }
+
+  /* Content that should be selectable */
   .content-selectable {
-    -webkit-user-select: text;
     user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-bold tracking-tight;
-    
-  }
-
-  h1 {
-    @apply text-4xl md:text-5xl;
-  }
-
-  h2 {
-    @apply text-2xl md:text-3xl;
-  }
-
-  h3 {
-    @apply text-xl md:text-2xl;
-  }
-
-  pre {
-    @apply rounded-lg p-4 overflow-x-auto;
-  }
-
-  code {
-    @apply font-mono text-sm;
-  }
-
-  a {
-    @apply transition-colors duration-200;
-  }
-
-  /* Mobile-specific button and interactive element styles */
-  button, [role="button"] {
-    @apply transition-all duration-200;
-    min-height: 44px; /* iOS recommended touch target size */
+  /* Minimum touch target sizes */
+  button, input, select, textarea {
+    min-height: 44px;
     min-width: 44px;
   }
 
-  /* Mobile-friendly input styles */
-  input, textarea, select {
-    @apply transition-all duration-200;
-    font-size: 16px; /* Prevents zoom on iOS */
+  /* Mobile-specific base styles */
+  @media (max-width: 768px) {
+    body {
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
   }
 }
 
 @layer components {
-  .gradient-text {
-    @apply bg-gradient-to-r from-gray-900 to-black dark:from-white dark:to-gray-200 bg-clip-text text-transparent;
-  }
-
-  .card-hover {
-    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
-  }
-
-  .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20;
-  }
-
-  /* Mobile-specific component styles */
+  /* Mobile card component */
   .mobile-card {
-    @apply rounded-xl p-4 md:p-6 shadow-lg transition-all duration-300;
-    @apply hover:shadow-xl hover:-translate-y-1;
-    @apply active:scale-95 active:shadow-md;
+    @apply rounded-xl border transition-all duration-300;
+    @apply hover:shadow-lg active:scale-[0.98];
   }
 
+  /* Mobile button component */
   .mobile-button {
-    @apply px-4 py-3 rounded-lg font-medium transition-all duration-200;
-    @apply active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2;
-    min-height: 48px;
+    @apply min-h-[44px] min-w-[44px] rounded-lg;
+    @apply transition-all duration-200;
+    @apply active:scale-95 focus:outline-none;
+    @apply touch-manipulation;
   }
 
+  /* Mobile navigation item */
   .mobile-nav-item {
-    @apply px-4 py-3 rounded-lg transition-all duration-200;
-    @apply active:bg-white/20 active:scale-95;
+    @apply transition-all duration-200;
+    @apply active:scale-95 focus:outline-none;
+    @apply touch-manipulation;
   }
 
-  /* Sidebar scrolling styles */
+  /* Mobile backdrop */
+  .mobile-backdrop {
+    @apply backdrop-blur-md;
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Mobile transitions */
+  .mobile-transition {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  /* Touch feedback */
+  .touch-feedback {
+    @apply transition-all duration-150;
+    @apply active:scale-95;
+    @apply touch-manipulation;
+  }
+
+  /* Swipe indicator */
+  .swipe-indicator {
+    @apply text-center text-sm opacity-60;
+    @apply animate-pulse;
+  }
+
+  /* Sidebar scroll styles */
   .sidebar-scroll {
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
   }
 
   .sidebar-scroll::-webkit-scrollbar {
@@ -201,23 +154,24 @@
   }
 
   .sidebar-scroll::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(156, 163, 175, 0.5);
     border-radius: 3px;
-    transition: background-color 0.2s ease;
   }
 
   .sidebar-scroll::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(156, 163, 175, 0.7);
   }
 
-  /* Mobile sidebar specific styles */
-  .mobile-sidebar .sidebar-scroll {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .mobile-sidebar .sidebar-scroll::-webkit-scrollbar {
-    display: none;
+  /* Hide scrollbar on mobile */
+  @media (max-width: 768px) {
+    .mobile-sidebar .sidebar-scroll {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    
+    .mobile-sidebar .sidebar-scroll::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   /* Sidebar content fade effect */
@@ -225,32 +179,12 @@
     mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
   }
-}
 
-@layer utilities {
-  /* Custom scrollbar utilities */
+  /* Utility scrollbar classes */
   .scrollbar-thin {
     scrollbar-width: thin;
   }
 
-  .scrollbar-thin::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .scrollbar-thin::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .scrollbar-thin::-webkit-scrollbar-thumb {
-    background-color: rgba(156, 163, 175, 0.5);
-    border-radius: 3px;
-  }
-
-  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(156, 163, 175, 0.7);
-  }
-
-  /* Hide scrollbar but keep functionality */
   .scrollbar-hide {
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -261,219 +195,244 @@
   }
 }
 
-/* Mobile-specific animations */
-@keyframes slideInFromBottom {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
+@layer utilities {
+  /* Mobile text utilities */
+  .mobile-text-xs { @apply text-xs; }
+  .mobile-text-sm { @apply text-sm; }
+  .mobile-text-base { @apply text-base; }
+  .mobile-text-lg { @apply text-lg; }
+  .mobile-text-xl { @apply text-xl; }
+
+  /* Mobile spacing utilities */
+  .mobile-p-2 { @apply p-2; }
+  .mobile-p-3 { @apply p-3; }
+  .mobile-p-4 { @apply p-4; }
+  .mobile-p-6 { @apply p-6; }
+  .mobile-p-8 { @apply p-8; }
+
+  .mobile-m-2 { @apply m-2; }
+  .mobile-m-4 { @apply m-4; }
+  .mobile-m-6 { @apply m-6; }
+  .mobile-m-8 { @apply m-8; }
+
+  /* Mobile animation utilities */
+  .mobile-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+
+  .mobile-fade-out-down {
+    animation: fadeOutDown 0.6s ease-out forwards;
+  }
+
+  .mobile-slide-in-left {
+    animation: slideInLeft 0.5s ease-out forwards;
+  }
+
+  .mobile-slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+  }
+
+  .mobile-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+
+  .mobile-bounce-in {
+    animation: bounceIn 0.6s ease-out forwards;
+  }
+
+  .mobile-carousel-enter {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .mobile-carousel-scale {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  /* Animation delays for staggered animations */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+
+  /* Theme-aware text utilities */
+  .text-theme-primary { @apply text-primary; }
+  .text-theme-secondary { @apply text-secondary; }
+  .text-theme-muted { @apply text-muted-foreground; }
+  .text-theme-accent { @apply text-accent-foreground; }
+
+  /* Theme-aware background utilities */
+  .bg-theme-primary { @apply bg-primary; }
+  .bg-theme-secondary { @apply bg-secondary; }
+  .bg-theme-muted { @apply bg-muted; }
+  .bg-theme-accent { @apply bg-accent; }
+
+  /* Theme-aware border utilities */
+  .border-theme-primary { @apply border-primary; }
+  .border-theme-secondary { @apply border-secondary; }
+  .border-theme-muted { @apply border-muted; }
+  .border-theme-accent { @apply border-accent; }
+
+  /* Responsive text wrapping */
+  .text-wrap-balance {
+    text-wrap: balance;
+  }
+
+  .text-wrap-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Better text overflow handling */
+  .text-overflow-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .text-overflow-clip {
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+
+  /* Responsive grid utilities */
+  .grid-responsive {
+    @apply grid;
+    @apply grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5;
+  }
+
+  .grid-responsive-compact {
+    @apply grid;
+    @apply grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8;
   }
 }
 
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
+/* Keyframe animations */
 @keyframes fadeInUp {
   from {
-    transform: translateY(30px);
     opacity: 0;
+    transform: translateY(30px);
   }
   to {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
 @keyframes scaleIn {
   from {
-    transform: scale(0.9);
     opacity: 0;
+    transform: scale(0.9);
   }
   to {
-    transform: scale(1);
     opacity: 1;
+    transform: scale(1);
   }
 }
 
 @keyframes bounceIn {
   0% {
-    transform: scale(0.3);
     opacity: 0;
+    transform: scale(0.3);
   }
   50% {
+    opacity: 1;
     transform: scale(1.05);
   }
   70% {
     transform: scale(0.9);
   }
   100% {
-    transform: scale(1);
     opacity: 1;
+    transform: scale(1);
   }
 }
 
-/* Mobile animation classes */
-.mobile-slide-in-bottom {
-  animation: slideInFromBottom 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+/* Theme transition animations */
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-.mobile-slide-in-right {
-  animation: slideInFromRight 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.mobile-slide-in-left {
-  animation: slideInFromLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.mobile-fade-in-up {
-  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.mobile-scale-in {
-  animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.mobile-bounce-in {
-  animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-/* Touch feedback animations */
-.touch-feedback {
-  @apply transition-transform duration-75;
-}
-
-.touch-feedback:active {
-  transform: scale(0.95);
-}
-
-/* Mobile-specific transitions */
-.mobile-transition {
-  @apply transition-all duration-300 ease-out;
-}
-
-.mobile-transition-fast {
-  @apply transition-all duration-150 ease-out;
-}
-
-.mobile-transition-slow {
-  @apply transition-all duration-500 ease-out;
-}
-
-/* Mobile gesture indicators */
-.swipe-indicator {
-  @apply absolute bottom-4 left-1/2 transform -translate-x-1/2;
-  @apply text-white/60 text-sm animate-pulse;
-}
-
-/* Mobile scroll snap */
-.mobile-snap-container {
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-}
-
-.mobile-snap-item {
-  scroll-snap-align: start;
-}
-
-/* Mobile backdrop blur for modals */
-.mobile-backdrop {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.hide-scrollbar {
-  scrollbar-width: none;         
-  -ms-overflow-style: none;       
-}
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;                 /* Safari and Chrome */
-}
-/* Example for One Dark Pro */
-.shiki {
-  background-color: #1e1e1e;
-  color: #d4d4d4;
-  font-family: 'Fira Code', monospace;
-  line-height: 1.5;
-}
-
-.shiki span {
-  font-style: normal;
-  font-weight: normal;
-}
-
-/* Mobile-specific media queries */
+/* Responsive breakpoint utilities */
 @media (max-width: 640px) {
-  .mobile-text-xs {
-    font-size: 0.75rem;
-    line-height: 1rem;
+  .xs\:text-xs { font-size: 0.75rem; }
+  .xs\:text-sm { font-size: 0.875rem; }
+  .xs\:text-base { font-size: 1rem; }
+  .xs\:text-lg { font-size: 1.125rem; }
+  .xs\:text-xl { font-size: 1.25rem; }
+}
+
+@media (max-width: 768px) {
+  .sm\:text-xs { font-size: 0.75rem; }
+  .sm\:text-sm { font-size: 0.875rem; }
+  .sm\:text-base { font-size: 1rem; }
+  .sm\:text-lg { font-size: 1.125rem; }
+  .sm\:text-xl { font-size: 1.25rem; }
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 768px) {
+  .mobile-container {
+    @apply px-4 py-6;
   }
   
-  .mobile-text-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+  .mobile-card {
+    @apply rounded-lg p-3;
   }
   
-  .mobile-text-base {
-    font-size: 1rem;
-    line-height: 1.5rem;
+  .mobile-button {
+    @apply min-h-[48px] px-4 py-2;
   }
   
-  .mobile-text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+  .mobile-text {
+    @apply text-sm leading-relaxed;
   }
   
-  .mobile-text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+  .mobile-heading {
+    @apply text-xl font-semibold;
   }
 }
 
-/* Mobile-specific spacing utilities */
-@media (max-width: 640px) {
-  .mobile-p-2 {
-    padding: 0.5rem;
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
   }
   
-  .mobile-p-4 {
-    padding: 1rem;
-  }
-  
-  .mobile-p-6 {
-    padding: 1.5rem;
-  }
-  
-  .mobile-m-2 {
-    margin: 0.5rem;
-  }
-  
-  .mobile-m-4 {
-    margin: 1rem;
-  }
-  
-  .mobile-m-6 {
-    margin: 1.5rem;
+  .print-break {
+    page-break-before: always;
   }
 }

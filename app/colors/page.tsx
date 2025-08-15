@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Copy, Check, Palette, Eye, Info, Zap, Smartphone, Monitor, Sparkles } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useIsMobile, useMobileAnimations, useTouchGestures } from "@/components/ui/use-mobile"
+import { useCompleteTheme, useThemeColors, useIsDarkTheme } from "@/components/ui/use-theme"
 import { cn } from "@/lib/utils"
 
 interface ColorSwatch {
@@ -62,6 +63,9 @@ export default function ColorsPage() {
   const { isMobile, screenSize } = useIsMobile()
   const { fadeInUp } = useMobileAnimations()
   const { onTouchStart, onTouchMove, onTouchEnd } = useTouchGestures()
+  const theme = useCompleteTheme()
+  const colors = useThemeColors()
+  const isDark = useIsDarkTheme()
 
   // Initialize mobile animations
   useEffect(() => {
@@ -710,24 +714,30 @@ export default function ColorsPage() {
 
   const ColorSwatchComponent = ({ color, showDetails = false }: { color: ColorSwatch; showDetails?: boolean }) => (
     <Card className={cn(
-      "group hover:shadow-lg transition-all duration-300 bg-zinc-900/50 border-zinc-800",
-      "mobile-card mobile-fade-in-up touch-feedback"
+      "group hover:shadow-lg transition-all duration-300 mobile-card mobile-fade-in-up touch-feedback",
+      isDark 
+        ? "bg-zinc-900/50 border-zinc-800" 
+        : "bg-white/50 border-zinc-200 shadow-sm"
     )}>
       <CardContent className={cn(
         "p-4",
         isMobile ? "p-3" : "p-4"
       )}>
         <div className="space-y-3">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             <h3 className={cn(
-              "font-medium text-zinc-100",
+              "font-medium break-words",
+              isDark ? "text-zinc-100" : "text-zinc-900",
               isMobile ? "mobile-text-base" : "text-base"
             )}>{color.name}</h3>
             <Button
               variant="ghost"
               size="sm"
               className={cn(
-                "h-6 px-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity text-zinc-400 hover:text-zinc-100",
+                "h-6 px-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0",
+                isDark 
+                  ? "text-zinc-400 hover:text-zinc-100" 
+                  : "text-zinc-500 hover:text-zinc-900",
                 isMobile ? "h-8 px-3 opacity-100" : "opacity-0 group-hover:opacity-100"
               )}
               onClick={() => copyToClipboard(color.hex, color.name)}
@@ -737,50 +747,69 @@ export default function ColorsPage() {
           </div>
 
           <div className={cn(
-            "relative overflow-hidden border border-zinc-700 rounded-md",
+            "relative overflow-hidden border rounded-md",
             isMobile ? "h-16" : "h-20",
             "w-full",
-            color.className
+            color.className,
+            isDark ? "border-zinc-700" : "border-zinc-300"
           )}>
             <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity bg-black/20 flex items-center justify-center">
-              <div className="text-center text-xs text-white font-medium space-y-1">
-                <div>{color.hex}</div>
-                <div className="text-xs opacity-75">{color.hsl}</div>
+              <div className="text-center text-xs text-white font-medium space-y-1 px-2">
+                <div className="break-all">{color.hex}</div>
+                <div className="text-xs opacity-75 break-all">{color.hsl}</div>
               </div>
             </div>
           </div>
 
           <div className="space-y-2 text-xs">
             <div className={cn(
-              "grid gap-2 text-zinc-400",
+              "grid gap-2",
               isMobile ? "grid-cols-1" : "grid-cols-2"
             )}>
-              <div>
-                <span className="text-zinc-500">HEX:</span>
-                <span className="font-mono ml-1 text-zinc-300">{color.hex}</span>
+              <div className="break-all">
+                <span className={isDark ? "text-zinc-500" : "text-zinc-600"}>HEX:</span>
+                <span className={cn(
+                  "font-mono ml-1 break-all",
+                  isDark ? "text-zinc-300" : "text-zinc-700"
+                )}>{color.hex}</span>
               </div>
-              <div>
-                <span className="text-zinc-500">RGB:</span>
-                <span className="font-mono ml-1 text-zinc-300">{color.rgb}</span>
+              <div className="break-all">
+                <span className={isDark ? "text-zinc-500" : "text-zinc-600"}>RGB:</span>
+                <span className={cn(
+                  "font-mono ml-1 break-all",
+                  isDark ? "text-zinc-300" : "text-zinc-700"
+                )}>{color.rgb}</span>
               </div>
             </div>
-            <div className="text-zinc-500">
+            <div className={cn("break-all", isDark ? "text-zinc-500" : "text-zinc-600")}>
               <span>HSL:</span>
-              <span className="font-mono ml-1 text-zinc-300">{color.hsl}</span>
+              <span className={cn(
+                "font-mono ml-1 break-all",
+                isDark ? "text-zinc-300" : "text-zinc-700"
+              )}>{color.hsl}</span>
             </div>
 
             {showDetails && (
-              <div className="space-y-2 pt-2 border-t border-zinc-800">
+              <div className={cn(
+                "space-y-2 pt-2 border-t",
+                isDark ? "border-zinc-800" : "border-zinc-200"
+              )}>
                 {color.usage && (
                   <div>
-                    <span className="text-zinc-500 text-xs">Usage:</span>
-                    <p className="text-zinc-400 text-xs mt-1">{color.usage}</p>
+                    <span className={isDark ? "text-zinc-500" : "text-zinc-600"}>Usage:</span>
+                    <p className={cn(
+                      "text-xs mt-1 break-words",
+                      isDark ? "text-zinc-400" : "text-zinc-700"
+                    )}>{color.usage}</p>
                   </div>
                 )}
                 {color.accessibility && (
                   <div>
-                    <span className="text-zinc-500 text-xs">Accessibility:</span>
-                    <p className="text-zinc-400 text-xs mt-1">{color.accessibility}</p>
+                    <span className={isDark ? "text-zinc-500" : "text-zinc-600"}>Accessibility:</span>
+                    <p className={cn(
+                      "text-xs mt-1 break-words",
+                      isDark ? "text-zinc-400" : "text-zinc-700"
+                    )}>{color.accessibility}</p>
                   </div>
                 )}
               </div>
@@ -792,7 +821,10 @@ export default function ColorsPage() {
   )
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <div className={cn(
+      "min-h-screen transition-colors duration-300",
+      isDark ? "bg-zinc-950 text-zinc-100" : "bg-zinc-50 text-zinc-900"
+    )}>
       <div className={cn(
         "flex-1 container py-10 px-4",
         isMobile ? "py-6 px-3" : "py-10 px-4"
@@ -803,21 +835,26 @@ export default function ColorsPage() {
             isMobile ? "space-y-4" : "space-y-6"
           )}>
             <h1 className={cn(
-              "font-bold tracking-tight bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-100 bg-clip-text text-transparent",
+              "font-bold tracking-tight bg-clip-text text-transparent",
+              isDark 
+                ? "bg-gradient-to-r from-zinc-100 via-zinc-300 to-zinc-100" 
+                : "bg-gradient-to-r from-zinc-900 via-zinc-600 to-zinc-900",
               isMobile ? "text-3xl" : "text-5xl"
             )}>
               Advanced Color System
             </h1>
             <p className={cn(
-              "text-zinc-400 max-w-3xl mx-auto",
+              "max-w-3xl mx-auto",
+              isDark ? "text-zinc-400" : "text-zinc-600",
               isMobile ? "mobile-text-base px-2" : "text-xl"
             )}>
               Professional-grade color palette system with detailed specifications, accessibility guidelines, and
               harmonious templates for modern design systems.
             </p>
             <div className={cn(
-              "flex items-center justify-center gap-4 text-sm text-zinc-500",
-              isMobile ? "flex-col gap-2" : "flex-row gap-4"
+              "flex items-center justify-center gap-4 text-sm",
+              isMobile ? "flex-col gap-2" : "flex-row gap-4",
+              isDark ? "text-zinc-500" : "text-zinc-500"
             )}>
               <div className="flex items-center gap-2">
                 <Palette className="h-4 w-4" />
@@ -835,7 +872,12 @@ export default function ColorsPage() {
 
             {/* Mobile-specific features indicator */}
             {isMobile && (
-              <div className="flex items-center justify-center gap-2 text-xs text-zinc-500 bg-zinc-900/50 rounded-full px-4 py-2 border border-zinc-800">
+              <div className={cn(
+                "flex items-center justify-center gap-2 text-xs rounded-full px-4 py-2 border",
+                isDark 
+                  ? "text-zinc-500 bg-zinc-900/50 border-zinc-800" 
+                  : "text-zinc-600 bg-white/50 border-zinc-200"
+              )}>
                 <Smartphone className="h-3 w-3" />
                 <span>Mobile Optimized</span>
                 <Sparkles className="h-3 w-3" />
@@ -845,7 +887,10 @@ export default function ColorsPage() {
 
           <Tabs defaultValue="system" className="w-full">
             <TabsList className={cn(
-              "w-full justify-start mb-8 bg-zinc-900 border border-zinc-800",
+              "w-full justify-start mb-8",
+              isDark 
+                ? "bg-zinc-900 border-zinc-800" 
+                : "bg-white border-zinc-200",
               isMobile ? "mb-6 overflow-x-auto" : "mb-8"
             )}>
               <TabsTrigger value="system" className="data-[state=active]:bg-zinc-800 mobile-nav-item">
@@ -863,13 +908,19 @@ export default function ColorsPage() {
             </TabsList>
 
             <TabsContent value="system" className="space-y-8">
-              <Card className="bg-zinc-900/50 border-zinc-800 mobile-card">
+              <Card className={cn(
+                "mobile-card",
+                isDark ? "bg-zinc-900/50 border-zinc-800" : "bg-white/50 border-zinc-200"
+              )}>
                 <CardHeader>
-                  <CardTitle className="text-zinc-100 flex items-center gap-2">
+                  <CardTitle className={cn(
+                    "flex items-center gap-2",
+                    isDark ? "text-zinc-100" : "text-zinc-900"
+                  )}>
                     <Info className="h-5 w-5" />
                     System Color Palette
                   </CardTitle>
-                  <CardDescription className="text-zinc-400">
+                  <CardDescription className={isDark ? "text-zinc-400" : "text-zinc-600"}>
                     Core colors used throughout the design system with detailed accessibility information and usage
                     guidelines.
                   </CardDescription>
@@ -918,7 +969,7 @@ export default function ColorsPage() {
                   <CardContent>
                     <div className={cn(
                       "grid gap-3",
-                      isMobile ? "grid-cols-3 gap-2" : "grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-11 gap-3"
+                      isMobile ? "grid-cols-2 gap-2" : "grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-11 gap-3"
                     )}>
                       {palette.shades.map((shade, shadeIndex) => (
                         <div key={shade.shade} className="space-y-2 group">
@@ -949,8 +1000,8 @@ export default function ColorsPage() {
                             </div>
                           </div>
                           <div className="text-center">
-                            <div className="font-medium text-xs text-zinc-300">{shade.shade}</div>
-                            <div className="text-xs text-zinc-500 font-mono">{shade.hex}</div>
+                            <div className="font-medium text-xs text-zinc-300 break-words">{shade.shade}</div>
+                            <div className="text-xs text-zinc-500 font-mono break-all">{shade.hex}</div>
                           </div>
                         </div>
                       ))}
@@ -1023,7 +1074,7 @@ export default function ColorsPage() {
                                 <div className="text-center text-xs text-white font-medium">Click to copy CSS</div>
                               </div>
                             </div>
-                            <div className="text-xs text-zinc-500 font-mono">{gradientSet.css}</div>
+                            <div className="text-xs text-zinc-500 font-mono break-all leading-relaxed">{gradientSet.css}</div>
                           </div>
 
                           {/* Variants */}
@@ -1058,7 +1109,7 @@ export default function ColorsPage() {
                                   <div className="text-center text-xs text-white font-medium">Click to copy CSS</div>
                                 </div>
                               </div>
-                              <div className="text-xs text-zinc-500 font-mono">{variant.css}</div>
+                              <div className="text-xs text-zinc-500 font-mono break-all leading-relaxed">{variant.css}</div>
                             </div>
                           ))}
                         </div>
@@ -1129,7 +1180,12 @@ export default function ColorsPage() {
             <div className="fixed bottom-4 right-4 z-50 mobile-fade-in-up">
               <Button
                 size="icon"
-                className="h-12 w-12 rounded-full bg-zinc-800 border border-zinc-700 shadow-lg hover:bg-zinc-700 touch-feedback"
+                className={cn(
+                  "h-12 w-12 rounded-full shadow-lg touch-feedback",
+                  isDark 
+                    ? "bg-zinc-800 border-zinc-700 hover:bg-zinc-700" 
+                    : "bg-white border-zinc-200 hover:bg-zinc-100"
+                )}
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
                 <Monitor className="h-5 w-5" />
