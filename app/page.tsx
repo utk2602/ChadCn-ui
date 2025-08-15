@@ -221,10 +221,10 @@ export default function Home() {
       {/* Text overlay */}
       <div className="absolute inset-0 flex items-start justify-center pt-20 pointer-events-none">
         <div className="text-center">
-          <h1 className="text-7xl md:text-9xl font-black text-white mb-6 tracking-wider font-mono animate-pulse">
+          <h1 className="text-7xl md:text-9xl font-black text-white mb-6 tracking-wider " style={{fontFamily: 'Chicle, cursive'}}>
             ChadCn-ui
           </h1>
-          <p className="text-3xl md:text-4xl text-white/90 font-bold tracking-widest animate-bounce">
+          <p className="text-3xl md:text-4xl text-white/90 font-bold tracking-widest " style={{fontFamily: 'Chicle, cursive'}}>
             upgrading soon
           </p>
         </div>
