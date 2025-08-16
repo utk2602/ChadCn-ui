@@ -215,7 +215,7 @@ export const hyperspeedPresets = {
 
 export default function Home() {
   return (
-    <div className="w-full h-screen relative">
+    <div className="w-full h-screen ">
       <Hyperspeed effectOptions={hyperspeedPresets.one} />
       
       {/* Text overlay */}
