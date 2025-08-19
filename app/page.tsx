@@ -215,7 +215,7 @@ export const hyperspeedPresets = {
 
 export default function Home() {
   return (
-    <div className="w-auto h-auto relative">
+    <div className="w-full h-full">
 
       <Hyperspeed effectOptions={hyperspeedPresets.one} />
       
