@@ -1,22 +1,27 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
-  experimental: {
-   // ppr: true,
-    staleTimes : { 
-      dynamic:30, 
-      static: 60,
-    },
-    serverActions: true,
-  },
-}
+import { createMDX } from "fumadocs-mdx/next";
 
-export default nextConfig
+const withMDX = createMDX();
+
+const nextConfig = {
+  reactStrictMode: true,
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ChadCn-ui-images.netlify.app"
+      }
+    ]
+  },
+  async redirects() {
+    return [
+      {
+        source: "/docs/components/:slug*",
+        destination: "/components/:slug*",
+        permanent: true
+      }
+    ];
+  }
+};
+
+export default withMDX(nextConfig);

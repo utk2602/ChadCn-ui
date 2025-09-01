@@ -1,235 +1,102 @@
-import Hyperspeed from "./Components/hyperspeed/hyperspeed"
+import React from "react";
+import { Metadata } from "next";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 
-export const hyperspeedPresets = {
-  one: {
-    distortion: "turbulentDistortion",
-    length: 400,
-    roadWidth: 10,
-    islandWidth: 2,
-    lanesPerRoad: 3,
-    fov: 90,
-    fovSpeedUp: 150,
-    speedUp: 2,
-    carLightsFade: 0.4,
-    totalSideLightSticks: 20,
-    lightPairsPerRoadWay: 40,
-    shoulderLinesWidthPercentage: 0.05,
-    brokenLinesWidthPercentage: 0.1,
-    brokenLinesLengthPercentage: 0.5,
-    lightStickWidth: [0.12, 0.5] as [number, number],
-    lightStickHeight: [1.3, 1.7] as [number, number],
-    movingAwaySpeed: [60, 80] as [number, number],
-    movingCloserSpeed: [-120, -160] as [number, number],
-    carLightsLength: [400 * 0.03, 400 * 0.2] as [number, number],
-    carLightsRadius: [0.05, 0.14] as [number, number],
-    carWidthPercentage: [0.3, 0.5] as [number, number],
-    carShiftX: [-0.8, 0.8] as [number, number],
-    carFloorSeparation: [0, 5] as [number, number],
-    colors: {
-      roadColor: 0x080808,
-      islandColor: 0x0a0a0a,
-      background: 0x000000,
-      shoulderLines: 0x131318,
-      brokenLines: 0x131318,
-      leftCars: [0xD856BF, 0x6750A2, 0xC247AC],
-      rightCars: [0x03B3C3, 0x0E5EA5, 0x324555],
-      sticks: 0x03B3C3,
-    },
-  },
-  two: {
-    distortion: "mountainDistortion",
-    length: 400,
-    roadWidth: 9,
-    islandWidth: 2,
-    lanesPerRoad: 3,
-    fov: 90,
-    fovSpeedUp: 150,
-    speedUp: 2,
-    carLightsFade: 0.4,
-    totalSideLightSticks: 50,
-    lightPairsPerRoadWay: 50,
-    shoulderLinesWidthPercentage: 0.05,
-    brokenLinesWidthPercentage: 0.1,
-    brokenLinesLengthPercentage: 0.5,
-    lightStickWidth: [0.12, 0.5] as [number, number],
-    lightStickHeight: [1.3, 1.7] as [number, number],
-    movingAwaySpeed: [60, 80] as [number, number],
-    movingCloserSpeed: [-120, -160] as [number, number],
-    carLightsLength: [400 * 0.05, 400 * 0.15] as [number, number],
-    carLightsRadius: [0.05, 0.14] as [number, number],
-    carWidthPercentage: [0.3, 0.5] as [number, number],
-    carShiftX: [-0.2, 0.2] as [number, number],
-    carFloorSeparation: [0.05, 1] as [number, number],
-    colors: {
-      roadColor: 0x080808,
-      islandColor: 0x0a0a0a,
-      background: 0x000000,
-      shoulderLines: 0x131318,
-      brokenLines: 0x131318,
-      leftCars: [0xff102a, 0xEB383E, 0xff102a],
-      rightCars: [0xdadafa, 0xBEBAE3, 0x8F97E4],
-      sticks: 0xdadafa,
-    },
-  },
-  three: {
-    distortion: "xyDistortion",
-    length: 400,
-    roadWidth: 9,
-    islandWidth: 2,
-    lanesPerRoad: 3,
-    fov: 90,
-    fovSpeedUp: 150,
-    speedUp: 3,
-    carLightsFade: 0.4,
-    totalSideLightSticks: 50,
-    lightPairsPerRoadWay: 30,
-    shoulderLinesWidthPercentage: 0.05,
-    brokenLinesWidthPercentage: 0.1,
-    brokenLinesLengthPercentage: 0.5,
-    lightStickWidth: [0.02, 0.05] as [number, number],
-    lightStickHeight: [0.3, 0.7] as [number, number],
-    movingAwaySpeed: [20, 50] as [number, number],
-    movingCloserSpeed: [-150, -230] as [number, number],
-    carLightsLength: [400 * 0.05, 400 * 0.2] as [number, number],
-    carLightsRadius: [0.03, 0.08] as [number, number],
-    carWidthPercentage: [0.1, 0.5] as [number, number],
-    carShiftX: [-0.5, 0.5] as [number, number],
-    carFloorSeparation: [0, 0.1] as [number, number],
-    colors: {
-      roadColor: 0x080808,
-      islandColor: 0x0a0a0a,
-      background: 0x000000,
-      shoulderLines: 0x131318,
-      brokenLines: 0x131318,
-      leftCars: [0x7D0D1B, 0xA90519, 0xff102a],
-      rightCars: [0xF1EECE, 0xE6E2B1, 0xDFD98A],
-      sticks: 0xF1EECE,
-    },
-  },
-  four: {
-    distortion: "LongRaceDistortion",
-    length: 400,
-    roadWidth: 10,
-    islandWidth: 5,
-    lanesPerRoad: 2,
-    fov: 90,
-    fovSpeedUp: 150,
-    speedUp: 2,
-    carLightsFade: 0.4,
-    totalSideLightSticks: 50,
-    lightPairsPerRoadWay: 70,
-    shoulderLinesWidthPercentage: 0.05,
-    brokenLinesWidthPercentage: 0.1,
-    brokenLinesLengthPercentage: 0.5,
-    lightStickWidth: [0.12, 0.5] as [number, number],
-    lightStickHeight: [1.3, 1.7] as [number, number],
-    movingAwaySpeed: [60, 80] as [number, number],
-    movingCloserSpeed: [-120, -160] as [number, number],
-    carLightsLength: [400 * 0.05, 400 * 0.15] as [number, number],
-    carLightsRadius: [0.05, 0.14] as [number, number],
-    carWidthPercentage: [0.3, 0.5] as [number, number],
-    carShiftX: [-0.2, 0.2] as [number, number],
-    carFloorSeparation: [0.05, 1] as [number, number],
-    colors: {
-      roadColor: 0x080808,
-      islandColor: 0x0a0a0a,
-      background: 0x000000,
-      shoulderLines: 0x131318,
-      brokenLines: 0x131318,
-      leftCars: [0xFF5F73, 0xE74D60, 0xff102a],
-      rightCars: [0xA4E3E6, 0x80D1D4, 0x53C2C6],
-      sticks: 0xA4E3E6,
-    },
-  },
-  five: {
-    distortion: "turbulentDistortion",
-    length: 400,
-    roadWidth: 9,
-    islandWidth: 2,
-    lanesPerRoad: 3,
-    fov: 90,
-    fovSpeedUp: 150,
-    speedUp: 2,
-    carLightsFade: 0.4,
-    totalSideLightSticks: 50,
-    lightPairsPerRoadWay: 50,
-    shoulderLinesWidthPercentage: 0.05,
-    brokenLinesWidthPercentage: 0.1,
-    brokenLinesLengthPercentage: 0.5,
-    lightStickWidth: [0.12, 0.5] as [number, number],
-    lightStickHeight: [1.3, 1.7] as [number, number],
-    movingAwaySpeed: [60, 80] as [number, number],
-    movingCloserSpeed: [-120, -160] as [number, number],
-    carLightsLength: [400 * 0.05, 400 * 0.15] as [number, number],
-    carLightsRadius: [0.05, 0.14] as [number, number],
-    carWidthPercentage: [0.3, 0.5] as [number, number],
-    carShiftX: [-0.2, 0.2] as [number, number],
-    carFloorSeparation: [0.05, 1] as [number, number],
-    colors: {
-      roadColor: 0x080808,
-      islandColor: 0x0a0a0a,
-      background: 0x000000,
-      shoulderLines: 0x131318,
-      brokenLines: 0x131318,
-      leftCars: [0xDC5B20, 0xDCA320, 0xDC2020],
-      rightCars: [0x334BF7, 0xE5E6ED, 0xBFC6F3],
-      sticks: 0xC5E8EB,
-    },
-  },
-  six: {
-    distortion: "deepDistortion",
-    length: 400,
-    roadWidth: 18,
-    islandWidth: 2,
-    lanesPerRoad: 3,
-    fov: 90,
-    fovSpeedUp: 150,
-    speedUp: 2,
-    carLightsFade: 0.4,
-    totalSideLightSticks: 50,
-    lightPairsPerRoadWay: 50,
-    shoulderLinesWidthPercentage: 0.05,
-    brokenLinesWidthPercentage: 0.1,
-    brokenLinesLengthPercentage: 0.5,
-    lightStickWidth: [0.12, 0.5] as [number, number],
-    lightStickHeight: [1.3, 1.7] as [number, number],
-    movingAwaySpeed: [60, 80] as [number, number],
-    movingCloserSpeed: [-120, -160] as [number, number],
-    carLightsLength: [400 * 0.05, 400 * 0.15] as [number, number],
-    carLightsRadius: [0.05, 0.14] as [number, number],
-    carWidthPercentage: [0.3, 0.5] as [number, number],
-    carShiftX: [-0.2, 0.2] as [number, number],
-    carFloorSeparation: [0.05, 1] as [number, number],
-    colors: {
-      roadColor: 0x080808,
-      islandColor: 0x0a0a0a,
-      background: 0x000000,
-      shoulderLines: 0x131318,
-      brokenLines: 0x131318,
-      leftCars: [0xFF322F, 0xA33010, 0xA81508],
-      rightCars: [0xFDFDF0, 0xF3DEA0, 0xE2BB88],
-      sticks: 0xFDFDF0,
-    },
-  },
+import GitHubIcon from "@/components/website/icons/github";
+import FloatingButtonExample from "@/components/examples/floating-button";
+import MagneticButtonExample from "@/components/examples/magnetic-button";
+import Header from "@/components/website/header";
+import Footer from "@/components/website/footer";
+import AnimatedGradientTextExample from "@/components/examples/animated-gradient-text";
+import CountAnimationExample from "@/components/examples/count-animation/base";
+import MarqueeEffectExample from "@/components/examples/marquee-effect/base";
+import { Button } from "@/components/ui/button";
+import AnimatedText from "@/components/core/animated-text";
+import RippleEffectColored from "@/components/examples/ripple-effect/colored";
+import TiltEffectExample from "@/components/examples/tilt-effect";
+
+export const metadata: Metadata = {
+  title: "ChadCn-ui - Tailwind CSS, React and Motion components for your project",
+  description:
+    "Perfect for enhancing your web projects with beautiful, fluid animations. A collection of open source, customizable motion components. Built with Tailwind CSS and Motion."
+};
+
+function CardExample({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative w-full overflow-hidden rounded-lg border p-4 shadow-[0px_0px_0px_1px_var(--color-zinc-100),0px_2px_2px_0px_var(--color-zinc-50)] dark:border dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-none">
+      <div className="flex h-[300px] items-center justify-center lg:h-[400px]">{children}</div>
+    </div>
+  );
 }
 
-export default function Home() {
+export default function Motion() {
   return (
-    <div className="w-full h-screen">
-
-      <Hyperspeed effectOptions={hyperspeedPresets.one} />
-      
-      {/* Text overlay */}
-      <div className="absolute inset-0 flex items-start justify-center pt-20 pointer-events-none">
-        <div className="text-center">
-          <h1 className="text-7xl md:text-9xl font-black text-white mb-6 tracking-wider " style={{fontFamily: 'Chicle, cursive'}}>
-            ChadCn-ui
-          </h1>
-          <p className="text-3xl md:text-4xl text-white/90 font-bold tracking-widest " style={{fontFamily: 'Chicle, cursive'}}>
-            upgrading soon
-          </p>
-        </div>
+    <>
+      <Header />
+      <div className="px-6 py-4 pb-20">
+        <section className="flex h-full flex-col items-center justify-center pt-10 lg:pt-20">
+          <div className="flex w-full max-w-lg flex-col items-center justify-center text-center lg:max-w-2xl">
+            <h1 className="text-foreground relative mb-4 text-3xl font-semibold lg:text-4xl">
+              Great components to create more beautiful interfaces
+            </h1>
+            <p className="text-muted-foreground text-center">
+              Beautifully designed Tailwind CSS, React, shadcn/ui and Motion components. Easy
+              copy-paste. Customizable. Open Source. TypeScript compatible.
+            </p>
+          </div>
+          <div className="flex flex-col items-center gap-4 py-6 lg:flex-row">
+            <Button asChild>
+              <Link href="/components">
+                Explore Components
+                <ChevronRight />
+              </Link>
+            </Button>
+            <Button variant="outline" asChild>
+              <Link
+                href="https://github.com/ChadCn-ui/components"
+                target="_blank"
+                rel="noopener noreferrer">
+                <GitHubIcon />
+                Star on GitHub
+              </Link>
+            </Button>
+          </div>
+        </section>
+        <section className="container mx-auto grid max-w-(--breakpoint-xl) gap-4 py-32 lg:grid-cols-2 lg:gap-10">
+          <CardExample>
+            <TiltEffectExample />
+          </CardExample>
+          <CardExample>
+            <CountAnimationExample />
+          </CardExample>
+          <CardExample>
+            <FloatingButtonExample />
+          </CardExample>
+          <CardExample>
+            <MagneticButtonExample />
+          </CardExample>
+          <CardExample>
+            <AnimatedGradientTextExample />
+          </CardExample>
+          <CardExample>
+            <MarqueeEffectExample />
+          </CardExample>
+          <CardExample>
+            <AnimatedText
+              text="Welcome to the Future"
+              className="text-primary text-3xl font-bold"
+              animationType="letters"
+              staggerDelay={0.08}
+              duration={0.6}
+            />
+          </CardExample>
+          <CardExample>
+            <RippleEffectColored />
+          </CardExample>
+        </section>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
