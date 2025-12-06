@@ -1,0 +1,54 @@
+---
+title: Curtain Reveal Card
+description: Interactive card component with open curtain to see content on hover.
+url: https://21st.dev/youcefbnm/card-curtain-reveal/default/?ref=systaliko-ui
+---
+
+This component is inspired by [Showandtell agency](https://showandtell.agency/) services cards.
+
+<ComponentPreview name="card-curtain-reveal-demo" />
+
+## Installation
+
+<ComponentInstallation name="card-curtain-reveal" />
+
+## Usage
+
+```tsx
+<CardCurtainReveal className=" h-[560px] w-96 border bg-black dark:bg-white text-fd-accent shadow">
+  <CardCurtainRevealBody>
+    <CardCurtainRevealTitle className="text-3xl font-medium tracking-tight">
+      Behind <br />
+      the Curtain
+    </CardCurtainRevealTitle>
+    <CardCurtainRevealDescription className="my-4 ">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+        voluptate, eum quia temporibus fugiat rerum nobis modi dolor, delectus
+        laboriosam, quae adipisci reprehenderit officiis quidem iure ducimus
+        incidunt officia. Magni, eligendi repellendus. Fugiat, natus aut?
+      </p>
+    </CardCurtainRevealDescription>
+    <Button
+      variant={'secondary'}
+      size={'icon'}
+      className="aspect-square rounded-full"
+    >
+      <ArrowUpRight />
+    </Button>
+
+    <CardCurtain className="bg-background" />
+  </CardCurtainRevealBody>
+
+  <CardCurtainRevealFooter className="mt-auto">
+    {/* eslint-disable-next-line @next/next/no-img-element */}
+    <img
+      width="100%"
+      height="100%"
+      alt="street"
+      className="size-full"
+      src="https://images.pexels.com/photos/1678997/pexels-photo-1678997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    />
+  </CardCurtainRevealFooter>
+</CardCurtainReveal>
+```

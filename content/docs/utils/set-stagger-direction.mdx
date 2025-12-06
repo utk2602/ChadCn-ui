@@ -1,0 +1,69 @@
+---
+title: Stagger Direction
+description: Set stagger direction, Allow to animate in orchestrated order depending on the order, can animate from the start item, middle item, last item.
+---
+
+<ComponentPreview name="set-stagger-direction-demo" />
+
+## Installation
+
+<ComponentInstallation name="set-stagger-direction" />
+
+## Usage
+
+```tsx
+return (
+  <div className="flex gap-4 flex-wrap">
+    {ITEMS.map(({ bg }, index) => (
+      <motion.div
+        className={`${bg} size-16 rounded-md`}
+        key={`${index}-${animation}-${staggerDirection}-${staggerValue}`}
+        variants={animationVariants}
+        initial="hidden"
+        animate="visible"
+        transition={{
+          duration: 0.3,
+          ease: 'easeIn',
+          delay: setStaggerDirection({
+            direction: staggerDirection,
+            staggerValue: staggerValue,
+            totalItems: ITEMS.length,
+            index: index,
+          }),
+        }}
+      />
+    ))}
+  </div>
+);
+```
+
+## Props
+
+<TypeTable
+  type={{
+    direction: {
+      description: 'the stagger direction to start animating from.',
+      type: 'start | middle | end',
+      required: false,
+      default: 'start',
+    },
+    staggerValue: {
+      description: 'the stagger value to start animating from.',
+      type: 'number',
+      required: false,
+      default: '0.02',
+    },
+    totalItems: {
+      description: 'the total items to animate.',
+      type: 'number',
+      required: false,
+      default: '0.02',
+    },
+    index: {
+      description: 'the index of the item to animate.',
+      type: 'number',
+      required: false,
+      default: '0.02',
+    },
+  }}
+/>

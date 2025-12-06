@@ -1,0 +1,74 @@
+---
+title: Custom Cursor
+description: Turn your cursor into any element you want, text, image, video, or a shape.
+url: https://21st.dev/youcefbnm/custom-cursor/default/?ref=systaliko-ui
+---
+
+<ComponentPreview name="custom-cursor-demo" />
+
+## Installation
+
+<ComponentInstallation name="custom-cursor" />
+
+## Usage
+
+```tsx
+<CustomCursor.Provider>
+  {({ setCursorStyle, setCursorChildren, containerRef }) => {
+    const handleHeadingCursor = () => {
+      setCursorStyle({
+        scale: 6,
+        mixBlendMode: 'difference',
+      });
+    };
+
+    const handleMouseLeave = () => {
+      setCursorChildren(
+        <div className="bg-primary min-w-5 min-h-5 rounded-full" />,
+      );
+      setCursorStyle({});
+    };
+
+    return (
+      <div
+        ref={containerRef}
+        className="relative container text-center flex justify-center items-center py-12 px-6 min-h-svh"
+      >
+        <CustomCursor className="bg-primary min-w-5 min-h-5 rounded-full" />
+
+        <h1
+          className="text-5xl tracking-tight font-semibold"
+          onMouseEnter={handleHeadingCursor}
+          onMouseLeave={handleMouseLeave}
+        >
+          Explore the World with interactive{' '}
+          <span className="text-primary">travel experiences</span>.
+        </h1>
+      </div>
+    );
+  }}
+</CustomCursor.Provider>
+```
+
+## Examples
+
+<ComponentPreview name="custom-cursor-2-demo" />
+
+## Props
+
+<TypeTable
+  type={{
+    variant: {
+      description: 'the variant of the cursor',
+      type: 'default | reset',
+      required: false,
+      default: 'default',
+    },
+    cursorChildren: {
+      description: 'the children of the cursor',
+      type: 'ReactNode',
+      required: false,
+      default: 'null',
+    },
+  }}
+/>

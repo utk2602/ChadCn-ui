@@ -1,39 +1,93 @@
-import React from "react";
-import type { Metadata } from "next";
-import "./globals.css";
-import { Plus_Jakarta_Sans } from "next/font/google";
-import { ThemeProvider } from "@/components/website/theme-provider";
-import { GeistMono } from "geist/font/mono";
-import GoogleAnalyticsInit from "@/lib/ga";
-import { RootProvider } from "fumadocs-ui/provider";
+import { RootProvider } from 'fumadocs-ui/provider';
+import type { Metadata } from 'next';
+import { Geist } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 
-const inter = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"]
+import './globals.css';
+import { StyleProvider } from '@/providers/style-provider';
+import { siteConfig } from '@/config/site';
+
+const geist = Geist({
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-
+  title: {
+    template: '%s - Systaliko UI',
+    default:
+      'Systaliko UI - Copy/Past or Install React components compatible with Shadcn Registry',
+  },
+  description:
+    'Collection of fully customizable, animated, free UI components built with React, TypeScript, Tailwind CSS, and Motion.',
+  keywords: [
+    'Systaliko UI',
+    'React',
+    'TypeScript',
+    'Tailwind CSS',
+    'Motion',
+    'Next js templates',
+    'Shadcn registry components',
+    'Free UI components',
+    'copy past components',
+    'cli install components',
+    'shadcn registry components',
+    'Animated UI components',
+    'UI distribution',
+    'Open-source components',
+    'animations',
+  ],
+  authors: [
+    {
+      name: 'Youcef Bnm',
+      url: siteConfig.links.github,
+    },
+  ],
+  publisher: 'Systaliko UI',
   openGraph: {
-    title: "ChadCn-ui - Tailwind CSS, React, shadcn/ui and Motion components",
+    type: 'website',
+    locale: 'en_US',
+    url: siteConfig.url,
+    siteName: 'Systaliko UI',
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: 'Systaliko UI',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@systaliko_ui',
+    title: 'Systaliko UI',
     description:
-      "Beautifully designed Tailwind CSS, React, shadcn/ui and Motion components. Easy copy-paste. Customizable. Open Source. TypeScript compatible.",
-    images: ["/open-graph-image.jpg"]
-  }
+      'Collection of fully customizable, animated, free UI components built with React, TypeScript, Tailwind CSS, and Motion.',
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: 'Systaliko UI',
+      },
+    ],
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        suppressHydrationWarning
-        className={`${inter.className} ${GeistMono.variable} bg-background`}>
-        <ThemeProvider attribute="class">
-          <div className="isolate min-h-screen">
-            <RootProvider>{children}</RootProvider>
-          </div>
-        </ThemeProvider>
-        {process.env.NODE_ENV === "production" ? <GoogleAnalyticsInit /> : null}
+        className={`${geist.className} antialiased flex flex-col min-h-dvh`}
+      >
+        <StyleProvider>
+          <RootProvider>{children}</RootProvider>
+        </StyleProvider>
+        <Analytics />
       </body>
     </html>
   );

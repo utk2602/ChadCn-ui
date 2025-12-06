@@ -1,63 +1,101 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import * as SliderPrimitive from "@radix-ui/react-slider"
+import * as React from 'react';
+import {
+  Slider as AriaSlider,
+  SliderOutput as AriaSliderOutput,
+  SliderOutputProps as AriaSliderOutputProps,
+  SliderProps as AriaSliderProps,
+  SliderStateContext as AriaSliderStateContext,
+  SliderThumb as AriaSliderThumb,
+  SliderThumbProps as AriaSliderThumbProps,
+  SliderTrack as AriaSliderTrack,
+  SliderTrackProps as AriaSliderTrackProps,
+  composeRenderProps,
+} from 'react-aria-components';
 
-import { cn } from "@/lib/utils"
+import { cn } from '@/lib/utils';
 
-function Slider({
+import { labelVariants } from '@/components/ui/field';
+
+const SliderOutput = ({ className, ...props }: AriaSliderOutputProps) => (
+  <AriaSliderOutput className={cn(labelVariants(), className)} {...props} />
+);
+
+const Slider = ({
   className,
-  defaultValue,
-  value,
-  min = 0,
-  max = 100,
+  orientation = 'horizontal',
   ...props
-}: React.ComponentProps<typeof SliderPrimitive.Root>) {
-  const _values = React.useMemo(
-    () =>
-      Array.isArray(value)
-        ? value
-        : Array.isArray(defaultValue)
-          ? defaultValue
-          : [min, max],
-    [value, defaultValue, min, max]
-  )
+}: AriaSliderProps) => (
+  <AriaSlider
+    className={composeRenderProps(className, (className) =>
+      cn(
+        'relative flex touch-none select-none items-center',
+        {
+          'h-full': orientation === 'vertical',
+          'w-full': orientation === 'horizontal',
+        },
+        className,
+      ),
+    )}
+    orientation={orientation}
+    {...props}
+  />
+);
 
+const SliderTrack = ({ className, ...props }: AriaSliderTrackProps) => (
+  <AriaSliderTrack
+    className={composeRenderProps(className, (className, renderProps) =>
+      cn(
+        {
+          'h-2 w-full': renderProps.orientation === 'horizontal',
+          'h-full w-2': renderProps.orientation === 'vertical',
+        },
+        'relative grow rounded-full bg-secondary',
+        /* Disabled */
+        'data-[disabled]:opacity-50',
+        className,
+      ),
+    )}
+    {...props}
+  />
+);
+
+const SliderFillTrack = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
+  const state = React.useContext(AriaSliderStateContext)!;
+  const orientation = state.orientation === 'vertical' ? 'height' : 'width';
   return (
-    <SliderPrimitive.Root
-      data-slot="slider"
-      defaultValue={defaultValue}
-      value={value}
-      min={min}
-      max={max}
+    <div
+      style={{ [orientation]: state.getThumbPercent(0) * 100 + '%' }}
       className={cn(
-        "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
-        className
+        'absolute rounded-full bg-primary',
+        {
+          'h-full': state.orientation === 'horizontal',
+          'w-full bottom-0': state.orientation === 'vertical',
+        },
+        className,
       )}
       {...props}
-    >
-      <SliderPrimitive.Track
-        data-slot="slider-track"
-        className={cn(
-          "bg-muted relative grow overflow-hidden rounded-full data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5"
-        )}
-      >
-        <SliderPrimitive.Range
-          data-slot="slider-range"
-          className={cn(
-            "bg-primary absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
-          )}
-        />
-      </SliderPrimitive.Track>
-      {Array.from({ length: _values.length }, (_, index) => (
-        <SliderPrimitive.Thumb
-          data-slot="slider-thumb"
-          key={index}
-          className="border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
-        />
-      ))}
-    </SliderPrimitive.Root>
-  )
-}
+    />
+  );
+};
 
-export { Slider }
+const SliderThumb = ({ className }: AriaSliderThumbProps) => (
+  <AriaSliderThumb
+    className={composeRenderProps(className, (className) =>
+      cn(
+        'left-1/2 top-1/2 block size-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors',
+        /* Disabled */
+        'data-[disabled]:pointer-events-none',
+        /* Focus Visible */
+        'data-[focus-visible]:outline-none data-[focus-visible]:ring-2 data-[focus-visible]:ring-ring data-[focus-visible]:ring-offset-2',
+        className,
+      ),
+    )}
+  />
+);
+
+export { Slider, SliderTrack, SliderFillTrack, SliderThumb, SliderOutput };

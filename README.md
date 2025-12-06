@@ -1,15 +1,20 @@
-# ChadCn-ui
+# Systaliko UI
 
-A collection of components that you can copy and paste into your apps. Built with Tailwind CSS and Motion. Supports shadcn/ui and is typescript compatible.
+Collection of UI components, blocks, utilities, Designed for flexibility, built for customization, and crafted to scale across variants and use cases.
 
-<a href="https://github.com/ChadCn-ui/components/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/ChadCn-ui/components?style=for-the-badge"></a>
-<a href="https://x.com/ChadCn-uidotio"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/ChadCn-uidotio?style=for-the-badge&logo=x"></a>
-<a href="https://github.com/ChadCn-ui/components/blob/main/LICENCE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge"></a>
+> [!IMPORTANT]  
+> this is the beta version, so it's possible that the components contain **bugs** and that these will be **modified regularly** open (new issue)[https://github.com/YoucefBnm/Systaliko-UI/issues/new].
+
+![hero](/public/og-image.png)
 
 ## Documentation
 
-Visit the full [docs](https://ChadCn-ui.io/components) page.
+Visit the [systaliko documentation](https://systaliko-ui.vercel.app/docs) to view the full documentation.
+
+## Contributing
+
+See the [contributing guide](https://github.com/YoucefBnm/Systaliko-UI/blob/main/CONTRIBUTING.md) to learn how to contribute.
 
 ## License
 
-Licensed under the [MIT license](/LICENSE.md).
+Licensed under the [MIT license](https://github.com/YoucefBnm/Systaliko-UI/blob/main/LICENSE).

@@ -1,27 +1,40 @@
-import { createMDX } from "fumadocs-mdx/next";
+import { createMDX } from 'fumadocs-mdx/next';
 
 const withMDX = createMDX();
 
-const nextConfig = {
-  reactStrictMode: true,
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "ChadCn-ui-images.netlify.app"
-      }
-    ]
-  },
+/** @type {import('next').NextConfig} */
+const config = {
+  reactStrictMode: false,
   async redirects() {
     return [
       {
-        source: "/docs/components/:slug*",
-        destination: "/components/:slug*",
-        permanent: true
-      }
+        source: '/components/:path*',
+        destination: '/docs/components/:path*',
+        permanent: true,
+      },
+      {
+        source: '/r/:path([^.]*)',
+        destination: '/r/:path.json',
+        permanent: true,
+      },
     ];
-  }
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'm.media-amazon.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+      },
+    ],
+  },
 };
 
-export default withMDX(nextConfig);
+export default withMDX(config);

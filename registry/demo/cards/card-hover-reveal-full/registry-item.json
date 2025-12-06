@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-hover-reveal-full-demo",
+  "type": "registry:ui",
+  "title": "Card Hover Reveal Full Demo",
+  "description": "Demo showing another usecase of Card Hover Reveal Component.",
+  "registryDependencies": [
+    "https://systaliko-ui.vercel.app/r/card-hover-reveal"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/cards/card-hover-reveal-full/index.tsx",
+      "type": "registry:ui",
+      "target": "components/systaliko-ui/demo/cards/card-hover-reveal.tsx"
+    }
+  ]
+}

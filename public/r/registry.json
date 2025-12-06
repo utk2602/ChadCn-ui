@@ -1,0 +1,1791 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "systaliko",
+  "homepage": "https://systaliko.com",
+  "items": [
+    {
+      "name": "index",
+      "type": "registry:style",
+      "dependencies": [
+        "tw-animate-css",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "cssVars": {},
+      "files": []
+    },
+    {
+      "name": "animated-menu",
+      "type": "registry:block",
+      "title": "Animated Menu",
+      "description": "Animated menu, with orchestrated children animation, fully customizable.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/animated-menu/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/blocks/animated-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calculator",
+      "type": "registry:block",
+      "title": "Calculator",
+      "description": "Calculator, for your custom pricing, or to extend your existing pricing.",
+      "files": [
+        {
+          "path": "registry/blocks/calculator/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/blocks/calculator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "container-stagger",
+      "type": "registry:block",
+      "title": "Stagger Animations",
+      "description": "Animated Block with orchestrated stagger animations, for your motion components, the animations are triggered by view.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/container-stagger/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/blocks/container-stagger.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grid-bento",
+      "type": "registry:block",
+      "title": "Grid Bento",
+      "description": "Bento Grid, layout with multiple variants and displays.",
+      "files": [
+        {
+          "path": "registry/blocks/grid-bento/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/blocks/grid-bento.tsx"
+        }
+      ]
+    },
+    {
+      "name": "header",
+      "type": "registry:block",
+      "title": "Header",
+      "description": "Responsive Header, with a logo and navigation links, supporting both desktop and mobile layouts, and toggles on scroll.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "http://localhost:3000/r/use-toggle-onscroll"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/header/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/blocks/header.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-player",
+      "type": "registry:block",
+      "title": "Image Player",
+      "description": "Create your own image player GIF/video, with image player component.",
+      "files": [
+        {
+          "path": "registry/blocks/image-player/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/blocks/image-player.tsx"
+        }
+      ]
+    },
+    {
+      "name": "parallax",
+      "type": "registry:block",
+      "title": "Parallax",
+      "description": "Parallax block, creates a parallax effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/parallax/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/blocks/parallax.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-animation",
+      "type": "registry:block",
+      "title": "Scroll Animation",
+      "description": "Collection of scroll triggered animations, Triggering the animation by scroll event.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/scroll-animation/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/blocks/scroll-animation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-animation-rotate",
+      "type": "registry:block",
+      "title": "Scroll Rotation Animation",
+      "description": "Collection of scroll rotation animations, Triggering the animation by scroll event.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/scroll-animation-rotate/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/blocks/scroll-animation-rotate.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-autoplay",
+      "type": "registry:block",
+      "title": "Scroll Autoplay",
+      "description": "Displaying different content depending on order and scroll position.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/scroll-autoplay/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/scroll-autoplay.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-x-carousel",
+      "type": "registry:block",
+      "title": "Scroll X Carousel",
+      "description": "Scroll carousel on x axis, with optional progress indicator.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/scroll-x-carousel/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/blocks/scroll-x-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slideshow",
+      "type": "registry:block",
+      "title": "Slideshow",
+      "description": "Display the active image and activate the next image with hovering the text indicator.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/default-text-stagger-hover"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/slideshow/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/blocks/slideshow.tsx"
+        }
+      ]
+    },
+    {
+      "name": "story",
+      "type": "registry:block",
+      "title": "Story",
+      "description": "Simillar to IG story, Story is a component that allows you to display a collection of components in a single view.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/default-button"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/story/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/blocks/story.tsx"
+        }
+      ]
+    },
+    {
+      "name": "timeline",
+      "type": "registry:block",
+      "title": "Timeline",
+      "description": "Timeline, where you can showcase history (like your work) or a process (like a project).",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/timeline/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/timeline.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wavy-block",
+      "type": "registry:block",
+      "title": "Wavy Block",
+      "description": "block animates its children in waves pattern.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/wavy-block/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/blocks/wavy-block.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Card component with variants.",
+      "files": [
+        {
+          "path": "registry/cards/card/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/cards/card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-curtain-reveal",
+      "type": "registry:ui",
+      "title": "Curtain Reveal Card",
+      "description": "Interactive card component with open curtain to see content on hover gesture.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/cards/card-curtain-reveal/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/cards/card-curtain-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-flip",
+      "type": "registry:ui",
+      "title": "3d Flip Card",
+      "description": "An interactive card component that flips on hover with smooth 3D transitions.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/cards/card-flip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/cards/card-flip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-hover-reveal",
+      "type": "registry:ui",
+      "title": "Hover Reveal Details Card",
+      "description": "Animated card with gesture animations,  Reveals hidden content and scale main image on hover.",
+      "files": [
+        {
+          "path": "registry/cards/card-hover-reveal/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/cards/card-hover-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-testimonial",
+      "type": "registry:ui",
+      "title": "Card Testimonial",
+      "description": "Card Testimonial, with rating, block quote, and author's informations.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/default-avatar",
+        "https://systaliko-ui.vercel.app/r/default-rating-stars",
+        "https://systaliko-ui.vercel.app/r/default-card"
+      ],
+      "files": [
+        {
+          "path": "registry/cards/card-testimonial/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/cards/card-testimonial.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cards-stack",
+      "type": "registry:block",
+      "title": "Cards Stack",
+      "description": "Stack of cards to showcase a related set of element, like your services, your work, features, process of work, timeline, etc.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/cards/cards-stack/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/cards/cards-stack.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cards-stack-rotated",
+      "type": "registry:block",
+      "title": "Cards Stack Rotated",
+      "description": "Stack of cards rotated by a defined index value to rotate in sequence, it show one card at a time depending on the scroll position.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "registry/cards/card-testimonial/index.tsx"
+      ],
+      "files": [
+        {
+          "path": "registry/cards/cards-stack-rotated/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/cards/cards-stack-rotated.tsx"
+        }
+      ]
+    },
+    {
+      "name": "custom-cursor",
+      "type": "registry:ui",
+      "title": "Custom Cursor",
+      "description": "Turn your cursor into any element your want, text, image, video, or a shape.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/default-use-follow-mouse"
+      ],
+      "files": [
+        {
+          "path": "registry/components/custom-cursor/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/ui/custom-cursor.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pulse",
+      "type": "registry:ui",
+      "title": "Pulse",
+      "description": "Pulse effect for attracting user attention.",
+      "files": [
+        {
+          "path": "registry/components/pulse/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/pulse.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rating-stars",
+      "type": "registry:ui",
+      "title": "Rating Stars",
+      "description": "Stars rating component with customizable color, depending on average rating.",
+      "files": [
+        {
+          "path": "registry/components/rating-stars/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/rating-stars.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-menu-demo",
+      "type": "registry:block",
+      "title": "Animated Menu Demo",
+      "description": "Demo showing animated menu component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/animated-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/animated-menu/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/animated-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-menu-2-demo",
+      "type": "registry:block",
+      "title": "Animated Menu 2 Demo",
+      "description": "another demo showing animated menu component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/animated-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/animated-menu-2/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/animated-menu-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-menu-full-screen-demo",
+      "type": "registry:block",
+      "title": "Animated Menu Demo",
+      "description": "another demo showing animated menu component in full screen mode.",
+      "registryDependencies": [
+        "http://localhost:3000/r/animated-menu-full-screen"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/animated-menu-full-screen/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/animated-menu-full-screen.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calculator-demo",
+      "type": "registry:block",
+      "title": "Calculator Demo",
+      "description": "Demo showing calculator component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/calculator"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/calculator/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/calculator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "container-stagger-demo",
+      "type": "registry:block",
+      "title": "Stagger Container Demo",
+      "description": "Demo showing stagger container component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/container-stagger",
+        "https://systaliko-ui.vercel.app/r/transitions"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/container-stagger/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/container-stagger.tsx"
+        }
+      ]
+    },
+    {
+      "name": "container-stagger-2-demo",
+      "type": "registry:block",
+      "title": "Container Stagger Demo",
+      "description": "Demo showing another use case for container stagger with your motion components.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/container-stagger",
+        "https://systaliko-ui.vercel.app/r/animation-variants"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/container-stagger-2/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/blocks/container-stagger.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grid-bento-demo",
+      "type": "registry:block",
+      "title": "Grid Bento Demos",
+      "description": "Grid Bento Demo with multiple variants.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/grid-bento"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/grid-bento/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/grid-bento.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grid-bento-four-cells-demo",
+      "type": "registry:block",
+      "title": "Grid Bento Demos",
+      "description": "Grid Bento Demo with multiple variants.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/grid-bento-four-cells"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/grid-bento-four-cells/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/grid-bento-four-cells.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grid-bento-three-cells-demo",
+      "type": "registry:block",
+      "title": "Grid Bento Three Cells Demo",
+      "description": "Demo showing another variant of grid bento component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/grid-bento-three-cells"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/grid-bento-three-cells/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/grid-bento-three-cells.tsx"
+        }
+      ]
+    },
+    {
+      "name": "header-demo",
+      "type": "registry:block",
+      "title": "Header Demo",
+      "description": "Demo showing Header component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/header",
+        "http://localhost:3000/r/animated-menu",
+        "http://localhost:3000/r/use-mobile"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/header/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/header.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-player-demo",
+      "type": "registry:block",
+      "title": "Image Player Demo",
+      "description": "Demo showing how to use image player component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/image-player"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/image-player/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/image-player.tsx"
+        }
+      ]
+    },
+    {
+      "name": "parallax-demo",
+      "type": "registry:block",
+      "title": "Parallax Demo",
+      "description": "Demo showing parallax component.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/parallax",
+        "https://systaliko-ui.vercel.app/r/container-stagger",
+        "https://systaliko-ui.vercel.app/r/text-stagger-inview",
+        "https://systaliko-ui.vercel.app/r/animation-variants",
+        "https://systaliko-ui.vercel.app/r/button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/parallax/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/parallax.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-animation-combo-demo",
+      "type": "registry:block",
+      "title": "scroll-animation-combo Demo",
+      "description": "Demo showing scroll-animation-combo component.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/scroll-animation"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-animation-combo/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/scroll-animation-combo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-animation-inset-demo",
+      "type": "registry:block",
+      "title": "Scroll Trigger inset Animations Demo",
+      "description": "Demo showing how to implement scroll triggred animations.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/scroll-animations"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-animation-inset/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/scroll-animation-inset-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-animation-inset-x-demo",
+      "type": "registry:block",
+      "title": "Scroll Trigger Inset-X Animations Demo",
+      "description": "Demo showing how to implement scroll triggred animations.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/scroll-animations"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-animation-inset-x/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/scroll-animation-inset-x.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-animation-inset-y-demo",
+      "type": "registry:block",
+      "title": "Scroll Trigger X-inset Animations Demo",
+      "description": "Demo showing how to implement scroll triggred animations.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/scroll-animations"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-animation-inset-y/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/scroll-animation-inset-y.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-animation-radius-demo",
+      "type": "registry:block",
+      "title": "scroll-animation-radius Demo",
+      "description": "Demo showing how to use scroll animations.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/scroll-animations"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-animation-radius/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/scroll-animation-radius.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-animation-rotate-demo",
+      "type": "registry:block",
+      "title": "scroll rotate animation Demo",
+      "description": "Demo showing how to use scroll rotate animations.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/scroll-animation-rotate"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-animation-rotate/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/scroll-animation-rotate-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-animation-rotate-x-demo",
+      "type": "registry:block",
+      "title": "scroll rotate animation device Demo",
+      "description": "Demo showing how to use scroll rotate animations.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/scroll-animation-rotate"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-animation-rotate-x/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/scroll-animation-rotate-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-animation-rotate-y-demo",
+      "type": "registry:block",
+      "title": "scroll rotate animation device Demo",
+      "description": "Demo showing how to use scroll rotate animations.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/scroll-animation-rotate"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-animation-rotate-y/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/scroll-animation-rotate-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-animation-scale-demo",
+      "type": "registry:block",
+      "title": "Scroll Trigger Scale Animations Demo",
+      "description": "Demo showing how to implement scroll triggred animations.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/scroll-animations"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-animation-scale/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/scroll-animation-scale.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-animation-translate-x-demo",
+      "type": "registry:block",
+      "title": "Scroll Trigger inset Animations Demo",
+      "description": "Demo showing how to implement scroll triggred animations.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/scroll-animations"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-animation-translate-x/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/scroll-animation-translate-x-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-autoplay-demo",
+      "type": "registry:block",
+      "title": "scroll autoplay Demo",
+      "description": "Demo showing scroll-autoplay component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/scroll-autoplay"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-autoplay/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/scroll-autoplay.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-reverse-scale-animation-demo",
+      "type": "registry:block",
+      "title": "Scroll Reverce Scale Animation Demo",
+      "description": "Demo scroll animations component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/scroll-animations",
+        "http://localhost:3000/r/grid-bento"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-reverse-scale-animation/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/scroll-reverse-scale-animation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-x-carousel-demo",
+      "type": "registry:block",
+      "title": "scroll x carousel Demo",
+      "description": "Demo showing how to use scroll x carousel component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/scroll-x-carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-x-carousel/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/scroll-x-carousel-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-x-carousel-reverse-demo",
+      "type": "registry:block",
+      "title": "scroll x carousel reversed Demo",
+      "description": "another Demo showing how to use scroll x carousel component in a reversed.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/scroll-x-carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/scroll-x-carousel-reverse/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/scroll-x-carousel-reverse-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slideshow-demo",
+      "type": "registry:block",
+      "title": "Slideshow Demo",
+      "description": "Demo showing how to use slideshow component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/slideshow"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/slideshow/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/slideshow-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "story-demo",
+      "type": "registry:block",
+      "title": "Story Demo",
+      "description": "Demo showing how to use story component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/story",
+        "https://systaliko-ui.vercel.app/r/dialog",
+        "https://systaliko-ui.vercel.app/r/avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/story/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/story-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "team-demo",
+      "type": "registry:block",
+      "title": "Team Demo",
+      "description": "Demo showing team component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/scroll-animation"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/team/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/team.tsx"
+        }
+      ]
+    },
+    {
+      "name": "timeline-demo",
+      "type": "registry:block",
+      "title": "Timeline Demo",
+      "description": "Demo showing timeline component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/timeline"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/timeline/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/timeline.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wavy-block-demo",
+      "type": "registry:block",
+      "title": "Wavy Block Demo",
+      "description": "Demo showing Wavy Block component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/wavy-block"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/blocks/wavy-block/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/blocks/wavy-block.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-curtain-reveal-demo",
+      "type": "registry:ui",
+      "title": "Card Curtain Reveal Demo",
+      "description": "Demo showing Card Curtain Reveal Component.",
+      "registryDependencies": [
+        "systaliko-ui.vercel.app/r/card-curtain-reveal"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/cards/card-curtain-reveal/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/cards/card-curtain-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-flip-demo",
+      "type": "registry:ui",
+      "title": "Flip Card Demo",
+      "description": "Demo showing Flip Card Component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/card-flip"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/cards/card-flip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/cards/card-flip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-hover-reveal-demo",
+      "type": "registry:ui",
+      "title": "Card Hover Reveal Demo",
+      "description": "Demo showing Card Hover Reveal Component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/card-hover-reveal"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/cards/card-hover-reveal/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/cards/card-hover-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-hover-reveal-full-demo",
+      "type": "registry:ui",
+      "title": "Card Hover Reveal Full Demo",
+      "description": "Demo showing another usecase of Card Hover Reveal Component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/card-hover-reveal"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/cards/card-hover-reveal-full/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/cards/card-hover-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-testimonial-demo",
+      "type": "registry:ui",
+      "title": "Card Testimonial Demo",
+      "description": "Demo showing Card Testimonial Component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/card-testimonial"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/cards/card-testimonial/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/cards/card-testimonial.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-testimonial-2-demo",
+      "type": "registry:ui",
+      "title": "Card Testimonial Demo",
+      "description": "Demo showing Card Testimonial Component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/card-testimonial"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/cards/card-testimonial-2/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/cards/card-testimonial.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cards-stack-demo",
+      "type": "registry:block",
+      "title": "Sticky Cards stack Demo",
+      "description": "Demo of sticky cards stack.",
+      "registryDependencies": [
+        "http://localhost:3000/r/cards-stack"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/cards/cards-stack/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/cards/cards-stack.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cards-stack-achievements-demo",
+      "type": "registry:block",
+      "title": "Stack small cards Demo",
+      "description": "Demo showing different usecase of Cards Stack component with smaller cards.",
+      "registryDependencies": [
+        "http://localhost:3000/r/cards-stack"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/cards/cards-stack-achievements/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/cards/cards-stack-achievements.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cards-stack-rotated-demo",
+      "type": "registry:block",
+      "title": "Cards Stack Rotated Demo",
+      "description": "Demo showing Cards Stack Rotated component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/cards-stack-rotated",
+        "https://systaliko-ui.vercel.app/r/card-testimonial"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/cards/cards-stack-rotated/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/cards/cards-stack-rotated.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cards-stack-rotated-recognitions-demo",
+      "type": "registry:block",
+      "title": "Stack small cards Demo",
+      "description": "Demo showing different usecase of Cards Rotated Stack component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/cards-stack-rotated"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/cards/cards-stack-rotated-recognitions/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/cards/cards-stack-rotated-recognitions.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cards-stack-full-demo",
+      "type": "registry:block",
+      "title": "Cards stack full screen Demo",
+      "description": "Demo showing different usecase of Cards Stack component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/cards-stack",
+        "https://systaliko-ui.vercel.app/r/badge"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/cards/cards-stack-work/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/cards/cards-stack-work.tsx"
+        }
+      ]
+    },
+    {
+      "name": "custom-cursor-demo",
+      "type": "registry:ui",
+      "title": "Custom Cursor Demo",
+      "description": "Demo showing Custom Cursor component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/custom-cursor",
+        "https://systaliko-ui.vercel.app/r/button"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/custom-cursor/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/custom-cursor-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "custom-cursor-2-demo",
+      "type": "registry:ui",
+      "title": "Custom Cursor 2 Demo",
+      "description": "Demo showing another usecase of Custom Cursor component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/custom-cursor"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/custom-cursor-2/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/custom-cursor.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rating-stars-demo",
+      "type": "registry:ui",
+      "title": "Rating stars Demo",
+      "description": "Demo showing Rating stars component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/rating-stars"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/components/rating-stars/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/rating-stars.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pricing-demo",
+      "type": "registry:block",
+      "title": "Pricing Demo",
+      "description": "Demo showing pricing component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/pricing",
+        "http://localhost:3000/r/badge",
+        "http://localhost:3000/r/button",
+        "http://localhost:3000/r/label"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ecommerce/pricing/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/pricing.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pricing-2-demo",
+      "type": "registry:block",
+      "title": "Pricing-2 Demo",
+      "description": "Demo showing pricing-2 component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/pricing"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ecommerce/pricing-2/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/pricing-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "product-carousel-demo",
+      "type": "registry:block",
+      "title": "Product Carousel Demo",
+      "description": "Demo showing product carousel component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/product-carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ecommerce/product-carousel/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/product-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "product-carousel-2-demo",
+      "type": "registry:block",
+      "title": "Product Carousel Demo",
+      "description": "Another Demo showing product carousel component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/product-carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ecommerce/product-carousel-2/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/product-carousel-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "product-carousel-3-demo",
+      "type": "registry:block",
+      "title": "Product Carousel Demo",
+      "description": "Another Demo showing product carousel component with different thumbs.",
+      "registryDependencies": [
+        "http://localhost:3000/r/product-carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ecommerce/product-carousel-3/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/product-carousel-3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toggle-layout-demo",
+      "type": "registry:block",
+      "title": "Pricing Demo",
+      "description": "Demo showing toggle layout view component.",
+      "registryDependencies": [
+        "http://localhost:3000/r/toggle-layout"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/ecommerce/toggle-layout/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/demo/toggle-layout.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-scroll-read-demo",
+      "type": "registry:ui",
+      "title": "Text Scroll Read Demo",
+      "description": "Demo showing Text scroll read component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/text-scroll-read"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/text-scroll-read/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/text/text-scroll-read.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-stagger-hover-demo",
+      "type": "registry:ui",
+      "title": "Text Stagger Hover Demo",
+      "description": "Demo showing a split text with stagger animation on hover.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/text-stagger-hover"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/text-stagger-hover/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/text/text-stagger-hover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-stagger-inview-demo",
+      "type": "registry:ui",
+      "title": "Text Stagger Inview Demo",
+      "description": "Demo showing a split text with stagger animation.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/text-stagger-inview"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/text-stagger-inview/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/text/text-stagger-inview.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-stagger-inview-waves-demo",
+      "type": "registry:ui",
+      "title": "Text Stagger Inview Waves Demo",
+      "description": "Demo showing another use of text stagger in view demo with waves.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/text-stagger-inview"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/text-stagger-inview-waves/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/text/text-stagger-inview-waves.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-vertical-demo",
+      "type": "registry:ui",
+      "title": "Vertical Text Demo",
+      "description": "Demo showing a vertical text.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/text-vertical"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/text-vertical/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/text/text-vertical.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-wavy-demo",
+      "type": "registry:ui",
+      "title": "Text Wavy Demo",
+      "description": "Demo showing text wavy component.",
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/text-wavy"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/text/text-wavy/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/text-wavy.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animation-variants-demo",
+      "type": "registry:hook",
+      "title": "Use Animation Variants Demo",
+      "description": "Demo showing how to use animation-variants hook.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/animation-variants"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/utils/animation-variants/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/animation-variants-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "set-stagger-direction-demo",
+      "type": "registry:hook",
+      "title": "Set Stagger Direction Demo",
+      "description": "Demo showing how to use set-stagger-direction utility.",
+      "registryDependencies": [
+        "http://localhost:3000/r/set-stagger-direction",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/utils/set-stagger-direction/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/demo/utils/set-stagger-direction.ts"
+        }
+      ]
+    },
+    {
+      "name": "price",
+      "type": "registry:block",
+      "title": "price",
+      "description": "Flexible price component with customizable features and options to display the amount and currency.",
+      "registryDependencies": [
+        "http://localhost:3000/r/price"
+      ],
+      "files": [
+        {
+          "path": "registry/ecommerce/price/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/ecommerce/price.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pricing",
+      "type": "registry:block",
+      "title": "Pricing",
+      "description": "Flexible pricing component with customizable features and options.",
+      "files": [
+        {
+          "path": "registry/ecommerce/pricing/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/ecommerce/pricing.tsx"
+        }
+      ]
+    },
+    {
+      "name": "product-carousel",
+      "type": "registry:block",
+      "title": "Product Carousel",
+      "description": "Showcase your products with preview image for each product and display your different product colors.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ecommerce/product-carousel/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/ecommerce/product-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toggle-layout",
+      "type": "registry:block",
+      "title": "Toggle list layout",
+      "description": "Toggle list layout, toggling between a list and a grid view.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/ecommerce/toggle-layout/index.tsx",
+          "type": "registry:block",
+          "target": "components/systaliko-ui/ecommerce/toggle-layout.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "avatar",
+      "description": "avatar component with variants.",
+      "files": [
+        {
+          "path": "registry/shadcn/avatar/index.tsx",
+          "type": "registry:ui",
+          "target": "components/avatar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Badge component with variants.",
+      "files": [
+        {
+          "path": "registry/shadcn/badge/index.tsx",
+          "type": "registry:ui",
+          "target": "components/badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Button component with variants.",
+      "files": [
+        {
+          "path": "registry/shadcn/button/index.tsx",
+          "type": "registry:ui",
+          "target": "components/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Dialog component.",
+      "files": [
+        {
+          "path": "registry/shadcn/dialog/index.tsx",
+          "type": "registry:ui",
+          "target": "components/dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "field",
+      "description": "field component.",
+      "files": [
+        {
+          "path": "registry/shadcn/field/index.tsx",
+          "type": "registry:ui",
+          "target": "components/field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "input",
+      "description": "input component with variants.",
+      "files": [
+        {
+          "path": "registry/shadcn/input/index.tsx",
+          "type": "registry:ui",
+          "target": "components/input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Scroll Area component.",
+      "files": [
+        {
+          "path": "registry/shadcn/scroll-area/index.tsx",
+          "type": "registry:ui",
+          "target": "components/scroll-area.tsx"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Select component with variants.",
+      "files": [
+        {
+          "path": "registry/shadcn/select/index.tsx",
+          "type": "registry:ui",
+          "target": "components/select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "switch",
+      "description": "switch component with variants.",
+      "files": [
+        {
+          "path": "registry/shadcn/switch/index.tsx",
+          "type": "registry:ui",
+          "target": "components/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-flip",
+      "type": "registry:ui",
+      "title": "Flip Text",
+      "description": "Flipped text animation, flips the text",
+      "files": [
+        {
+          "path": "registry/text/text-flip/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/text/text-flip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-scroll-read",
+      "type": "registry:ui",
+      "title": "Text Scroll Read",
+      "description": "Text component allows you to read the text by scrolling.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/text/text-scroll-read/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/text/text-scroll-read.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-stagger-hover",
+      "type": "registry:ui",
+      "title": "Text Stagger Hover",
+      "description": "Splitted text animation with staggered effect triggered by hover gesture, You can easily customize by controlling the animation property (transform, opacity, blur), the stagger value, and the transition.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/default-set-stagger-direction",
+        "https://systaliko-ui.vercel.app/r/default-split-text",
+        "https://systaliko-ui.vercel.app/r/default-animation-variants"
+      ],
+      "files": [
+        {
+          "path": "registry/text/text-stagger-hover/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/text/text-stagger-hover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-stagger-inview",
+      "type": "registry:ui",
+      "title": "Text Stagger Inview",
+      "description": "Splitted text animation with staggered reveal triggered by view, You can easily customize by controlling the animation property (transform, opacity, blur) and the stagger value, and the transition.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/default-animation-variants"
+      ],
+      "files": [
+        {
+          "path": "registry/text/text-stagger-inview/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/text/text-stagger-inview.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-vertical",
+      "type": "registry:ui",
+      "title": "Vertical Text",
+      "description": "Text with vertical display, Can be used as a title or a subtitle.",
+      "files": [
+        {
+          "path": "registry/text/text-vertical/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/text/text-vertical.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-wavy",
+      "type": "registry:ui",
+      "title": "Text Wavy",
+      "description": "Infinite text animation with wavy effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/text/text-wavy/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/text-wavy.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wavy-texts",
+      "type": "registry:ui",
+      "title": "Wavy Texts",
+      "description": "Wavy texts wrap, animates a set of texts in wavy motion on scroll.",
+      "files": [
+        {
+          "path": "registry/text/wavy-texts/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/text/wavy-texts.tsx"
+        }
+      ]
+    },
+    {
+      "name": "word-stagger",
+      "type": "registry:ui",
+      "title": "Word Stagger",
+      "description": "Alternative to text-stagger-inview and text-stagger-hover, in case you have one word or you want more custom text animations, use this component, it is used in the same way as text-stagger-inview and text-stagger-hover.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://systaliko-ui.vercel.app/r/default-animation-variants"
+      ],
+      "files": [
+        {
+          "path": "registry/text/word-stagger/index.tsx",
+          "type": "registry:ui",
+          "target": "components/systaliko-ui/text/word-stagger.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animation-variants",
+      "type": "registry:item",
+      "title": "Animation Variants",
+      "description": "animation variants, for your motion components, allows to animate component with transforms, opacity, and blur.",
+      "files": [
+        {
+          "path": "registry/utils/animation-variants/index.tsx",
+          "type": "registry:item",
+          "target": "components/systaliko-ui/utils/animation-variants.tsx"
+        }
+      ]
+    },
+    {
+      "name": "set-stagger-direction",
+      "type": "registry:lib",
+      "title": "stagger direction",
+      "description": "stagger direction, Allow to animate in orchestrated order depending on the order, can animate from the start item, middle item, last item.",
+      "files": [
+        {
+          "path": "registry/utils/set-stagger-direction/index.ts",
+          "type": "registry:lib",
+          "target": "components/systaliko-ui/utils/set-stagger-direction.ts"
+        }
+      ]
+    },
+    {
+      "name": "split-text",
+      "type": "registry:lib",
+      "title": "split text",
+      "description": "split text utility function, allows to split text into characters, words, returns (characters, words, characterCount, wordCount).",
+      "files": [
+        {
+          "path": "registry/utils/split-text/index.ts",
+          "type": "registry:lib",
+          "target": "components/systaliko-ui/utils/split-text.ts"
+        }
+      ]
+    },
+    {
+      "name": "transitions",
+      "type": "registry:item",
+      "title": "Transitions",
+      "description": "Multiple transitions for your motion components, to animate depending on the animated property.",
+      "files": [
+        {
+          "path": "registry/utils/transitions/index.tsx",
+          "type": "registry:item",
+          "target": "components/systaliko-ui/utils/transitions.tsx"
+        }
+      ]
+    },
+    {
+      "name": "use-follow-mouse",
+      "type": "registry:hook",
+      "title": "Use Follow Mouse Hook",
+      "description": "As the name suggests, this hook will follow the mouse position.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/utils/use-follow-mouse/index.ts",
+          "type": "registry:hook",
+          "target": "components/systaliko-ui/utils/use-follow-mouse.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-mobile",
+      "type": "registry:hook",
+      "title": "Use mobile Hook",
+      "description": "use mobile hook allows you to check if the user is on a mobile device.",
+      "files": [
+        {
+          "path": "registry/utils/use-mobile/index.ts",
+          "type": "registry:hook",
+          "target": "components/systaliko-ui/utils/use-mobile.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-toggle-onscroll",
+      "type": "registry:hook",
+      "title": "Use Toggle on Scroll Hook",
+      "description": "use toggle onscroll hook allows to toggle element position on scroll (down hide, up show).",
+      "files": [
+        {
+          "path": "registry/utils/use-toggle-onscroll/index.ts",
+          "type": "registry:hook",
+          "target": "components/systaliko-ui/utils/use-toggle-onscroll.ts"
+        }
+      ]
+    }
+  ]
+}
