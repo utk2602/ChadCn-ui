@@ -4,7 +4,7 @@
   "pages": [
     "index",
     "---Animated UI---",
-    "animated-ui/3d-card",
+    "animated-ui/glare-card",
     "animated-ui/clean-hero",
     "animated-ui/slow-cursor",
     "animated-ui/cool-dropdown",

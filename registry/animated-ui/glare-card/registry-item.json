@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glare-card",
+  "type": "registry:ui",
+  "title": "Glare Card",
+  "description": "A card with a glare effect that follows the mouse pointer.",
+  "dependencies": ["motion"],
+  "files": [
+    {
+      "path": "registry/animated-ui/glare-card/index.tsx",
+      "type": "registry:ui",
+      "target": "components/chadcn-ui/animated-ui/glare-card.tsx"
+    }
+  ]
+}

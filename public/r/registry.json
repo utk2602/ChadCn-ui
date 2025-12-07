@@ -18,24 +18,6 @@
       "files": []
     },
     {
-      "name": "3d-card",
-      "type": "registry:ui",
-      "title": "3D Card",
-      "description": "A card that tilts in 3D based on mouse position.",
-      "dependencies": [
-        "motion",
-        "clsx",
-        "tailwind-merge"
-      ],
-      "files": [
-        {
-          "path": "registry/animated-ui/3d-card/index.tsx",
-          "type": "registry:ui",
-          "target": "components/chadcn-ui/animated-ui/3d-card.tsx"
-        }
-      ]
-    },
-    {
       "name": "clean-hero",
       "type": "registry:ui",
       "title": "Clean Hero",
@@ -70,6 +52,22 @@
           "path": "registry/animated-ui/cool-dropdown/index.tsx",
           "type": "registry:ui",
           "target": "components/chadcn-ui/animated-ui/cool-dropdown.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glare-card",
+      "type": "registry:ui",
+      "title": "Glare Card",
+      "description": "A card with a glare effect that follows the mouse pointer.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/animated-ui/glare-card/index.tsx",
+          "type": "registry:ui",
+          "target": "components/chadcn-ui/animated-ui/glare-card.tsx"
         }
       ]
     },
@@ -485,22 +483,6 @@
       ]
     },
     {
-      "name": "3d-card-demo",
-      "type": "registry:example",
-      "title": "3D Card Demo",
-      "description": "Demo for 3D Card.",
-      "registryDependencies": [
-        "3d-card"
-      ],
-      "files": [
-        {
-          "path": "registry/demo/animated-ui/3d-card-demo/index.tsx",
-          "type": "registry:example",
-          "target": "components/chadcn-ui/demo/animated-ui/3d-card-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "clean-hero-demo",
       "type": "registry:example",
       "title": "Clean Hero Demo",
@@ -529,6 +511,22 @@
           "path": "registry/demo/animated-ui/cool-dropdown-demo/index.tsx",
           "type": "registry:example",
           "target": "components/chadcn-ui/demo/animated-ui/cool-dropdown-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glare-card-demo",
+      "type": "registry:example",
+      "title": "Glare Card Demo",
+      "description": "Demo for Glare Card.",
+      "registryDependencies": [
+        "glare-card"
+      ],
+      "files": [
+        {
+          "path": "registry/demo/animated-ui/glare-card-demo/index.tsx",
+          "type": "registry:example",
+          "target": "components/chadcn-ui/demo/animated-ui/glare-card-demo.tsx"
         }
       ]
     },

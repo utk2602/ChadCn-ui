@@ -22,42 +22,6 @@ export const index: Record<string, any> = {
     component: null,
     command: '@systaliko-ui/index',
   },
-  '3d-card': {
-    name: '3d-card',
-    description: 'A card that tilts in 3D based on mouse position.',
-    type: 'registry:ui',
-    dependencies: ['motion', 'clsx', 'tailwind-merge'],
-    devDependencies: undefined,
-    registryDependencies: undefined,
-    files: [
-      {
-        path: 'registry/animated-ui/3d-card/index.tsx',
-        type: 'registry:ui',
-        target: 'components/chadcn-ui/animated-ui/3d-card.tsx',
-        content:
-          "'use client';\n\nimport React, { useRef, useState } from 'react';\nimport { motion, useMotionValue, useSpring, useTransform } from 'motion/react';\nimport { cn } from '@/lib/utils';\n\nexport function ThreeDCard({\n  className,\n  children,\n  ...props\n}: Omit<\n  React.HTMLAttributes<HTMLDivElement>,\n  | 'onDrag'\n  | 'onDragStart'\n  | 'onDragEnd'\n  | 'onAnimationStart'\n  | 'onAnimationEnd'\n  | 'onAnimationIteration'\n>) {\n  const ref = useRef<HTMLDivElement>(null);\n\n  const x = useMotionValue(0);\n  const y = useMotionValue(0);\n\n  const mouseXSpring = useSpring(x);\n  const mouseYSpring = useSpring(y);\n\n  const rotateX = useTransform(\n    mouseYSpring,\n    [-0.5, 0.5],\n    ['17.5deg', '-17.5deg'],\n  );\n  const rotateY = useTransform(\n    mouseXSpring,\n    [-0.5, 0.5],\n    ['-17.5deg', '17.5deg'],\n  );\n\n  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {\n    if (!ref.current) return;\n\n    const rect = ref.current.getBoundingClientRect();\n\n    const width = rect.width;\n    const height = rect.height;\n\n    const mouseX = e.clientX - rect.left;\n    const mouseY = e.clientY - rect.top;\n\n    const xPct = mouseX / width - 0.5;\n    const yPct = mouseY / height - 0.5;\n\n    x.set(xPct);\n    y.set(yPct);\n  };\n\n  const handleMouseLeave = () => {\n    x.set(0);\n    y.set(0);\n  };\n\n  return (\n    <motion.div\n      ref={ref}\n      onMouseMove={handleMouseMove}\n      onMouseLeave={handleMouseLeave}\n      style={{\n        rotateY,\n        rotateX,\n        transformStyle: 'preserve-3d',\n      }}\n      className={cn(\n        'relative h-96 w-72 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-500',\n        className,\n      )}\n      {...props}\n    >\n      <div\n        style={{\n          transform: 'translateZ(75px)',\n          transformStyle: 'preserve-3d',\n        }}\n        className=\"absolute inset-4 grid place-content-center rounded-xl bg-white shadow-lg\"\n      >\n        {children || (\n          <p className=\"text-2xl font-bold text-indigo-500\">3D Card</p>\n        )}\n      </div>\n    </motion.div>\n  );\n}",
-      },
-    ],
-    keywords: [],
-    component: (function () {
-      const LazyComp = React.lazy(async () => {
-        const mod = await import('@/registry/animated-ui/3d-card/index.tsx');
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === 'function' || typeof mod[key] === 'object',
-          ) || '3d-card';
-        const Comp = mod.default || mod[exportName];
-        if (mod.animations) {
-          (LazyComp as any).animations = mod.animations;
-        }
-        return { default: Comp };
-      });
-      LazyComp.demoProps = {};
-      return LazyComp;
-    })(),
-    command: '@systaliko-ui/3d-card',
-  },
   'clean-hero': {
     name: 'clean-hero',
     description: 'A clean hero section with fade-in animations.',
@@ -131,6 +95,42 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: '@systaliko-ui/cool-dropdown',
+  },
+  'glare-card': {
+    name: 'glare-card',
+    description: 'A card with a glare effect that follows the mouse pointer.',
+    type: 'registry:ui',
+    dependencies: ['motion'],
+    devDependencies: undefined,
+    registryDependencies: undefined,
+    files: [
+      {
+        path: 'registry/animated-ui/glare-card/index.tsx',
+        type: 'registry:ui',
+        target: 'components/chadcn-ui/animated-ui/glare-card.tsx',
+        content:
+          "'use client';\n\nimport { useRef } from 'react';\nimport { cn } from '@/lib/utils';\n\nexport const GlareCard = ({\n  children,\n  className,\n}: {\n  children: React.ReactNode;\n  className?: string;\n}) => {\n  const isPointerInside = useRef(false);\n  const refElement = useRef<HTMLDivElement>(null);\n  const state = useRef({\n    glare: {\n      x: 50,\n      y: 50,\n    },\n    background: {\n      x: 50,\n      y: 50,\n    },\n    rotate: {\n      x: 0,\n      y: 0,\n    },\n  });\n\n  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {\n    const rotateFactor = 0.4;\n    const rect = event.currentTarget.getBoundingClientRect();\n    const position = {\n      x: event.clientX - rect.left,\n      y: event.clientY - rect.top,\n    };\n    const percentage = {\n      x: (100 / rect.width) * position.x,\n      y: (100 / rect.height) * position.y,\n    };\n    const delta = {\n      x: percentage.x - 50,\n      y: percentage.y - 50,\n    };\n\n    const { background, rotate, glare } = state.current;\n    background.x = 50 + percentage.x / 4 - 12.5;\n    background.y = 50 + percentage.y / 3 - 16.67;\n    rotate.x = -(delta.x / 3.5);\n    rotate.y = delta.y / 2;\n    rotate.x *= rotateFactor;\n    rotate.y *= rotateFactor;\n    glare.x = percentage.x;\n    glare.y = percentage.y;\n\n    updateStyles();\n  };\n\n  const handlePointerEnter = () => {\n    isPointerInside.current = true;\n    if (refElement.current) {\n      setTimeout(() => {\n        if (isPointerInside.current) {\n          refElement.current?.style.setProperty('--duration', '0s');\n        }\n      }, 300);\n    }\n  };\n\n  const handlePointerLeave = () => {\n    isPointerInside.current = false;\n    if (refElement.current) {\n      refElement.current.style.removeProperty('--duration');\n      refElement.current?.style.setProperty('--r-x', `0deg`);\n      refElement.current?.style.setProperty('--r-y', `0deg`);\n    }\n  };\n\n  const updateStyles = () => {\n    if (refElement.current) {\n      const { background, rotate, glare } = state.current;\n      refElement.current?.style.setProperty('--m-x', `${glare.x}%`);\n      refElement.current?.style.setProperty('--m-y', `${glare.y}%`);\n      refElement.current?.style.setProperty('--r-x', `${rotate.x}deg`);\n      refElement.current?.style.setProperty('--r-y', `${rotate.y}deg`);\n      refElement.current?.style.setProperty('--bg-x', `${background.x}%`);\n      refElement.current?.style.setProperty('--bg-y', `${background.y}%`);\n    }\n  };\n\n  return (\n    <div\n      style={\n        {\n          '--m-x': '50%',\n          '--m-y': '50%',\n          '--r-x': '0deg',\n          '--r-y': '0deg',\n          '--bg-x': '50%',\n          '--bg-y': '50%',\n          '--duration': '300ms',\n          '--foil-size': '100%',\n          '--opacity': '0',\n          '--radius': '24px',\n          '--easing': 'ease',\n          '--transition': 'var(--duration) var(--easing)',\n        } as React.CSSProperties\n      }\n      className=\"group relative isolate [contain:layout_style] [perspective:600px] transition-transform duration-[var(--duration)] ease-[var(--easing)] delay-[var(--delay)] will-change-transform w-[320px] [aspect-ratio:17/21]\"\n      ref={refElement}\n      onPointerMove={handlePointerMove}\n      onPointerEnter={handlePointerEnter}\n      onPointerLeave={handlePointerLeave}\n    >\n      <div className=\"h-full grid origin-center overflow-hidden rounded-[var(--radius)] bg-black text-slate-500 [transform:rotateY(var(--r-x))_rotateX(var(--r-y))] hover:filter-none transition-[filter,transform] duration-[var(--duration)] ease-[var(--easing)] will-change-transform hover:[--opacity:1] hover:[--duration:200ms] hover:[--easing:linear]\">\n        {/* Red Border Glow */}\n        <div className=\"absolute inset-[-100%] opacity-[var(--opacity)] transition-opacity duration-[var(--duration)] [background:radial-gradient(circle_at_var(--m-x)_var(--m-y),_#ef4444_0%,_transparent_10%)]\" />\n\n        {/* Inner Content */}\n        <div className=\"absolute inset-[1px] rounded-[calc(var(--radius)-1px)] bg-black overflow-hidden\">\n          <div className={cn('h-full w-full bg-black', className)}>\n            {children}\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n};",
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import('@/registry/animated-ui/glare-card/index.tsx');
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'glare-card';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@systaliko-ui/glare-card',
   },
   'slow-cursor': {
     name: 'slow-cursor',
@@ -1115,44 +1115,6 @@ export const index: Record<string, any> = {
     })(),
     command: '@systaliko-ui/rating-stars',
   },
-  '3d-card-demo': {
-    name: '3d-card-demo',
-    description: 'Demo for 3D Card.',
-    type: 'registry:example',
-    dependencies: undefined,
-    devDependencies: undefined,
-    registryDependencies: ['3d-card'],
-    files: [
-      {
-        path: 'registry/demo/animated-ui/3d-card-demo/index.tsx',
-        type: 'registry:example',
-        target: 'components/chadcn-ui/demo/animated-ui/3d-card-demo.tsx',
-        content:
-          'import { ThreeDCard } from \'@/components/chadcn-ui/animated-ui/3d-card\';\n\nexport default function ThreeDCardDemo() {\n  return (\n    <div className="flex items-center justify-center py-20">\n      <ThreeDCard className="w-full max-w-sm bg-black dark:bg-zinc-900">\n        <div className="flex flex-col items-center justify-center h-full p-6 text-center">\n          <h2 className="text-2xl font-bold text-white mb-2">Hover Me</h2>\n          <p className="text-zinc-400">\n            Move your cursor over the card to see the 3D effect.\n          </p>\n        </div>\n      </ThreeDCard>\n    </div>\n  );\n}',
-      },
-    ],
-    keywords: [],
-    component: (function () {
-      const LazyComp = React.lazy(async () => {
-        const mod = await import(
-          '@/registry/demo/animated-ui/3d-card-demo/index.tsx'
-        );
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === 'function' || typeof mod[key] === 'object',
-          ) || '3d-card-demo';
-        const Comp = mod.default || mod[exportName];
-        if (mod.animations) {
-          (LazyComp as any).animations = mod.animations;
-        }
-        return { default: Comp };
-      });
-      LazyComp.demoProps = {};
-      return LazyComp;
-    })(),
-    command: '@systaliko-ui/3d-card-demo',
-  },
   'clean-hero-demo': {
     name: 'clean-hero-demo',
     description: 'Demo for Clean Hero.',
@@ -1228,6 +1190,44 @@ export const index: Record<string, any> = {
       return LazyComp;
     })(),
     command: '@systaliko-ui/cool-dropdown-demo',
+  },
+  'glare-card-demo': {
+    name: 'glare-card-demo',
+    description: 'Demo for Glare Card.',
+    type: 'registry:example',
+    dependencies: undefined,
+    devDependencies: undefined,
+    registryDependencies: ['glare-card'],
+    files: [
+      {
+        path: 'registry/demo/animated-ui/glare-card-demo/index.tsx',
+        type: 'registry:example',
+        target: 'components/chadcn-ui/demo/animated-ui/glare-card-demo.tsx',
+        content:
+          '\'use client\';\n\nimport { GlareCard } from \'@/components/chadcn-ui/animated-ui/glare-card\';\n\nexport default function GlareCardDemo() {\n  return (\n    <div className="grid grid-cols-1 place-items-center">\n      <GlareCard className="flex flex-col items-center justify-center">\n        <div className="relative w-full h-full flex items-center justify-center gap-10 group">\n          {/* Left Eye */}\n          <div className="w-16 h-4 bg-red-500 rounded-full shadow-[0_0_15px_rgba(239,68,68,0.6)] transition-all duration-300 group-hover:h-12 group-hover:rounded-[50%] group-hover:scale-110" />\n\n          {/* Right Eye */}\n          <div className="w-16 h-4 bg-red-500 rounded-full shadow-[0_0_15px_rgba(239,68,68,0.6)] transition-all duration-300 group-hover:h-12 group-hover:rounded-[50%] group-hover:scale-110" />\n        </div>\n      </GlareCard>\n    </div>\n  );\n}',
+      },
+    ],
+    keywords: [],
+    component: (function () {
+      const LazyComp = React.lazy(async () => {
+        const mod = await import(
+          '@/registry/demo/animated-ui/glare-card-demo/index.tsx'
+        );
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === 'function' || typeof mod[key] === 'object',
+          ) || 'glare-card-demo';
+        const Comp = mod.default || mod[exportName];
+        if (mod.animations) {
+          (LazyComp as any).animations = mod.animations;
+        }
+        return { default: Comp };
+      });
+      LazyComp.demoProps = {};
+      return LazyComp;
+    })(),
+    command: '@systaliko-ui/glare-card-demo',
   },
   'slow-cursor-demo': {
     name: 'slow-cursor-demo',
