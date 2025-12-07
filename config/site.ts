@@ -5,13 +5,11 @@ export const siteConfig = {
   description:
     'Collection of fully customizable, animated, free UI components built with React, TypeScript, Tailwind CSS, and Motion.',
   links: {
-    x: 'https://x.com/lbnm_yussef',
-    github: 'https://github.com/YoucefBnm',
-    linkedin: 'https://www.linkedin.com/in/youcef-bnm-692392123/',
-    website: 'https://ycfdev.netlify.app/',
-    repo: 'https://github.com/YoucefBnm/chadcn-ui',
-    twentyFirst: 'https://21st.dev/YoucefBnm?ref=chadcn-ui',
-    email: 'ssefbnm@gmail.com',
+    x: 'https://x.com/utkarshhhhhhh26',
+    github: 'https://github.com/utk2602',
+    linkedin: 'https://www.linkedin.com/in/utkarsh-kashyap-041931285/',
+    website: 'https://utkarsh-dev.vercel.app/',
+    email: 'workutkarshkashyap@gmail.com',
   },
   keywords: [
     'React',

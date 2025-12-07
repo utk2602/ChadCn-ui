@@ -27,25 +27,6 @@ export function MobileNav() {
               Components
             </Link>
 
-            <Button variant="outline" size="sm">
-              <Link
-                target="_blank"
-                href={siteConfig.links.repo}
-                className="inline-flex"
-              >
-                <div className="flex items-center">
-                  <GithubIcon className="size-4" />
-                  <span className="ml-1 lg:hidden">Star</span>
-                  <span className="ml-1 hidden lg:inline">
-                    Star on GitHub
-                  </span>{' '}
-                </div>
-                <div className="ml-2 flex items-center gap-1 text-sm md:flex">
-                  <StarIcon className="size-3.5" fill="currentColor" />
-                </div>
-              </Link>
-            </Button>
-
             <div className="flex items-center gap-2 mt-4">
               <Link
                 target="_blank"

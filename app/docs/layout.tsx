@@ -11,7 +11,6 @@ import { siteConfig } from '@/config/site';
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <DocsLayout
-      githubUrl={siteConfig.links.repo}
       links={[
         {
           icon: <XIcon />,
@@ -29,12 +28,6 @@ export default function Layout({ children }: { children: ReactNode }) {
           icon: <LinkedinIcon />,
           url: siteConfig.links.linkedin,
           text: 'Linkedin',
-          type: 'icon',
-        },
-        {
-          icon: <TwentyFirstIcon className="size-6" />,
-          url: siteConfig.links.twentyFirst,
-          text: '21st',
           type: 'icon',
         },
       ]}

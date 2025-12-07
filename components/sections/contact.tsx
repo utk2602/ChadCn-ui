@@ -91,19 +91,6 @@ export function Contact() {
                   variants={variants}
                 >
                   <Link
-                    href={siteConfig.links.twentyFirst}
-                    className="group flex items-center gap-2"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    <TwentyFirstIcon className="size-4" />
-                    <p className="text-sm opacity-80 transition-opacity duration-200 group-hover:opacity-100">
-                      Twenty first partner
-                    </p>
-
-                    <ArrowUpRightIcon className="ml-auto size-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-                  </Link>
-                  <Link
                     rel="noreferrer"
                     target="_blank"
                     href="https://ui.shadcn.com/docs/directory"
@@ -113,18 +100,6 @@ export function Contact() {
                     <p className="text-sm opacity-80 transition-opacity duration-200 group-hover:opacity-100">
                       built into the Shadcn CLI with no additional configuration
                       required
-                    </p>
-                    <ArrowUpRightIcon className="ml-auto size-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-                  </Link>
-                  <Link
-                    rel="noreferrer"
-                    target="_blank"
-                    href={siteConfig.links.repo}
-                    className="group flex items-center gap-2"
-                  >
-                    <GithubIcon className="size-5" />
-                    <p className="text-sm opacity-80 transition-opacity duration-200 group-hover:opacity-100">
-                      Contribute to the project on Github
                     </p>
                     <ArrowUpRightIcon className="ml-auto size-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
                   </Link>

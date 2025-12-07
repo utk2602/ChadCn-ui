@@ -49,16 +49,6 @@ export function Footer() {
               <LinkedinIcon />
             </Link>
           </Button>
-
-          <Button variant={'ghost'} size={'icon'}>
-            <Link
-              href={siteConfig.links.twentyFirst}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <TwentyFirstIcon />
-            </Link>
-          </Button>
         </div>
       </div>
     </footer>

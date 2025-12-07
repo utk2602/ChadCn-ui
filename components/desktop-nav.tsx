@@ -16,21 +16,6 @@ export function DesktopNav() {
         Components
       </Link>
 
-      <Button variant="outline" size="sm">
-        <Link
-          target="_blank"
-          href={siteConfig.links.repo}
-          className="inline-flex"
-        >
-          <div className="flex items-center">
-            <GithubIcon className="size-4" />
-            <span className="ml-1 lg:hidden">Star</span>
-            <span className="ml-1 hidden lg:inline">Star on GitHub</span>{' '}
-          </div>
-          <span className="ml-2">⭐️</span>
-        </Link>
-      </Button>
-
       <Link
         target="_blank"
         rel="noreferrer noopener"
@@ -38,15 +23,6 @@ export function DesktopNav() {
         className="transition-colors hover:text-accent-foreground"
       >
         <XIcon className="size-4" />
-      </Link>
-
-      <Link
-        target="_blank"
-        rel="noreferrer noopener"
-        href={siteConfig.links.repo}
-        className="transition-colors hover:text-accent-foreground"
-      >
-        <GithubIcon className="size-4" />
       </Link>
 
       <ModeToggle />
