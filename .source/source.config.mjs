@@ -1,12 +1,12 @@
+// source.config.ts
 import {
   defineDocs,
   defineConfig,
-  frontmatterSchema,
-} from 'fumadocs-mdx/config';
-import { z } from 'zod';
-
-export const docs = defineDocs({
-  dir: 'content/docs',
+  frontmatterSchema
+} from "fumadocs-mdx/config";
+import { z } from "zod";
+var docs = defineDocs({
+  dir: "content/docs",
   docs: {
     schema: frontmatterSchema.extend({
       new: z.boolean().optional(),
@@ -15,16 +15,17 @@ export const docs = defineDocs({
       soon: z.boolean().optional(),
       custom: z.boolean().optional(),
       url: z.string().optional(),
-      author: z
-        .object({
-          name: z.string(),
-          url: z.string().optional(),
-        })
-        .optional(),
-    }),
-  },
+      author: z.object({
+        name: z.string(),
+        url: z.string().optional()
+      }).optional()
+    })
+  }
 });
-
-export default defineConfig({
-  mdxOptions: {},
+var source_config_default = defineConfig({
+  mdxOptions: {}
 });
+export {
+  source_config_default as default,
+  docs
+};

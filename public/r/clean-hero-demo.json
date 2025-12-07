@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clean-hero-demo",
+  "type": "registry:example",
+  "title": "Clean Hero Demo",
+  "description": "Demo for Clean Hero.",
+  "registryDependencies": [
+    "clean-hero"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/animated-ui/clean-hero-demo/index.tsx",
+      "content": "import { CleanHero } from '@/components/chadcn-ui/animated-ui/clean-hero';\n\nexport default function CleanHeroDemo() {\n  return (\n    <div className=\"w-full border rounded-lg overflow-hidden bg-background\">\n      <CleanHero />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/chadcn-ui/demo/animated-ui/clean-hero-demo.tsx"
+    }
+  ]
+}

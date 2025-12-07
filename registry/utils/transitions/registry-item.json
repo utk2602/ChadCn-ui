@@ -8,7 +8,7 @@
     {
       "path": "registry/utils/transitions/index.tsx",
       "type": "registry:item",
-      "target": "components/systaliko-ui/utils/transitions.tsx"
+      "target": "components/chadcn-ui/utils/transitions.tsx"
     }
   ]
 }

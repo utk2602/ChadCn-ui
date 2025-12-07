@@ -9,8 +9,7 @@ export function OpenIn21stBtn({
   url?: string;
 }) {
   const href =
-    url ??
-    `https://21st.dev/youcefbnm/${componentName}/default/?ref=systaliko-ui`;
+    url ?? `https://21st.dev/youcefbnm/${componentName}/default/?ref=chadcn-ui`;
 
   return (
     <Button size={'sm'} aria-label="Open in 21st dev" asChild>

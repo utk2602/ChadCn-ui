@@ -14,7 +14,7 @@
     {
       "path": "registry/demo/ecommerce/pricing/index.tsx",
       "type": "registry:block",
-      "target": "components/systaliko-ui/demo/pricing.tsx"
+      "target": "components/chadcn-ui/demo/pricing.tsx"
     }
   ]
 }

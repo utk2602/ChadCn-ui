@@ -25,7 +25,7 @@ function replaceRegistryPaths(inputStr: string): string {
       if (rest.startsWith('hooks/')) {
         return `${quote}@/${rest}${quote}`;
       }
-      return `${quote}@/components/systaliko-ui/${rest}${quote}`;
+      return `${quote}@/components/chadcn-ui/${rest}${quote}`;
     } else if (content.startsWith('@workspace/ui/')) {
       const rest = content.slice('@workspace/ui/'.length);
       return `${quote}@/${rest}${quote}`;

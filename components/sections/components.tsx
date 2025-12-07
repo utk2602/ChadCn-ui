@@ -2,7 +2,7 @@
 import { TextStaggerInview } from '@/registry/text/text-stagger-inview';
 import { ArrowUpRightIcon } from 'lucide-react';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Button } from '../ui/button';
 import {
   TextStaggerHover,
@@ -102,6 +102,11 @@ function ComponentCard({
   ...props
 }: ComponentCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleMouseEnter = () => {
     if (videoRef.current) {
@@ -131,14 +136,16 @@ function ComponentCard({
       <div className="flex flex-col gap-4">
         <div className="relative aspect-[6/5] w-full ">
           <div className="size-full">
-            <video
-              ref={videoRef}
-              className="size-full object-cover"
-              loop
-              muted
-              playsInline
-              src={videoUrl}
-            />
+            {isMounted ? (
+              <video
+                ref={videoRef}
+                className="size-full object-cover"
+                loop
+                muted
+                playsInline
+                src={videoUrl}
+              />
+            ) : null}
           </div>
         </div>
         <div className="flex-1 flex flex-col p-4 space-y-1">

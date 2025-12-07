@@ -9,7 +9,7 @@
     {
       "path": "registry/demo/cards/card-testimonial/index.tsx",
       "type": "registry:ui",
-      "target": "components/systaliko-ui/demo/cards/card-testimonial.tsx"
+      "target": "components/chadcn-ui/demo/cards/card-testimonial.tsx"
     }
   ]
 }

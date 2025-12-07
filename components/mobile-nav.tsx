@@ -26,12 +26,6 @@ export function MobileNav() {
             >
               Components
             </Link>
-            <Link
-              href="/docs/templates"
-              className="p-2 text-sm transition-colors hover:text-accent-foreground"
-            >
-              Templates
-            </Link>
 
             <Button variant="outline" size="sm">
               <Link

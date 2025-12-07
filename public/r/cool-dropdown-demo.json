@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cool-dropdown-demo",
+  "type": "registry:example",
+  "title": "Cool Dropdown Demo",
+  "description": "Demo for Cool Dropdown.",
+  "registryDependencies": [
+    "cool-dropdown"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/animated-ui/cool-dropdown-demo/index.tsx",
+      "content": "import { CoolDropdown } from '@/components/chadcn-ui/animated-ui/cool-dropdown';\n\nexport default function CoolDropdownDemo() {\n  return (\n    <div className=\"flex items-center justify-center py-20 w-full bg-background border rounded-lg\">\n      <CoolDropdown />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/chadcn-ui/demo/animated-ui/cool-dropdown-demo.tsx"
+    }
+  ]
+}

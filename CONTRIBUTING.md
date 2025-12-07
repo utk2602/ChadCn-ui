@@ -1,6 +1,6 @@
-# Contribute to Systaliko UI
+# Contribute to Chad Cn
 
-You are welcome to **Systaliko UI** and help improve the project. I am looking forward to your contributions and collaboration, the project is integrated with [Shadcn registry](https://github.com/shadcn-ui/registry-template) this little guide will help you to get started with **Systaliko UI**.
+You are welcome to **Chad Cn** and help improve the project. I am looking forward to your contributions and collaboration, the project is integrated with [Shadcn registry](https://github.com/shadcn-ui/registry-template) this little guide will help you to get started with **Chad Cn**.
 
 ## Getting Started
 
@@ -8,18 +8,18 @@ You are welcome to **Systaliko UI** and help improve the project. I am looking f
 
 #### 1. Fork the Repository
 
-Click [here](https://github.com/YoucefBnm/Systaliko-UI/fork) to fork the repository.
+Click [here](https://github.com/YoucefBnm/chadcn-ui/fork) to fork the repository.
 
 #### 2. Clone your Fork to Your Local Machine
 
 ```bash
-  git clone https://github.com/<YOUR_USERNAME>/Systaliko-UI.git
+  git clone https://github.com/<YOUR_USERNAME>/chadcn-ui.git
 ```
 
 #### 3. Navigate to the Project Directory
 
 ```bash
-cd Systaliko-UI
+cd chadcn-ui
 ```
 
 #### 4. Create a New Branch for Your Changes
@@ -49,7 +49,7 @@ If you need to modify a component to correct or improve it, you must :
 
 ### Edit the code
 
-Edit the component in the `registry/[category]/my-component/index.tsx`, don't forget to adapt the demo and documentation if necessary [here](https://github.com/YoucefBnm/Systaliko-UI/tree/main/content/docs), see [fumadocs documentation](https://fumadocs.dev/docs/ui) for more information.
+Edit the component in the `registry/[category]/my-component/index.tsx`, don't forget to adapt the demo and documentation if necessary [here](https://github.com/YoucefBnm/chadcn-ui/tree/main/content/docs), see [fumadocs documentation](https://fumadocs.dev/docs/ui) for more information.
 
 ### Build the Registry
 
@@ -61,13 +61,13 @@ pnpm registry:build
 
 ## Adding New Component
 
-For new components, **Systaliko UI** as a project focuses on:
+For new components, **Chad Cn** as a project focuses on:
 
 - Blocks/Sections: components that can be used as a standalone component or as part of a larger UI (Hero, services, features, cta, contact, etc.).
 - UI/components: small components, UI elements that can be part of a block/section (cards, typography, buttons, etc.).
 - The Component/Block must be visually appealing and interactive (add gestures, trigger animations: scroll, view, etc.).
 - Elements usecase, ecommerce UI/Blocks like (product-card, cart, checkout), or marketing landings like (hero, Cta, Features, etc.)
-- You can not copy/past components from other libraries, if you create an element inspried (reverse engineered) by other components, include a link/credit to the original author [like this example](https://systaliko-ui.vercel.app/docs/cards/card-curtain-reveal)
+- You can not copy/past components from other libraries, if you create an element inspried (reverse engineered) by other components, include a link/credit to the original author [like this example](https://chadcn-ui.vercel.app/docs/cards/card-curtain-reveal)
 
 ### Add Component to the Registry
 
@@ -94,12 +94,12 @@ Create `registry/[category]/your-component/registry-item.json` file to export yo
   "type": "registry:ui",
   "title": "Your Component",
   "description": "Your Component Description",
-  "registryDependencies": ["https://systaliko-ui.vercel.app/r/default-component"],
+  "registryDependencies": ["https://chadcn-ui.vercel.app/r/default-component"],
   "files": [
     {
       "path": "registry/[category]/your-component/index.tsx",
       "type": "registry:ui",
-      "target": "components/systaliko-ui/your-component.tsx"
+      "target": "components/chadcn-ui/your-component.tsx"
     }
   ]
 }
@@ -130,12 +130,12 @@ Create a `registry/demo/[category]/your-component-demo/registry-item.json` file 
   "type": "registry:ui",
   "title": "Your Component Demo",
   "description": "Your Component Demo Description",
-  "registryDependencies": ["https://systaliko-ui.vercel.app/r/your-component"],
+  "registryDependencies": ["https://chadcn-ui.vercel.app/r/your-component"],
   "files": [
     {
       "path": "registry/demo/[category]/your-component-demo/index.tsx",
       "type": "registry:ui",
-      "target": "components/systaliko-ui/demo/your-component-demo.tsx"
+      "target": "components/chadcn-ui/demo/your-component-demo.tsx"
     }
   ]
 }
@@ -187,4 +187,4 @@ author:
 ## Ask for Help
 ```
 
-If you need any assistance or have questions, please feel free to open a [GitHub issue](https://github.com/YoucefBnm/Systaliko-UI/issues/new).
+If you need any assistance or have questions, please feel free to open a [GitHub issue](https://github.com/YoucefBnm/chadcn-ui/issues/new).

@@ -8,7 +8,7 @@
     {
       "path": "registry/text/wavy-texts/index.tsx",
       "type": "registry:ui",
-      "target": "components/systaliko-ui/text/wavy-texts.tsx"
+      "target": "components/chadcn-ui/text/wavy-texts.tsx"
     }
   ]
 }

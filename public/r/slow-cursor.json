@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slow-cursor",
+  "type": "registry:ui",
+  "title": "Slow Cursor",
+  "description": "A custom cursor that trails slowly behind the mouse.",
+  "dependencies": [
+    "motion",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "registry/animated-ui/slow-cursor/index.tsx",
+      "content": "'use client';\n\nimport React, { useEffect, useState } from 'react';\nimport { motion, useMotionValue, useSpring } from 'motion/react';\nimport { cn } from '@/lib/utils';\n\nexport function SlowCursor() {\n  const cursorX = useMotionValue(-100);\n  const cursorY = useMotionValue(-100);\n\n  const springConfig = { damping: 25, stiffness: 100 };\n  const cursorXSpring = useSpring(cursorX, springConfig);\n  const cursorYSpring = useSpring(cursorY, springConfig);\n\n  useEffect(() => {\n    const moveCursor = (e: MouseEvent) => {\n      cursorX.set(e.clientX - 16);\n      cursorY.set(e.clientY - 16);\n    };\n\n    window.addEventListener('mousemove', moveCursor);\n\n    return () => {\n      window.removeEventListener('mousemove', moveCursor);\n    };\n  }, [cursorX, cursorY]);\n\n  return (\n    <motion.div\n      className=\"pointer-events-none fixed left-0 top-0 z-50 h-8 w-8 rounded-full border-2 border-primary bg-primary/20 backdrop-blur-sm\"\n      style={{\n        translateX: cursorXSpring,\n        translateY: cursorYSpring,\n      }}\n    />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/chadcn-ui/animated-ui/slow-cursor.tsx"
+    }
+  ]
+}

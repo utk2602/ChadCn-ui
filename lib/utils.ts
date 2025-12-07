@@ -20,8 +20,8 @@ export function transformImportPaths(content: string): string {
       const componentPath = path.replace(/^@\/components\//, '');
 
       // Convert to shadcn-style import path
-      // Example: @/components/systaliko-ui/text/text-stagger-inview
-      return `from '@/components/systaliko-ui/${componentPath}'`;
+      // Example: @/components/chadcn-ui/text/text-stagger-inview
+      return `from '@/components/chadcn-ui/${componentPath}'`;
     },
   );
 
@@ -30,9 +30,9 @@ export function transformImportPaths(content: string): string {
     /from ['"]\.\/([^'"]+)['"]/g,
     (match, path) => {
       // For relative imports, we want to point to the component's main file
-      // Example: from './index' -> from '@/components/systaliko-ui/text/text-stagger-inview'
+      // Example: from './index' -> from '@/components/chadcn-ui/text/text-stagger-inview'
       const componentName = path === 'index' ? 'text-stagger-inview' : path;
-      return `from '@/components/systaliko-ui/text/${componentName}'`;
+      return `from '@/components/chadcn-ui/text/${componentName}'`;
     },
   );
 

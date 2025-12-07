@@ -1,15 +1,13 @@
 {
-  "title": "Systaliko UI",
+  "title": "Chad Cn",
   "root": true,
   "pages": [
     "index",
-    "---Templates---",
-    "templates/carecover",
-    "templates/abla",
-    "templates/motus",
-    "templates/portfolio",
-    "templates/veo",
-    "templates/cognify",
+    "---Animated UI---",
+    "animated-ui/3d-card",
+    "animated-ui/clean-hero",
+    "animated-ui/slow-cursor",
+    "animated-ui/cool-dropdown",
 
     "---Ecommerce---",
     "ecommerce/pricing",
@@ -48,11 +46,21 @@
     "text/text-scroll-read",
     "text/text-stagger-hover",
     "text/text-stagger-inview",
-    "text/text-vertical",
-    "text/text-wavy",
-
-    "---Utils---",
-    "utils/animation-variants",
-    "utils/set-stagger-direction"
+    "text/text-fade-in",
+    "text/text-typing-effect",
+    "text/text-shine",
+    "text/text-scramble",
+    "text/text-reveal",
+    "text/text-rotate",
+    "text/text-morph",
+    "text/text-loop",
+    "text/text-gradient",
+    "text/text-glitch",
+    "text/text-flip",
+    "text/text-fade",
+    "text/text-count",
+    "text/text-blur",
+    "text/text-bounce",
+    "text/text-wave"
   ]
 }

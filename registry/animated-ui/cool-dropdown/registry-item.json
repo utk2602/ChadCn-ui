@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cool-dropdown",
+  "type": "registry:ui",
+  "title": "Cool Dropdown",
+  "description": "A dropdown menu with staggered item animations.",
+  "dependencies": ["motion", "lucide-react", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "registry/animated-ui/cool-dropdown/index.tsx",
+      "type": "registry:ui",
+      "target": "components/chadcn-ui/animated-ui/cool-dropdown.tsx"
+    }
+  ]
+}

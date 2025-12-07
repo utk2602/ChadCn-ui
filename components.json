@@ -19,6 +19,6 @@
   },
   "iconLibrary": "lucide",
   "registries": {
-    "@8bitcn": "https://systaliko-ui.vercel.app/r/{name}.json"
+    "@8bitcn": "https://chadcn-ui.vercel.app/r/{name}.json"
   }
 }

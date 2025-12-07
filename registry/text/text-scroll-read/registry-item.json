@@ -10,7 +10,7 @@
     {
       "path": "registry/text/text-scroll-read/index.tsx",
       "type": "registry:ui",
-      "target": "components/systaliko-ui/text/text-scroll-read.tsx"
+      "target": "components/chadcn-ui/text/text-scroll-read.tsx"
     }
   ]
 }

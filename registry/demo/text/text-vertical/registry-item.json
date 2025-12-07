@@ -4,12 +4,12 @@
   "type": "registry:ui",
   "title": "Vertical Text Demo",
   "description": "Demo showing a vertical text.",
-  "registryDependencies": ["https://systaliko-ui.vercel.app/r/text-vertical"],
+  "registryDependencies": ["https://chadcn-ui.vercel.app/r/text-vertical"],
   "files": [
     {
       "path": "registry/demo/text/text-vertical/index.tsx",
       "type": "registry:ui",
-      "target": "components/systaliko-ui/demo/text/text-vertical.tsx"
+      "target": "components/chadcn-ui/demo/text/text-vertical.tsx"
     }
   ]
 }

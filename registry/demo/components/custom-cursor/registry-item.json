@@ -5,14 +5,14 @@
   "title": "Custom Cursor Demo",
   "description": "Demo showing Custom Cursor component.",
   "registryDependencies": [
-    "https://systaliko-ui.vercel.app/r/custom-cursor",
-    "https://systaliko-ui.vercel.app/r/button"
+    "https://chadcn-ui.vercel.app/r/custom-cursor",
+    "https://chadcn-ui.vercel.app/r/button"
   ],
   "files": [
     {
       "path": "registry/demo/components/custom-cursor/index.tsx",
       "type": "registry:ui",
-      "target": "components/systaliko-ui/custom-cursor-demo.tsx"
+      "target": "components/chadcn-ui/custom-cursor-demo.tsx"
     }
   ]
 }

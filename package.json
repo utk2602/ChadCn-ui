@@ -1,5 +1,5 @@
 {
-  "name": "systaliko-ui",
+  "name": "chadcn-ui",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -11,8 +11,6 @@
     "postinstall": "fumadocs-mdx",
     "registry:watch": "chokidar \"registry/**/*\" -c \"tsx ./scripts/build-components.mts\"",
     "registry:build": "pnpm format:write && tsx ./scripts/build-components.mts && tsx ./scripts/build-registry.mts && pnpm format:write",
-    "templates:watch": "chokidar \"templates/**/*\" -c \"tsx ./scripts/build-templates.mts\"",
-    "templates:build": "tsx ./scripts/build-templates.mts",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {

@@ -140,9 +140,7 @@ export function HeaderDemo() {
     <div className="h-[180vh]">
       <Header className="sticky top-2 left-0 w-full h-16 z-999 bg-card/90 border-b border-b-border/50 p-4">
         <HeaderLogo>
-          <span className="text-xl tracking-tighter font-bold">
-            systaliko ui
-          </span>
+          <span className="text-xl tracking-tighter font-bold">Chad Cn</span>
         </HeaderLogo>
 
         {isMobile ? <NavMobile /> : <NavDesktop />}

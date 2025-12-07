@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clean-hero",
+  "type": "registry:ui",
+  "title": "Clean Hero",
+  "description": "A clean hero section with fade-in animations.",
+  "dependencies": ["motion", "lucide-react", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "registry/animated-ui/clean-hero/index.tsx",
+      "type": "registry:ui",
+      "target": "components/chadcn-ui/animated-ui/clean-hero.tsx"
+    }
+  ]
+}

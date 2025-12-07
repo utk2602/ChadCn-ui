@@ -47,10 +47,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Initial release of Systaliko UI
+- Initial release of Chad Cn
 - Component registry system
 - Documentation site with Fumadocs
 - Three template projects: Veo, Alba Studio, and Motus Studio
 
-[Unreleased]: https://github.com/YoucefBnm/Systaliko-UI/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/YoucefBnm/Systaliko-UI/releases/tag/v0.1.0
+[Unreleased]: https://github.com/YoucefBnm/chadcn-ui/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/YoucefBnm/chadcn-ui/releases/tag/v0.1.0

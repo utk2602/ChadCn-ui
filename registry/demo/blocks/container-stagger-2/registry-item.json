@@ -6,14 +6,14 @@
   "description": "Demo showing another use case for container stagger with your motion components.",
   "dependencies": ["motion"],
   "registryDependencies": [
-    "https://systaliko-ui.vercel.app/r/container-stagger",
-    "https://systaliko-ui.vercel.app/r/animation-variants"
+    "https://chadcn-ui.vercel.app/r/container-stagger",
+    "https://chadcn-ui.vercel.app/r/animation-variants"
   ],
   "files": [
     {
       "path": "registry/demo/blocks/container-stagger-2/index.tsx",
       "type": "registry:block",
-      "target": "components/systaliko-ui/blocks/container-stagger.tsx"
+      "target": "components/chadcn-ui/blocks/container-stagger.tsx"
     }
   ]
 }

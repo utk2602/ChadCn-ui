@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://systaliko-ui.vercel.app/sitemap.xml',
+    sitemap: 'https://chadcn-ui.vercel.app/sitemap.xml',
   };
 }

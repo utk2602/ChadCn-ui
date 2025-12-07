@@ -5,13 +5,13 @@
   "title": "Card Hover Reveal Demo",
   "description": "Demo showing Card Hover Reveal Component.",
   "registryDependencies": [
-    "https://systaliko-ui.vercel.app/r/card-hover-reveal"
+    "https://chadcn-ui.vercel.app/r/card-hover-reveal"
   ],
   "files": [
     {
       "path": "registry/demo/cards/card-hover-reveal/index.tsx",
       "type": "registry:ui",
-      "target": "components/systaliko-ui/demo/cards/card-hover-reveal.tsx"
+      "target": "components/chadcn-ui/demo/cards/card-hover-reveal.tsx"
     }
   ]
 }

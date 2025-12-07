@@ -13,19 +13,18 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Systaliko UI',
+    template: '%s - Chad Cn',
     default:
-      'Systaliko UI - Copy/Past or Install React components compatible with Shadcn Registry',
+      'Chad Cn - Copy/Past or Install React components compatible with Shadcn Registry',
   },
   description:
     'Collection of fully customizable, animated, free UI components built with React, TypeScript, Tailwind CSS, and Motion.',
   keywords: [
-    'Systaliko UI',
+    'Chad Cn',
     'React',
     'TypeScript',
     'Tailwind CSS',
     'Motion',
-    'Next js templates',
     'Shadcn registry components',
     'Free UI components',
     'copy past components',
@@ -42,25 +41,25 @@ export const metadata: Metadata = {
       url: siteConfig.links.github,
     },
   ],
-  publisher: 'Systaliko UI',
+  publisher: 'Chad Cn',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: siteConfig.url,
-    siteName: 'Systaliko UI',
+    siteName: 'Chad Cn',
     images: [
       {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: 'Systaliko UI',
+        alt: 'Chad Cn',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@systaliko_ui',
-    title: 'Systaliko UI',
+    site: '@Chad Cn_ui',
+    title: 'Chad Cn',
     description:
       'Collection of fully customizable, animated, free UI components built with React, TypeScript, Tailwind CSS, and Motion.',
     images: [
@@ -68,7 +67,7 @@ export const metadata: Metadata = {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: 'Systaliko UI',
+        alt: 'Chad Cn',
       },
     ],
   },

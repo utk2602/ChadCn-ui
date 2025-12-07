@@ -1,10 +1,10 @@
-# Systaliko UI Development Guidelines
+# Chad Cn Development Guidelines
 
-This document provides essential context for AI coding agents working with the Systaliko UI monorepo.
+This document provides essential context for AI coding agents working with the Chad Cn monorepo.
 
 ## Project Structure
 
-- `systaliko-ui/`: Main UI component library and documentation site
+- `chadcn-ui/`: Main UI component library and documentation site
   - `registry/`: Core UI components organized by category (blocks, cards, components)
   - `app/`: Documentation site built with Next.js and Fumadocs
   - `scripts/`: Build automation for component registry and templates
@@ -40,7 +40,7 @@ export const cardVariants = cva('rounded-xl flex flex-col border gap-6 p-6', {
 1. Running the Documentation Site:
 
 ```bash
-cd systaliko-ui
+cd chadcn-ui
 pnpm dev  # Uses turbopack for faster development
 ```
 

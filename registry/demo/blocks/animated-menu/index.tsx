@@ -51,7 +51,7 @@ const socialLinks = [
 export function AnimatedMenuDemo() {
   return (
     <div className="self-start h-screen py-4 w-full z-[999] flex items-start justify-between px-8 ">
-      <span className="text-xl font-bold tracking-tight">Systaliko UI</span>
+      <span className="text-xl font-bold tracking-tight">Chad Cn</span>
       <AnimatedMenu className="relative">
         <AnimatedMenuButton className="w-28 h-12 inline-flex rounded-full justify-center items-center text-primary-foreground">
           <AnimatedMenuButtonToggleIcon className="*:rounded " />

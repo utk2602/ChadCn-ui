@@ -88,7 +88,7 @@ const menuItemVariants = {
 export function AnimatedMenu2Demo() {
   return (
     <div className="w-full self-start h-svh z-[999] flex items-start justify-between px-8 py-2">
-      <span className="text-xl font-bold tracking-tight">Systaliko UI</span>
+      <span className="text-xl font-bold tracking-tight">Chad Cn</span>
       <div className="flex gap-4">
         <AnimatedMenu className="relative ">
           <AnimatedMenuButton className="size-12 text-white">

@@ -9,7 +9,7 @@
     {
       "path": "registry/text/text-wavy/index.tsx",
       "type": "registry:ui",
-      "target": "components/systaliko-ui/text-wavy.tsx"
+      "target": "components/chadcn-ui/text-wavy.tsx"
     }
   ]
 }

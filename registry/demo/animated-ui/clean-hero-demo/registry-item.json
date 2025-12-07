@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clean-hero-demo",
+  "type": "registry:example",
+  "title": "Clean Hero Demo",
+  "description": "Demo for Clean Hero.",
+  "registryDependencies": ["clean-hero"],
+  "files": [
+    {
+      "path": "registry/demo/animated-ui/clean-hero-demo/index.tsx",
+      "type": "registry:example",
+      "target": "components/chadcn-ui/demo/animated-ui/clean-hero-demo.tsx"
+    }
+  ]
+}

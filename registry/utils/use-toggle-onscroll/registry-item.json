@@ -8,7 +8,7 @@
     {
       "path": "registry/utils/use-toggle-onscroll/index.ts",
       "type": "registry:hook",
-      "target": "components/systaliko-ui/utils/use-toggle-onscroll.ts"
+      "target": "components/chadcn-ui/utils/use-toggle-onscroll.ts"
     }
   ]
 }

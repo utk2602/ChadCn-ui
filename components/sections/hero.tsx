@@ -12,7 +12,6 @@ import ShadcnIcon from '../icons/shadcn-icon copy';
 import MotionIcon from '../icons/motion-icon';
 import { Pill } from '../pill';
 import { Pulse } from '@/registry/components/pulse';
-import { Showcase } from './showcase';
 
 const TECH_STACK = [
   {
@@ -52,10 +51,10 @@ export function Hero() {
           <motion.div variants={animationVariants}>
             <Pill
               href="/docs"
-              label="and components availables"
+              label="New components available"
               announcement={
                 <div className="flex gap-2 items-center">
-                  <Pulse /> New Startup template
+                  <Pulse /> New Animated UI
                 </div>
               }
             />
@@ -72,9 +71,9 @@ export function Hero() {
             variants={animationVariants}
             className="max-w-[70ch] text-lg text-muted-foreground"
           >
-            Collection of UI blocks and components and templates to easly craft
-            your website, interactive and animated, built for customization.
-            built into the Shadcn CLI with no additional configuration required
+            Collection of UI blocks and components to easily craft your website,
+            interactive and animated, built for customization. built into the
+            Shadcn CLI with no additional configuration required
           </motion.p>
 
           <motion.div
@@ -84,10 +83,6 @@ export function Hero() {
             <Button size="lg">
               <Link href="/docs">Browse Components</Link>
               <ComponentIcon />
-            </Button>
-            <Button size="lg" variant={'secondary'}>
-              <Link href="/docs/templates">Browse Templates</Link>
-              <ArrowUpRightIcon />
             </Button>
           </motion.div>
 
@@ -109,7 +104,6 @@ export function Hero() {
           </motion.div>
         </MotionConfig>
       </ContainerStagger>
-      <Showcase />
     </section>
   );
 }

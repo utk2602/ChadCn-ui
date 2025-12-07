@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cool-dropdown-demo",
+  "type": "registry:example",
+  "title": "Cool Dropdown Demo",
+  "description": "Demo for Cool Dropdown.",
+  "registryDependencies": ["cool-dropdown"],
+  "files": [
+    {
+      "path": "registry/demo/animated-ui/cool-dropdown-demo/index.tsx",
+      "type": "registry:example",
+      "target": "components/chadcn-ui/demo/animated-ui/cool-dropdown-demo.tsx"
+    }
+  ]
+}

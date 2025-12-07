@@ -8,7 +8,7 @@
     {
       "path": "registry/utils/use-mobile/index.ts",
       "type": "registry:hook",
-      "target": "components/systaliko-ui/utils/use-mobile.ts"
+      "target": "components/chadcn-ui/utils/use-mobile.ts"
     }
   ]
 }

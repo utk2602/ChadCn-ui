@@ -64,13 +64,13 @@ export async function generateMetadata(props: {
     openGraph: {
       title: page.data.title,
       description: page.data.description,
-      url: 'https://systaliko-ui.vercel.app/',
+      url: 'https://chadcn-ui.vercel.app/',
       images: [
         {
-          url: 'https://systaliko-ui.vercel.app/og-image.png',
+          url: 'https://chadcn-ui.vercel.app/og-image.png',
           width: 1200,
           height: 630,
-          alt: 'Systaliko UI',
+          alt: 'Chad Cn',
         },
       ],
       locale: 'en_US',
@@ -78,15 +78,15 @@ export async function generateMetadata(props: {
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@systaliko_ui',
+      site: '@Chad Cn_ui',
       title: page.data.title,
       description: page.data.description,
       images: [
         {
-          url: 'https://systaliko-ui.vercel.app/og-image.png',
+          url: 'https://chadcn-ui.vercel.app/og-image.png',
           width: 1200,
           height: 630,
-          alt: 'Systaliko UI',
+          alt: 'Chad Cn',
         },
       ],
     },

@@ -8,7 +8,7 @@
     {
       "path": "registry/utils/split-text/index.ts",
       "type": "registry:lib",
-      "target": "components/systaliko-ui/utils/split-text.ts"
+      "target": "components/chadcn-ui/utils/split-text.ts"
     }
   ]
 }

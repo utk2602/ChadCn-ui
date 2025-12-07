@@ -9,7 +9,7 @@
       "path": "registry/blocks/calculator/index.tsx",
       "content": "export function Calculator() {\n  return <div>Calculator</div>;\n}\n",
       "type": "registry:block",
-      "target": "components/systaliko-ui/blocks/calculator.tsx"
+      "target": "components/chadcn-ui/blocks/calculator.tsx"
     }
   ]
 }

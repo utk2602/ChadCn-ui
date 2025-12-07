@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slow-cursor",
+  "type": "registry:ui",
+  "title": "Slow Cursor",
+  "description": "A custom cursor that trails slowly behind the mouse.",
+  "dependencies": ["motion", "clsx", "tailwind-merge"],
+  "files": [
+    {
+      "path": "registry/animated-ui/slow-cursor/index.tsx",
+      "type": "registry:ui",
+      "target": "components/chadcn-ui/animated-ui/slow-cursor.tsx"
+    }
+  ]
+}

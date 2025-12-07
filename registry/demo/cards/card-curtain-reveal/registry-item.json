@@ -4,12 +4,12 @@
   "type": "registry:ui",
   "title": "Card Curtain Reveal Demo",
   "description": "Demo showing Card Curtain Reveal Component.",
-  "registryDependencies": ["systaliko-ui.vercel.app/r/card-curtain-reveal"],
+  "registryDependencies": ["chadcn-ui.vercel.app/r/card-curtain-reveal"],
   "files": [
     {
       "path": "registry/demo/cards/card-curtain-reveal/index.tsx",
       "type": "registry:ui",
-      "target": "components/systaliko-ui/demo/cards/card-curtain-reveal.tsx"
+      "target": "components/chadcn-ui/demo/cards/card-curtain-reveal.tsx"
     }
   ]
 }

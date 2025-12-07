@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cool-dropdown",
+  "type": "registry:ui",
+  "title": "Cool Dropdown",
+  "description": "A dropdown menu with staggered item animations.",
+  "dependencies": [
+    "motion",
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "registry/animated-ui/cool-dropdown/index.tsx",
+      "content": "'use client';\n\nimport { useState } from 'react';\nimport { motion, AnimatePresence } from 'motion/react';\nimport { ChevronDown } from 'lucide-react';\nimport { cn } from '@/lib/utils';\n\nconst items = [\n  { id: 1, label: 'Profile' },\n  { id: 2, label: 'Settings' },\n  { id: 3, label: 'Messages' },\n  { id: 4, label: 'Logout' },\n];\n\nexport function CoolDropdown() {\n  const [isOpen, setIsOpen] = useState(false);\n\n  return (\n    <div className=\"relative flex items-center justify-center h-64\">\n      <div className=\"relative\">\n        <button\n          onClick={() => setIsOpen(!isOpen)}\n          className=\"flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors\"\n        >\n          Menu\n          <motion.span\n            animate={{ rotate: isOpen ? 180 : 0 }}\n            transition={{ duration: 0.2 }}\n          >\n            <ChevronDown className=\"h-4 w-4\" />\n          </motion.span>\n        </button>\n\n        <AnimatePresence>\n          {isOpen && (\n            <motion.div\n              initial={{ opacity: 0, y: -10, scale: 0.95 }}\n              animate={{ opacity: 1, y: 0, scale: 1 }}\n              exit={{ opacity: 0, y: -10, scale: 0.95 }}\n              transition={{ duration: 0.2 }}\n              className=\"absolute left-0 top-full mt-2 w-48 overflow-hidden rounded-lg border bg-popover shadow-xl\"\n            >\n              <motion.ul className=\"p-1\">\n                {items.map((item, index) => (\n                  <motion.li\n                    key={item.id}\n                    initial={{ opacity: 0, x: -20 }}\n                    animate={{ opacity: 1, x: 0 }}\n                    transition={{ delay: index * 0.05 }}\n                  >\n                    <a\n                      href=\"#\"\n                      className=\"block rounded-md px-4 py-2 text-sm text-popover-foreground hover:bg-accent hover:text-accent-foreground transition-colors\"\n                    >\n                      {item.label}\n                    </a>\n                  </motion.li>\n                ))}\n              </motion.ul>\n            </motion.div>\n          )}\n        </AnimatePresence>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/chadcn-ui/animated-ui/cool-dropdown.tsx"
+    }
+  ]
+}

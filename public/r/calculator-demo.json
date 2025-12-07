@@ -10,9 +10,9 @@
   "files": [
     {
       "path": "registry/demo/blocks/calculator/index.tsx",
-      "content": "import { Calculator } from '@/components/systaliko-ui/blocks/calculator';\n\nexport function CalculatorDemo() {\n  return (\n    <div>\n      <Calculator />\n    </div>\n  );\n}\n",
+      "content": "import { Calculator } from '@/components/chadcn-ui/blocks/calculator';\n\nexport function CalculatorDemo() {\n  return (\n    <div>\n      <Calculator />\n    </div>\n  );\n}\n",
       "type": "registry:block",
-      "target": "components/systaliko-ui/demo/blocks/calculator.tsx"
+      "target": "components/chadcn-ui/demo/blocks/calculator.tsx"
     }
   ]
 }

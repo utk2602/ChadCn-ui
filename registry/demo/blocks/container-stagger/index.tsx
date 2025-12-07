@@ -15,7 +15,7 @@ export function ContainerStaggerDemo() {
       <ContainerStagger className="flex flex-col items-center text-center justify-center space-y-5">
         <MotionConfig transition={TRANSITIONS.filter}>
           <motion.div variants={animationVariants}>
-            <Link href="https://systaliko-ui.vercel.app/docs/containers/container-stagger">
+            <Link href="https://chadcn-ui.vercel.app/docs/containers/container-stagger">
               <Badge variant="secondary">100% free and open source</Badge>
             </Link>
           </motion.div>
@@ -41,10 +41,6 @@ export function ContainerStaggerDemo() {
             <Button>
               <Link href="/docs">Browse Components</Link>
               <ComponentIcon />
-            </Button>
-            <Button variant={'outline'}>
-              <Link href="/docs/heros/hero-gradient">Browse Templates</Link>
-              <ArrowUpRightIcon />
             </Button>
           </motion.div>
         </MotionConfig>

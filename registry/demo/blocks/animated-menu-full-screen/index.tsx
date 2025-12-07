@@ -68,7 +68,7 @@ export function AnimatedMenuFullScreenDemo() {
     <div className="border w-full self-start h-full bg-secondary">
       <div className="w-full z-[999] flex h-16 items-center justify-between pl-8 py-2">
         <span className="text-xl relative z-[9999] mix-blend-difference text-white font-bold tracking-tight">
-          Systaliko UI
+          Chad Cn
         </span>
         <div className="flex gap-4">
           <AnimatedMenu className="relative">
@@ -127,10 +127,10 @@ export function AnimatedMenuFullScreenDemo() {
                     className="space-y-3"
                   >
                     <p className="text-muted/50 text-sm max-w-[35ch]">
-                      in systaliko ui, we are using the animated menu component
-                      to create a beautiful and interactive navigation menu. it
-                      is designed to be easy to use and customizable, making it
-                      a great choice for any project.
+                      in Chad Cn, we are using the animated menu component to
+                      create a beautiful and interactive navigation menu. it is
+                      designed to be easy to use and customizable, making it a
+                      great choice for any project.
                     </p>
                     <Button variant="link" className="text-muted">
                       Get in touch

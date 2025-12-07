@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slow-cursor-demo",
+  "type": "registry:example",
+  "title": "Slow Cursor Demo",
+  "description": "Demo for Slow Cursor.",
+  "registryDependencies": [
+    "slow-cursor"
+  ],
+  "files": [
+    {
+      "path": "registry/demo/animated-ui/slow-cursor-demo/index.tsx",
+      "content": "import { SlowCursor } from '@/components/chadcn-ui/animated-ui/slow-cursor';\n\nexport default function SlowCursorDemo() {\n  return (\n    <div className=\"relative h-[400px] w-full overflow-hidden rounded-lg border bg-background flex items-center justify-center\">\n      <SlowCursor />\n      <div className=\"text-center\">\n        <h3 className=\"text-2xl font-bold\">Move your mouse</h3>\n        <p className=\"text-muted-foreground\">The cursor follows with a delay</p>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/chadcn-ui/demo/animated-ui/slow-cursor-demo.tsx"
+    }
+  ]
+}

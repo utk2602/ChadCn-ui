@@ -9,7 +9,7 @@
     {
       "path": "registry/cards/cards-stack/index.tsx",
       "type": "registry:block",
-      "target": "components/systaliko-ui/cards/cards-stack.tsx"
+      "target": "components/chadcn-ui/cards/cards-stack.tsx"
     }
   ]
 }
