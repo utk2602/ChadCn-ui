@@ -5,7 +5,7 @@ Collection of UI components, blocks, utilities, Designed for flexibility, built 
 > [!IMPORTANT]  
 > this is the beta version, so it's possible that the components contain **bugs** and that these will be **modified regularly** open (new issue)[https://github.com/YoucefBnm/chadcn-ui/issues/new].
 
-![hero](/public/og-image.png)
+
 
 ## Documentation
 
