@@ -19,7 +19,7 @@ export function Footer() {
             rel="noreferrer"
             className="font-medium"
           >
-            @YoucefBnm
+            @utk2602
           </a>
           .
         </p>
