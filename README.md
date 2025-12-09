@@ -2,8 +2,6 @@
 
 Collection of UI components, blocks, utilities, Designed for flexibility, built for customization, and crafted to scale across variants and use cases.
 
-> [!IMPORTANT]  
-> this is the beta version, so it's possible that the components contain **bugs** and that these will be **modified regularly** open (new issue)[https://github.com/YoucefBnm/chadcn-ui/issues/new].
 
 
 
