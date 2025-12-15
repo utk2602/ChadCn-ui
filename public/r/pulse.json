@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pulse",
-  "type": "registry:ui",
   "title": "Pulse",
   "description": "Pulse effect for attracting user attention.",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:ui",
       "target": "components/chadcn-ui/pulse.tsx"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

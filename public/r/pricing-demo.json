@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pricing-demo",
-  "type": "registry:block",
   "title": "Pricing Demo",
   "description": "Demo showing pricing component.",
   "registryDependencies": [
@@ -17,5 +16,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/demo/pricing.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

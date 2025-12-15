@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "slow-cursor-demo",
-  "type": "registry:example",
   "title": "Slow Cursor Demo",
   "description": "Demo for Slow Cursor.",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:example",
       "target": "components/chadcn-ui/demo/animated-ui/slow-cursor-demo.tsx"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

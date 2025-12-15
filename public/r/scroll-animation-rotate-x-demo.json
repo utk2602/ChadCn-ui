@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-animation-rotate-x-demo",
-  "type": "registry:block",
   "title": "scroll rotate animation device Demo",
   "description": "Demo showing how to use scroll rotate animations.",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/scroll-animation-rotate-demo.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

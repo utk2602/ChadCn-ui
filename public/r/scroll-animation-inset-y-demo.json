@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-animation-inset-y-demo",
-  "type": "registry:block",
   "title": "Scroll Trigger X-inset Animations Demo",
   "description": "Demo showing how to implement scroll triggred animations.",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/demo/scroll-animation-inset-y.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

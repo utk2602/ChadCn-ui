@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "slideshow",
-  "type": "registry:block",
   "title": "Slideshow",
   "description": "Display the active image and activate the next image with hovering the text indicator.",
   "dependencies": [
@@ -17,5 +16,6 @@
       "type": "registry:ui",
       "target": "components/chadcn-ui/blocks/slideshow.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

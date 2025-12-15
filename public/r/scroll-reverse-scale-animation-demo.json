@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-reverse-scale-animation-demo",
-  "type": "registry:block",
   "title": "Scroll Reverce Scale Animation Demo",
   "description": "Demo scroll animations component.",
   "registryDependencies": [
@@ -15,5 +14,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/demo/blocks/scroll-reverse-scale-animation.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

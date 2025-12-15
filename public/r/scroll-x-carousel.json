@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-x-carousel",
-  "type": "registry:block",
   "title": "Scroll X Carousel",
   "description": "Scroll carousel on x axis, with optional progress indicator.",
   "dependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/blocks/scroll-x-carousel.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

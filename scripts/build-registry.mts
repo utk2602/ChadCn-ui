@@ -198,7 +198,7 @@ export const index: Record<string, any> = {`;
     })()`
         : 'null'
     },
-    command: '@systaliko-ui/${item.name}',
+    command: '@ChadCn-ui/${item.name}',
   },`;
   }
 
@@ -244,7 +244,7 @@ async function buildRegistry() {
     });
   });
 
-  // 3. Replace `@/registry/systaliko-ui/` with `@/components/systaliko-ui/` in all files
+  // 3. Replace `@/registry/chadcn-ui/` with `@/components/chadcn-ui/` in all files
   const files = await fs.readdir(path.join(process.cwd(), 'public/r'));
 
   await Promise.all(

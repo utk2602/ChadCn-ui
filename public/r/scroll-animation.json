@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-animation",
-  "type": "registry:block",
   "title": "Scroll Animation",
   "description": "Collection of scroll triggered animations, Triggering the animation by scroll event.",
   "dependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/blocks/scroll-animation.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

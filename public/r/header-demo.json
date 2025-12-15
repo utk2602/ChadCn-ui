@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "header-demo",
-  "type": "registry:block",
   "title": "Header Demo",
   "description": "Demo showing Header component.",
   "registryDependencies": [
@@ -16,5 +15,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/demo/blocks/header.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

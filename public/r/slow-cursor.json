@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "slow-cursor",
-  "type": "registry:ui",
   "title": "Slow Cursor",
   "description": "A custom cursor that trails slowly behind the mouse.",
   "dependencies": [
@@ -16,5 +15,6 @@
       "type": "registry:ui",
       "target": "components/chadcn-ui/animated-ui/slow-cursor.tsx"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

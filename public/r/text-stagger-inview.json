@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "text-stagger-inview",
-  "type": "registry:ui",
   "title": "Text Stagger Inview",
   "description": "Splitted text animation with staggered reveal triggered by view, You can easily customize by controlling the animation property (transform, opacity, blur) and the stagger value, and the transition.",
   "dependencies": [
@@ -17,5 +16,6 @@
       "type": "registry:ui",
       "target": "components/chadcn-ui/text/text-stagger-inview.tsx"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

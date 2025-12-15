@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "text-scroll-read",
-  "type": "registry:ui",
   "title": "Text Scroll Read",
   "description": "Text component allows you to read the text by scrolling.",
   "dependencies": [
@@ -15,5 +14,6 @@
       "type": "registry:ui",
       "target": "components/chadcn-ui/text/text-scroll-read.tsx"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

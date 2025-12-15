@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-autoplay",
-  "type": "registry:block",
   "title": "Scroll Autoplay",
   "description": "Displaying different content depending on order and scroll position.",
   "dependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/scroll-autoplay.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

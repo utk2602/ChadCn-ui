@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "wavy-block-demo",
-  "type": "registry:block",
   "title": "Wavy Block Demo",
   "description": "Demo showing Wavy Block component.",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/demo/blocks/wavy-block.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pricing",
-  "type": "registry:block",
   "title": "Pricing",
   "description": "Flexible pricing component with customizable features and options.",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/ecommerce/pricing.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

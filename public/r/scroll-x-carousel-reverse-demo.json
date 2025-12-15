@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-x-carousel-reverse-demo",
-  "type": "registry:block",
   "title": "scroll x carousel reversed Demo",
   "description": "another Demo showing how to use scroll x carousel component in a reversed.",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/scroll-x-carousel-reverse-demo.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-autoplay-demo",
-  "type": "registry:block",
   "title": "scroll autoplay Demo",
   "description": "Demo showing scroll-autoplay component.",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/demo/blocks/scroll-autoplay.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

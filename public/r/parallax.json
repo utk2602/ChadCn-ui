@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "parallax",
-  "type": "registry:block",
   "title": "Parallax",
   "description": "Parallax block, creates a parallax effect.",
   "dependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/blocks/parallax.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

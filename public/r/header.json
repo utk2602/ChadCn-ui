@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "header",
-  "type": "registry:block",
   "title": "Header",
   "description": "Responsive Header, with a logo and navigation links, supporting both desktop and mobile layouts, and toggles on scroll.",
   "dependencies": [
@@ -17,5 +16,6 @@
       "type": "registry:block",
       "target": "components/chadcn-ui/blocks/header.tsx"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

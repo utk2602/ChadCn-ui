@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "clean-hero",
-  "type": "registry:ui",
   "title": "Clean Hero",
   "description": "A clean hero section with fade-in animations.",
   "dependencies": [
@@ -17,5 +16,6 @@
       "type": "registry:ui",
       "target": "components/chadcn-ui/animated-ui/clean-hero.tsx"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }
